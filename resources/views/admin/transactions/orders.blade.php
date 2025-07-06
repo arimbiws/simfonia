@@ -1,49 +1,93 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Orders') }}
-        </h2>
-    </x-slot>
+@extends('admin.layouts.app')
+@section('title', 'Orders')
+@section('content')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm p-10 sm:rounded-lg">
+@if ($errors->any())
+<div class="alert alert-danger mb-4">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li class="ps-5 py-5 bg-red-500 text-white font-bold">
+            {{ $error }}
+        </li>
+        @endforeach
 
-                @if ($errors->any())
-                <div class="alert alert-danger mb-4">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li class="ps-5 py-5 bg-red-500 text-white font-bold">
-                            {{ $error }}
-                        </li>
-                        @endforeach
+    </ul>
+</div>
+@endif
 
-                    </ul>
-                </div>
-                @endif
-
-                <div class="flex flex-row justify-between items-center mb-5">
-                    <h3 class="text-indigo-950 font-bold text-2xl">My Orders</h3>
-                </div>
-
-                @forelse($orders as $order)
-                <div class="item-product flex flex-row justify-between items-center mt-10">
-                    <img src="{{ Storage::url($order->product->gambar) }}" class="h-[100px] w-[100px]" alt="">
+<div class="item-product flex flex-row justify-between items-center relative overflow-x-auto">
+    <table class="w-full text-left rtl:text-right">
+        <thead class=" bg-gray-100  text-sm text-gray-700 uppercase">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Gambar
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nama Produk
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Pembeli
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Harga
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($orders as $order)
+            <tr class="bg-white border-b border-gray-200">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    <img src=" {{ Storage::url($order->product->gambar) }}" class="h-[100px] w-[100px] rounded-2xl" alt="">
+                </th>
+                <td class="px-6 py-4">
                     <div>
-                        <h3 class="text-indigo-950 text-xl font-bold">{{ $order->product->nama }}</h3>
-                        <p class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-indigo-700/10 ring-inset">{{ $order->product->unit->nama_unit }}</p>
+                        <h3 class="text-indigo-950 text-xl font-bold mb-2">{{ $order->product->nama }}</h3>
+                        <p class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-indigo-700/10 ring-inset">
+                            {{ $order->product->unit->nama_unit }}
+                        </p>
                     </div>
-                    <div>
-                        <p>Rp {{ $order->total_harga }}</p>
-                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <p class="text-gray-500">{{ $order->buyer->name }}</p>
+                </td>
+                <td class="px-6 py-4">
+                    <p class="text-indigo-950 text-lg font-bold">Rp{{ number_format($order->total_harga) }}</p>
+                </td>
+                <td class="px-6 py-4">
+                    @if($order->status_transaksi)
+                    <span class="py-1 px-3 rounded-full bg-green-500 text-white font-bold text-sm">
+                        SUCCESS
+                    </span>
+                    @else
+                    <span class="py-1 px-3 rounded-full bg-orange-500 text-white font-bold text-sm">
+                        PENDING
+                    </span>
+                    @endif
+                </td>
+                <td class="px-6 py-4">
                     <div class="flex flex-row gap-x-3">
-                        <a href="" class="py-3 px-5 bg-gray-500 text-white">Details</a>
+                        <a href="{{ route('admin.transactions.order_details', $order) }}" class="py-3 px-5 bg-gray-500 text-white rounded-full">
+                            Details
+                        </a>
                     </div>
-                </div>
-                @empty
-                <p class="mt-2">Belum ada pembelian produk yang dilakukan</p>
-                @endforelse
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+                </td>
+            </tr>
+
+            @empty
+            <tr>
+                <td colspan="5">
+                    <p class="mt-7 text-gray-500 text-center">Belum ada pembelian produk yang dilakukan</p>
+                </td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
+
+@endsection

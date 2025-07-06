@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_unit');
             $table->string('slug');
             $table->text('deskripsi');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -21,11 +21,11 @@ return new class extends Migration
             $table->boolean('status_transaksi');
             $table->string('bukti_bayar');
 
-            $table->softDeletes();
 
             $table->foreign('penjual_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('pembeli_id')->references('id')->on('users')->onDelete('cascade');
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

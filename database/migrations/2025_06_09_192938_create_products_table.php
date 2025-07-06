@@ -21,9 +21,10 @@ return new class extends Migration
             $table->string('gambar');
             $table->unsignedBigInteger('harga');
             $table->text('deskripsi');
-            $table->softDeletes();
 
             $table->foreign('penjual_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -10,6 +10,15 @@ class Transaction extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'penjual_id',
+        'product_id',
+        'pembeli_id',
+        'total_harga',
+        'status_transaksi',
+        'bukti_bayar',
+    ];
+
     public function product()
     {
         return $this->belongsTo(Product::class);

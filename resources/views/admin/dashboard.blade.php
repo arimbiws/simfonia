@@ -47,27 +47,27 @@
 <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
     <!-- Chart Section -->
     <!-- <div class="xl:col-span-2">
-        <div class="bg-white rounded-lg shadow p-6">
-            <div class="flex items-center justify-between mb-6">
-                <h3 class="text-lg font-semibold text-gray-800">Statistik Total Akun</h3>
-                <select class="border border-gray-300 rounded-md px-3 py-1 text-sm">
-                    <option>2022</option>
-                    <option>2023</option>
-                </select>
-            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800">Statistik Total Akun</h3>
+                    <select class="border border-gray-300 rounded-md px-3 py-1 text-sm">
+                        <option>2022</option>
+                        <option>2023</option>
+                    </select>
+                </div>
 
-            <div class="flex items-center space-x-6 mb-4">
-                <div class="flex items-center">
-                    <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-600">Penjual</span>
+                <div class="flex items-center space-x-6 mb-4">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                        <span class="text-sm text-gray-600">Penjual</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-pink-500 rounded-full mr-2"></div>
+                        <span class="text-sm text-gray-600">Pembeli</span>
+                    </div>
                 </div>
-                <div class="flex items-center">
-                    <div class="w-3 h-3 bg-pink-500 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-600">Pembeli</span>
-                </div>
-            </div>
-            <canvas id="accountChart" width="400" height="200"></canvas>
-        </div> -->
+                <canvas id="accountChart" width="400" height="200"></canvas>
+            </div> -->
 
     <!--Chart Section -->
     <div class="xl:col-span-2">

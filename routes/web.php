@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Transaction;
@@ -19,12 +20,20 @@ use App\Http\Controllers\TransactionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.dashboard');
 });
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/bookings', [BookingController::class, 'index'])->name('frontend.bookings.create');
+
+
+// Route::get('/bookings', function () {
+//     return view('frontend.bookings.create');
+// })->name('frontend.bookings.create');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

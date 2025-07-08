@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::get('/bookings', [BookingController::class, 'index'])->name('frontend.bookings.create');
 Route::get('/katalog', function () {return view('frontend.katalog');});
-
+Route::get('/profile', function () {return view('frontend.profile');});
 
 // Route::get('/bookings', function () {
 //     return view('frontend.bookings.create');

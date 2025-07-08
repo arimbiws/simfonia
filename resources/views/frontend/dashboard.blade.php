@@ -105,117 +105,148 @@
 </section>
 
 <!-- Rekomendasi Section -->
-<section class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center mb-8">
-            <h2 class="text-2xl font-bold">Rekomendasi produk/layanan</h2>
-            <button class="bg-gray-800 text-white px-4 py-2 rounded-lg">Lihat Semua Katalog</button>
-        </div>
-
-        <!-- Product Grid -->
-        <div class="grid grid-cols-4 gap-6 mb-8">
-            <!-- Row 1 -->
-            <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop" alt="Lab Equipment" class="w-full h-40 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
-                    <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
-                    <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
-                    </div>
-                </div>
+<div class="max-w-7xl mx-auto flex justify-between items-center px-4 mb-8">
+    <h2 class="text-2xl font-semibold text-zinc-900">Rekomendasi produk/layanan</h2>
+    <a href="#" class="bg-gray-900 text-white text-sm px-4 py-2 rounded hover:bg-gray-800">Lihat Semua Katalog</a>
+</div>
+<div class="flex justify-center">
+    <div class="grid grid-cols-4 gap-x-[23px] gap-y-[35px]">
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
             </div>
-
-            <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop" alt="Lab Equipment" class="w-full h-40 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
-                    <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
-                    <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop" alt="Lab Equipment" class="w-full h-40 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
-                    <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
-                    <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop" alt="Lab Equipment" class="w-full h-40 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
-                    <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
-                    <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
-                    </div>
-                </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
             </div>
         </div>
-
-        <!-- Row 2 -->
-        <div class="grid grid-cols-4 gap-6">
-            <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop" alt="Lab Equipment" class="w-full h-40 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
-                    <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
-                    <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
-                    </div>
-                </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
             </div>
-
-            <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop" alt="Lab Equipment" class="w-full h-40 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
-                    <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
-                    <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
-                    </div>
-                </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
             </div>
-
-            <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop" alt="Lab Equipment" class="w-full h-40 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
-                    <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
-                    <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
-                    </div>
-                </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
             </div>
-
-            <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop" alt="Lab Equipment" class="w-full h-40 object-cover" />
-                <div class="p-4">
-                    <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
-                    <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
-                    <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
-                    </div>
-                </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
+            </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
+            </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
+            </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
+            </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
+            </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
+            </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
+            </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
+            </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
+            </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
+            </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
+            </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
+            </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
+            </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
+            </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
+            </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
+            </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
+            </div>
+        </div>
+        <div class="w-[282px] h-[300px] relative bg-white rounded-xl outline outline-1 outline-neutral-300">
+            <img src="{{asset('images/produk.jpg')}}" alt="" class="left-0 top-0 rounded-tl-xl rounded-tr-xl border-neutral-300">
+            <h1 class="px-5 mt-3 text-zinc-900 text-base font-bold font-['DM_Sans'] leading-relaxed">Laboratorium Komputer</h1>
+            <div class="px-5 mt-[5px] text-justify text-gray-700 text-[10px] font-light font-['DM_Sans'] leading-none">
+                Fasilitas pembelajaran dan penelitian yang dilengkapi dengan perangkat komputer berteknologi terkini
+            </div>
+            <div class="px-5 mt-6 flex justify-between">
+                <button class="text-center items-center w-20 h-7 relative bg-[#6CC389] rounded-2xl text-white text-xs font-bold font-['Inter'] leading-tight">Reservasi</button>
+                <button class="text-center items-center w-20 h-7 relative bg-[#379AE659] rounded-2xl text-zinc-700 text-xs font-bold font-['Inter'] leading-tight">Detail</button>
             </div>
         </div>
     </div>
-</section>
+</div>
+
+<section class="py-16 bg-white">
 
 <!-- Calendar Section -->
 <section class="py-16 bg-gray-50">
@@ -381,50 +412,6 @@
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="bg-gray-100 py-12">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-4 gap-8 mb-8">
-            <div>
-                <div class="flex items-center space-x-2 mb-4">
-                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded"></div>
-                    <span class="font-bold text-xl">FMIPA</span>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-4">Product</h4>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li><a href="#" class="hover:text-gray-900">Overview</a></li>
-                    <li><a href="#" class="hover:text-gray-900">Pricing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-4">Resources</h4>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li><a href="#" class="hover:text-gray-900">Blog</a></li>
-                    <li><a href="#" class="hover:text-gray-900">User guide</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold mb-4">Institute</h4>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li><a href="#" class="hover:text-gray-900">About us</a></li>
-                    <li><a href="#" class="hover:text-gray-900">Join us</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="border-t pt-8 flex justify-between items-center">
-            <div class="text-sm text-gray-600">© 2023 Antariksa. English • Privacy • Terms • Sitemap</div>
-            <div class="flex space-x-4">
-                <a href="#" class="text-blue-500"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-blue-400"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-blue-700"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-red-500"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>
-
+<x-footer />
 
 @endsection

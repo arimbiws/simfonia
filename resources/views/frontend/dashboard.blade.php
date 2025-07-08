@@ -16,7 +16,7 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                 </svg>
             </a>
-            <a href="#" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+            <a href="{{ route('register') }}" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
                 Join as Seller
             </a>
         </div>
@@ -60,7 +60,6 @@
                     <div class="p-6">
                         <h3 class="font-bold text-lg mb-2">RUANGAN/GEDUNG</h3>
                         <p class="text-gray-600 text-sm mb-4">Sewa ruangan dan gedung untuk berbagai keperluan acara dan pertemuan.</p>
-                        <button class="ml-0 bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
                     </div>
                 </div>
 
@@ -69,7 +68,6 @@
                     <div class="p-6">
                         <h3 class="font-bold text-lg mb-2">INVENTARIS</h3>
                         <p class="text-gray-600 text-sm mb-4">Penyewaan inventaris dan peralatan untuk mendukung kegiatan akademik.</p>
-                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
                     </div>
                 </div>
 
@@ -78,7 +76,6 @@
                     <div class="p-6">
                         <h3 class="font-bold text-lg mb-2">ALAT TULIS & PRINTING</h3>
                         <p class="text-gray-600 text-sm mb-4">Layanan printing dan penyediaan alat tulis untuk mahasiswa dan dosen.</p>
-                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
                     </div>
                 </div>
             </div>
@@ -92,7 +89,6 @@
                     <div class="p-6">
                         <h3 class="font-bold text-lg mb-2">PENGEMBANGAN SOFTWARE</h3>
                         <p class="text-gray-600 text-sm mb-4">Jasa pengembangan software dan aplikasi untuk berbagai kebutuhan.</p>
-                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
                     </div>
                 </div>
 
@@ -101,7 +97,6 @@
                     <div class="p-6">
                         <h3 class="font-bold text-lg mb-2">UMKM KAMPUS</h3>
                         <p class="text-gray-600 text-sm mb-4">Mendukung UMKM kampus dengan berbagai produk dan layanan.</p>
-                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
                     </div>
                 </div>
             </div>
@@ -114,7 +109,7 @@
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-2xl font-bold">Rekomendasi produk/layanan</h2>
-            <button class="bg-gray-800 text-white px-4 py-2 rounded-lg">Lihat Semua Katalog</button>
+            <a href="{{ route('frontend.unit_bisnis.katalog') }}" class="bg-gray-800 text-white px-4 py-2 rounded-lg">Lihat Semua Katalog</a>
         </div>
 
         <!-- Product Grid -->
@@ -126,8 +121,8 @@
                     <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
                     <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
                     <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
+                        <a href="{{ route('frontend.bookings.checkout') }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
+                        <a href="{{ route('frontend.bookings.index') }}" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>
                     </div>
                 </div>
             </div>
@@ -138,8 +133,8 @@
                     <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
                     <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
                     <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
+                        <a href="{{ route('frontend.bookings.checkout') }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
+                        <a href="{{ route('frontend.bookings.index') }}" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>
                     </div>
                 </div>
             </div>
@@ -150,8 +145,8 @@
                     <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
                     <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
                     <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
+                        <a href="{{ route('frontend.bookings.checkout') }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
+                        <a href="{{ route('frontend.bookings.index') }}" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>
                     </div>
                 </div>
             </div>
@@ -162,8 +157,8 @@
                     <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
                     <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
                     <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
+                        <a href="{{ route('frontend.bookings.checkout') }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
+                        <a href="{{ route('frontend.bookings.index') }}" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>
                     </div>
                 </div>
             </div>
@@ -177,8 +172,8 @@
                     <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
                     <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
                     <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
+                        <a href="{{ route('frontend.bookings.checkout') }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
+                        <a href="{{ route('frontend.bookings.index') }}" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>
                     </div>
                 </div>
             </div>
@@ -189,8 +184,8 @@
                     <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
                     <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
                     <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
+                        <a href="{{ route('frontend.bookings.checkout') }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
+                        <a href="{{ route('frontend.bookings.index') }}" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>
                     </div>
                 </div>
             </div>
@@ -201,8 +196,8 @@
                     <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
                     <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
                     <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
+                        <a href="{{ route('frontend.bookings.checkout') }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
+                        <a href="{{ route('frontend.bookings.index') }}" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>
                     </div>
                 </div>
             </div>
@@ -213,8 +208,8 @@
                     <h3 class="font-semibold text-sm mb-1">Laboratorium Komputer</h3>
                     <p class="text-xs text-gray-600 mb-2">Sewa laboratorium komputer lengkap</p>
                     <div class="flex space-x-2">
-                        <button class="bg-green-500 text-white px-3 py-1 rounded text-xs">Tersedia</button>
-                        <button class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-xs">Detail</button>
+                        <a href="{{ route('frontend.bookings.checkout') }}" class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
+                        <a href="{{ route('frontend.bookings.index') }}" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>
                     </div>
                 </div>
             </div>
@@ -225,7 +220,7 @@
 <!-- Calendar Section -->
 <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-        <h2 class="text-2xl font-bold mb-8">Kalender Ketersediaan Produk/Layanan</h2>
+        <h2 class="text-2xl font-bold mb-8">Kalender KeReservasian Produk/Layanan</h2>
         <div class="bg-white rounded-lg shadow-lg p-6">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-lg font-semibold">July 2023</h3>

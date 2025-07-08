@@ -11,7 +11,7 @@
             <!-- Main Image -->
             <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=400&fit=crop"
+                    <img src="{{asset('images/produk.jpg')}}"
                         alt="Auditorium" class="w-full h-80 object-cover">
                     <div class="absolute top-4 left-4">
                         <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -24,7 +24,8 @@
             <!-- Title and Booking Button -->
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
                 <h1 class="text-2xl font-bold text-gray-900 mb-4 sm:mb-0">
-                    Gedung Auditorium Widya Sabha Universitas Udayana
+                    Laboratorium Komputer
+
                 </h1>
                 <a href="{{route('frontend.bookings.checkout')}}" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
                     Reservasi Ruangan <i class="fas fa-arrow-right ml-2"></i>

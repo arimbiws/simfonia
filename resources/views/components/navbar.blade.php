@@ -23,21 +23,21 @@
                     <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44">
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Ruangan & Gedung </a>
+                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Ruangan & Gedung </a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Inventaris</a>
+                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Inventaris</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Alat Tulis & Printing
+                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Alat Tulis & Printing
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Pengembangan Software
+                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Pengembangan Software
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Kewirausahaan
+                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Kewirausahaan
                                 </a>
                             </li>
                         </ul>

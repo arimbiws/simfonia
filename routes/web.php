@@ -41,8 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/bookings', [BookingController::class, 'index'])->name('frontend.bookings.index');
     Route::get('/bookings/checkout/', [BookingController::class, 'checkout'])->name('frontend.bookings.checkout');
     Route::get('/bookings/payment/', [BookingController::class, 'payment'])->name('frontend.bookings.payment');
-
-
+    Route::post('/bookings/store/', [BookingController::class, 'store'])->name('frontend.bookings.store');
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');

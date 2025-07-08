@@ -11,12 +11,11 @@ class Booking extends Model
 
     protected $fillable = [
         'product_id',
-        'user_id',
+        'pembeli_id',
         'tanggal_mulai',
-        'tanggal_selesai',
+        'tanggal_kembali',
         'nama_kegiatan',
         'instansi',
-        'nim',
         'nama_lengkap',
         'email',
         'no_hp',
@@ -24,6 +23,7 @@ class Booking extends Model
         'surat_pengajuan',
         'status'
     ];
+
 
     public function product()
     {

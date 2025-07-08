@@ -23,112 +23,109 @@
 
     <h1 class="text-2xl font-bold mb-6">My Booking</h1>
 
-    <form action="#" method="POST" class="space-y-6">
+    <form action="#" method="POST" class="my-6">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
 
-        <!-- Ruangan -->
-        <div class="flex flex-col space-y-2">
-            <label class="font-medium text-gray-700">Ruangan</label>
-            <input type="text" class="border rounded px-4 py-2" placeholder="Input text">
-        </div>
-
-        <!-- Lokasi Kampus dan Biaya Penyewaan -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Ruangan -->
             <div class="flex flex-col space-y-2">
-                <label class="font-medium text-gray-700">Lokasi Kampus</label>
-                <select class="border rounded px-4 py-2">
-                    <div class="flex flex-col space-y-2">
-                        <option value="" disabled selected hidden>Pilih Lokasi</option>
-                        <option>Kampus Jimbaran</option>
-                        <option>Kampus Sudirman</option>
-                </select>
+                <label class="block mb-1 font-medium text-gray-900">Ruangan</label>
+                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Input text">
             </div>
-            <div class="flex flex-col space-y-2">
-                <label class="font-medium text-gray-700">Biaya Penyewaan</label>
-                <div class="flex items-center border rounded px-4 py-2">
-                    <span class="text-gray-500 mr-2">Rp</span>
-                    <input type="text" class="flex-1 outline-none" placeholder="Input text">
+
+            <!-- Lokasi Kampus dan Biaya Penyewaan -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col space-y-2">
+                    <label class="block mb-1 font-medium text-gray-900">Lokasi Kampus</label>
+                    <select class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <div class="flex flex-col space-y-2">
+                            <option value="" disabled selected hidden>Pilih Lokasi</option>
+                            <option>Kampus Jimbaran</option>
+                            <option>Kampus Sudirman</option>
+                    </select>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label class="block mb-1 font-medium text-gray-900">Biaya Penyewaan</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
+                                <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
+                                <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="email-address-icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  ">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Tanggal -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Tanggal -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col space-y-2">
+                    <label class="block mb-1 font-medium text-gray-900">Tanggal Peminjaman</label>
+                    <input type="date" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label class="block mb-1 font-medium text-gray-900">Tanggal Pengembalian</label>
+                    <input type="date" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                </div>
+            </div>
+
+            <!-- Nama Kegiatan -->
             <div class="flex flex-col space-y-2">
-                <label class="font-medium text-gray-700">Tanggal Peminjaman</label>
-                <input type="date" class="border rounded px-4 py-2">
+                <label class="block mb-1 font-medium text-gray-900">Nama Kegiatan</label>
+                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Input text">
             </div>
+
+            <!-- Instansi dan NIM -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col space-y-2">
+                    <label class="block mb-1 font-medium text-gray-900">Asal Instansi</label>
+                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Input text">
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label class="block mb-1 font-medium text-gray-900">NIM/ID Number</label>
+                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Input text">
+                </div>
+            </div>
+
+            <!-- Nama Lengkap -->
             <div class="flex flex-col space-y-2">
-                <label class="font-medium text-gray-700">Tanggal Pengembalian</label>
-                <input type="date" class="border rounded px-4 py-2">
+                <label class="block mb-1 font-medium text-gray-900">Full Name</label>
+                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Input text">
             </div>
-        </div>
 
-        <!-- Nama Kegiatan -->
-        <div class="flex flex-col space-y-2">
-            <label class="font-medium text-gray-700">Nama Kegiatan</label>
-            <input type="text" class="border rounded px-4 py-2" placeholder="Input text">
-        </div>
+            <!-- Email dan Phone -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flex flex-col space-y-2">
+                    <label for="email" class="block mb-1 font-medium text-gray-900 ">Email</label>
+                    <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan email" required />
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <label class="block mb-1 font-medium text-gray-900">Phone Number</label>
+                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Input text">
+                </div>
+            </div>
 
-        <!-- Instansi dan NIM -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Alamat -->
             <div class="flex flex-col space-y-2">
-                <label class="font-medium text-gray-700">Asal Instansi</label>
-                <select class="border rounded px-4 py-2">
-                    <option value="" disabled selected hidden>Pilih Instansi</option>
-                    <option>Universitas Udayana</option>
-                    <option>Lainnya</option>
-                </select>
+                <label class="block mb-1 font-medium text-gray-900">Alamat</label>
+                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Input text">
             </div>
+
+            <!-- Upload File -->
             <div class="flex flex-col space-y-2">
-                <label class="font-medium text-gray-700">NIM/ID Number</label>
-                <input type="text" class="border rounded px-4 py-2" placeholder="Input text">
+                <label class="block mb-1 font-medium text-gray-900">Surat Pengajuan Peminjaman/Penyewaan Ruangan</label>
+                <x-text-input id="path_file" class="block mt-1 w-full py-2" type="file" name="path_file" required />
             </div>
         </div>
-
-        <!-- Nama Lengkap -->
-        <div class="flex flex-col space-y-2">
-            <label class="font-medium text-gray-700">Full Name</label>
-            <input type="text" class="border rounded px-4 py-2" placeholder="Input text">
-        </div>
-
-        <!-- Email dan Phone -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="flex flex-col space-y-2">
-                <label class="font-medium text-gray-700">Email</label>
-                <input type="email" class="border rounded px-4 py-2" placeholder="Input text">
-            </div>
-            <div class="flex flex-col space-y-2">
-                <label class="font-medium text-gray-700">Phone Number</label>
-                <input type="text" class="border rounded px-4 py-2" placeholder="Input text">
-            </div>
-        </div>
-
-        <!-- Alamat -->
-        <div class="flex flex-col space-y-2">
-            <label class="font-medium text-gray-700">Alamat</label>
-            <input type="text" class="border rounded px-4 py-2" placeholder="Input text">
-        </div>
-
-        <!-- Upload File -->
-        <div class="flex flex-col space-y-2">
-            <label class="font-medium text-gray-700">Surat Pengajuan Peminjaman/Penyewaan Ruangan</label>
-            <div class="relative inline-block">
-                <button type="button" class="border-2 border-dashed border-gray-400 px-6 py-3 rounded-lg items-center justify-center text-gray-500 w-full">
-                    <span id="fileButtonText" class="truncate">Choose File</span>
-                    <i class="fas fa-paperclip ml-2"></i>
-                </button>
-                <input type="file" id="fileInput" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
-            </div>
-        </div>
-
 
         <!-- Submit -->
         <a href="{{route('frontend.bookings.payment')}}"
             type="button"
-            class="bg-blue-500 hover:bg-blue-600 text-white w-fullpx-6 py-3 rounded-lg">
+            class="bg-blue-500 hover:bg-blue-600 text-white w-full mt-[50px] px-6 py-3 rounded-lg">
             Submit
         </a>
-    </form>
+</div>
+</form>
 </div>
 
 <x-footer />

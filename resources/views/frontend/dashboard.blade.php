@@ -9,9 +9,9 @@
     <div class="absolute inset-0 bg-black bg-opacity-40"></div>
     <div class="relative container mx-auto px-4 py-20 flex items-center">
         <div class="w-1/2">
-            <div class="text-sm mb-2">Kelompok > Kelas B</div>
+            <div class="text-sm mb-2">Kelompok 3 > Kelas D</div>
             <h1 class="text-4xl font-bold mb-4">Unit Bisnis FMIPA Universitas Udayana</h1>
-            <div class="text-sm mb-4">April 17, 2023 • <span class="bg-green-500 px-2 py-1 rounded text-xs">OPEN</span></div>
+            <div class="text-sm mb-4">Juli 8, 2025 • <span class="bg-green-500 px-2 py-1 rounded text-xs">OPEN</span></div>
         </div>
         <div class="w-1/2">
             <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Students working" class="rounded-lg shadow-lg" />
@@ -25,19 +25,19 @@
         <div class="grid grid-cols-4 gap-6">
             <div class="bg-purple-100 p-6 rounded-lg text-center">
                 <div class="text-2xl font-bold text-purple-600">6,452+</div>
-                <div class="text-sm text-gray-600">Total Mahasiswa</div>
+                <div class="text-sm text-gray-600">Total Pengguna Sistem</div>
             </div>
             <div class="bg-blue-100 p-6 rounded-lg text-center">
                 <div class="text-2xl font-bold text-blue-600">502+</div>
-                <div class="text-sm text-gray-600">Total Dosen</div>
+                <div class="text-sm text-gray-600">Total Unit Bisnis</div>
             </div>
             <div class="bg-green-100 p-6 rounded-lg text-center">
                 <div class="text-2xl font-bold text-green-600">56,201+</div>
-                <div class="text-sm text-gray-600">Alumni</div>
+                <div class="text-sm text-gray-600">Total Produk/Layanan</div>
             </div>
             <div class="bg-orange-100 p-6 rounded-lg text-center">
                 <div class="text-2xl font-bold text-orange-600">6,507+</div>
-                <div class="text-sm text-gray-600">Penelitian</div>
+                <div class="text-sm text-gray-600">Total Transaksi</div>
             </div>
         </div>
     </div>
@@ -46,57 +46,59 @@
 <!-- Unit Bisnis Section -->
 <section class="py-16">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Unit Bisnis</h2>
-        <div class="grid grid-cols-3 gap-8">
-            <!-- Row 1 -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=250&fit=crop" alt="Meeting Room" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">RUANGAN/GEDUNG</h3>
-                    <p class="text-gray-600 text-sm mb-4">Sewa ruangan dan gedung untuk berbagai keperluan acara dan pertemuan.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+        <h2 class="text-center mb-12 text-black text-5xl font-normal font-['DM_Sans']">Unit Bisnis</h2>
+        {{-- Row 1 --}}
+        <div class="flex justify-center">
+            <div class="grid grid-cols-3 gap-x-7">
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/ruangan.jpg')}}" alt="Meeting Room" class="w-full h-48 object-cover"/> 
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">RUANGAN/GEDUNG</h3>
+                        <p class="text-gray-600 text-sm mb-4">Sewa ruangan dan gedung untuk berbagai keperluan acara dan pertemuan.</p>
+                        <button class="ml-0 bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
+                </div>
+
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/inventaris.jpg')}}" alt="Computer Lab" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">INVENTARIS</h3>
+                        <p class="text-gray-600 text-sm mb-4">Penyewaan inventaris dan peralatan untuk mendukung kegiatan akademik.</p>
+                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
+                </div>
+
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/atk.jpg')}}" alt="Printer" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">ALAT TULIS & PRINTING</h3>
+                        <p class="text-gray-600 text-sm mb-4">Layanan printing dan penyediaan alat tulis untuk mahasiswa dan dosen.</p>
+                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
                 </div>
             </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=250&fit=crop" alt="Computer Lab" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">INVENTARIS</h3>
-                    <p class="text-gray-600 text-sm mb-4">Penyewaan inventaris dan peralatan untuk mendukung kegiatan akademik.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+        </div>
+        
+        {{-- Row 2 --}}
+        <div class="mt-11 flex justify-center">
+            <div class="grid grid-cols-2 gap-x-7">
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/software.jpg')}}" alt="Software Development" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">PENGEMBANGAN SOFTWARE</h3>
+                        <p class="text-gray-600 text-sm mb-4">Jasa pengembangan software dan aplikasi untuk berbagai kebutuhan.</p>
+                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=400&h=250&fit=crop" alt="Printer" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">ALAT TULIS & PRINTING</h3>
-                    <p class="text-gray-600 text-sm mb-4">Layanan printing dan penyediaan alat tulis untuk mahasiswa dan dosen.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/umkm.jpg')}}" alt="Campus Store" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">UMKM KAMPUS</h3>
+                        <p class="text-gray-600 text-sm mb-4">Mendukung UMKM kampus dengan berbagai produk dan layanan.</p>
+                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Row 2 -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop" alt="Software Development" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">PENGEMBANGAN SOFTWARE</h3>
-                    <p class="text-gray-600 text-sm mb-4">Jasa pengembangan software dan aplikasi untuk berbagai kebutuhan.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1567521464027-f491c70c2ffa?w=400&h=250&fit=crop" alt="Campus Store" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">UMKM KAMPUS</h3>
-                    <p class="text-gray-600 text-sm mb-4">Mendukung UMKM kampus dengan berbagai produk dan layanan.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="w-full h-48 bg-gray-200"></div>
             </div>
         </div>
     </div>

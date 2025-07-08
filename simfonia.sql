@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
+<<<<<<< HEAD
 -- Generation Time: Jul 08, 2025 at 12:30 AM
+=======
+-- Generation Time: Jul 07, 2025 at 03:41 PM
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
 -- Server version: 8.0.30
 -- PHP Version: 8.2.27
 
@@ -30,6 +34,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `bookings` (
   `id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
+<<<<<<< HEAD
   `pembeli_id` bigint UNSIGNED NOT NULL,
   `tanggal_mulai` date NOT NULL,
   `tanggal_kembali` date NOT NULL,
@@ -41,6 +46,19 @@ CREATE TABLE `bookings` (
   `no_hp` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `surat_pengajuan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+=======
+  `user_id` bigint UNSIGNED NOT NULL,
+  `tanggal_mulai` date NOT NULL,
+  `tanggal_selesai` date NOT NULL,
+  `nama_kegiatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instansi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_lengkap` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_hp` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surat_pengajuan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` enum('pending','disetujui','ditolak') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'pending',
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -49,6 +67,7 @@ CREATE TABLE `bookings` (
 -- Dumping data for table `bookings`
 --
 
+<<<<<<< HEAD
 INSERT INTO `bookings` (`id`, `product_id`, `pembeli_id`, `tanggal_mulai`, `tanggal_kembali`, `status`, `nama_kegiatan`, `instansi`, `email`, `nama_lengkap`, `no_hp`, `alamat`, `surat_pengajuan`, `created_at`, `updated_at`) VALUES
 (1, 3, 1, '2025-07-10', '2025-07-11', 'pending', 'Seminar Nasional AI', 'Universitas Udayana', 'arimbi@mail.com', 'Arimbi WS', '087781537172', 'Jl. Ayani Utara', 'uploads/surat_ajuan_ai.pdf', '2025-07-07 11:42:28', '2025-07-07 11:42:28');
 
@@ -83,6 +102,10 @@ CREATE TRIGGER `reject_overlapping_booking` BEFORE INSERT ON `bookings` FOR EACH
 END
 $$
 DELIMITER ;
+=======
+INSERT INTO `bookings` (`id`, `product_id`, `user_id`, `tanggal_mulai`, `tanggal_selesai`, `nama_kegiatan`, `instansi`, `nama_lengkap`, `email`, `no_hp`, `alamat`, `surat_pengajuan`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3, 1, '2025-07-10', '2025-07-11', 'Seminar Nasional AI', 'Universitas Udayana', 'Arimbi WS', 'arimbi@mail.com', '087781537172', 'Jl. Ayani Utara', 'uploads/surat_ajuan_ai.pdf', 'pending', '2025-07-07 11:42:28', '2025-07-07 11:42:28');
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
 
 -- --------------------------------------------------------
 
@@ -181,6 +204,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `penjual_id`, `unit_bisnis_id`, `nama`, `slug`, `gambar`, `harga`, `deskripsi`, `deleted_at`, `created_at`, `updated_at`) VALUES
+<<<<<<< HEAD
 (3, 1, 1, 'Ruang Lobby Dekanat FMIPA', '', 'images/products/OQNchw8eDmGW7rKiLgjU1Nl1zXkZsWWHtojLvaAJ.jpg', 150000, '\"Ruangan\" dalam bahasa Indonesia merujuk pada sebuah tempat atau area yang dibatasi oleh dinding dan memiliki fungsi tertentu. Bisa berupa kamar di dalam rumah, kelas di sekolah, atau area yang lebih luas seperti auditorium.', NULL, '2025-07-05 23:49:56', '2025-07-05 23:49:56'),
 (4, 2, 1, 'Gedung Lama Informatika', '', 'images/products/CjuLoGWFzhKaD3g5BqC6TZNiGFLJE1KILrcUjQVW.jpg', 125000, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', NULL, '2025-07-06 08:23:26', '2025-07-06 08:23:26'),
 (5, 2, 2, 'Proyektor Infocus In124-3200', '', 'images/products/ECmzUWkFONL8F39L6VHylK9YoQc81RwrY4a3LeKh.jpg', 320000, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', NULL, '2025-07-06 10:39:07', '2025-07-06 10:39:07'),
@@ -215,6 +239,12 @@ INSERT INTO `products` (`id`, `penjual_id`, `unit_bisnis_id`, `nama`, `slug`, `g
 (34, 1, 4, 'Sistem Informasi Manajemen', 'sistem-informasi-manajemen', 'product_gambar/sistem_info.jpg', 5000000, 'Pengembangan sistem informasi manajemen custom sesuai kebutuhan bisnis dengan database yang robust.', NULL, '2025-07-04 02:00:00', '2025-07-04 02:00:00'),
 (35, 2, 5, 'Konsultasi Bisnis Startup', 'konsultasi-bisnis-startup', 'product_gambar/konsultasi.jpg', 500000, 'Konsultasi bisnis untuk startup meliputi business plan, market analysis, dan strategi pengembangan.', NULL, '2025-07-05 00:00:00', '2025-07-05 00:00:00'),
 (36, 6, 5, 'Workshop Kewirausahaan', 'workshop-kewirausahaan', 'product_gambar/workshop.jpg', 350000, 'Workshop kewirausahaan intensif selama 2 hari dengan materi praktis dan studi kasus nyata.', NULL, '2025-07-05 01:00:00', '2025-07-05 01:00:00');
+=======
+(3, 1, 1, 'Ruang Lobby Dekanat FMIPA', '', 'product_gambar/OQNchw8eDmGW7rKiLgjU1Nl1zXkZsWWHtojLvaAJ.jpg', 150000, '\"Ruangan\" dalam bahasa Indonesia merujuk pada sebuah tempat atau area yang dibatasi oleh dinding dan memiliki fungsi tertentu. Bisa berupa kamar di dalam rumah, kelas di sekolah, atau area yang lebih luas seperti auditorium.', NULL, '2025-07-05 23:49:56', '2025-07-05 23:49:56'),
+(4, 2, 1, 'Gedung Lama Informatika', '', 'product_gambar/CjuLoGWFzhKaD3g5BqC6TZNiGFLJE1KILrcUjQVW.jpg', 125000, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', NULL, '2025-07-06 08:23:26', '2025-07-06 08:23:26'),
+(5, 2, 2, 'Proyektor Infocus In124-3200', '', 'product_gambar/ECmzUWkFONL8F39L6VHylK9YoQc81RwrY4a3LeKh.jpg', 320000, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', NULL, '2025-07-06 10:39:07', '2025-07-06 10:39:07'),
+(6, 1, 2, 'TIK - Alat Ketik Tradisional', '', 'product_gambar/L7fdJbgjGfvUuvrWI2joEnD2ft0JjxGOOBxAAr4b.jpg', 156200, 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', NULL, '2025-07-06 10:40:30', '2025-07-06 10:40:30');
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
 
 -- --------------------------------------------------------
 
@@ -240,6 +270,7 @@ CREATE TABLE `transactions` (
 -- Dumping data for table `transactions`
 --
 
+<<<<<<< HEAD
 INSERT INTO `transactions` (`id`, `penjual_id`, `product_id`, `pembeli_id`, `jumlah_item`, `total_harga`, `status_transaksi`, `bukti_bayar`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 1, 3, 2, 1, 150000, 0, 'proofs/transaction1.jpg', NULL, NULL, NULL),
 (3, 1, 6, 2, 2, 312400, 0, 'proofs/transaction2.jpg', NULL, NULL, NULL),
@@ -283,6 +314,12 @@ CREATE TRIGGER `before_update_transaction` BEFORE UPDATE ON `transactions` FOR E
 END
 $$
 DELIMITER ;
+=======
+INSERT INTO `transactions` (`id`, `penjual_id`, `product_id`, `pembeli_id`, `total_harga`, `status_transaksi`, `bukti_bayar`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 3, 2, 150000, 0, 'proofs/transaction1.jpg', NULL, NULL, NULL),
+(3, 1, 6, 2, 312400, 0, 'proofs/transaction2.jpg', NULL, NULL, NULL),
+(4, 2, 4, 1, 250000, 1, 'proofs/transaction3.jpg', NULL, NULL, '2025-07-06 10:56:53');
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
 
 -- --------------------------------------------------------
 
@@ -327,6 +364,7 @@ CREATE TABLE `users` (
   `nik_nim` bigint UNSIGNED NOT NULL,
   `no_hp` bigint UNSIGNED NOT NULL,
   `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -337,6 +375,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
+<<<<<<< HEAD
 INSERT INTO `users` (`id`, `role`, `tipe_pembeli`, `name`, `email`, `password`, `nik_nim`, `no_hp`, `alamat`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'admin', NULL, 'arimbi', 'arimbi@mail.com', '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 2308561112, 87781537172, 'ayani utara', NULL, 'FMtgDjyrVzZqeppBb2sIo8UGq2cvk0TsNqrWBdAkwjS3pFuA2Cg7T2tRkDkr', '2025-06-09 13:40:07', '2025-06-09 13:40:07'),
 (2, 'penjual', NULL, 'Raka Pradipta', 'raka.pradipta@student.com', '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 2205551010, 81234567890, 'Jl. Mawar No. 123, Denpasar, Bali', NULL, NULL, '2025-06-23 15:48:43', '2025-06-23 15:48:43'),
@@ -382,6 +421,11 @@ CREATE TRIGGER `isi_tipe_pembeli` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
 END
 $$
 DELIMITER ;
+=======
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `nik_nim`, `no_hp`, `alamat`, `is_admin`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'arimbi', 'arimbi@mail.com', '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 2308561112, 87781537172, 'ayani utara', 1, NULL, 'aCQJ3bkSsFy2PSWOXFuTTBRz8SBeoNl1P8iixGqDuABGNY54tq3mjbYyr2lV', '2025-06-09 13:40:07', '2025-06-09 13:40:07'),
+(2, 'Raka Pradipta', 'raka.pradipta@student.com', '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 2205551010, 81234567890, 'Jl. Mawar No. 123, Denpasar, Bali', 0, NULL, NULL, '2025-06-23 15:48:43', '2025-06-23 15:48:43');
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
 
 --
 -- Indexes for dumped tables
@@ -392,8 +436,13 @@ DELIMITER ;
 --
 ALTER TABLE `bookings`
   ADD PRIMARY KEY (`id`),
+<<<<<<< HEAD
   ADD UNIQUE KEY `product_id` (`product_id`,`tanggal_mulai`,`tanggal_kembali`),
   ADD KEY `user_id` (`pembeli_id`);
+=======
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
 
 --
 -- Indexes for table `failed_jobs`
@@ -485,13 +534,21 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
+<<<<<<< HEAD
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+=======
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
+<<<<<<< HEAD
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+=======
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
 
 --
 -- AUTO_INCREMENT for table `unit_bisnis`
@@ -514,7 +571,11 @@ ALTER TABLE `users`
 --
 ALTER TABLE `bookings`
   ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+<<<<<<< HEAD
   ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`pembeli_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+=======
+  ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+>>>>>>> c8c56114ff07f745749ed958fe6e542e7efd01a1
 
 --
 -- Constraints for table `products`

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DashboardFrontendController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
@@ -19,16 +20,13 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.dashboard');
-});
+Route::get('/', [DashboardFrontendController::class, 'dashboard'])->name('dashboard');
+Route::get('/katalog', [DashboardFrontendController::class, 'katalog'])->name('frontend.unit_bisnis.katalog');
+Route::get('/all-katalog', [DashboardFrontendController::class, 'all_katalog'])->name('frontend.unit_bisnis.all-katalog');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/bookings', [BookingController::class, 'index'])->name('frontend.bookings.create');
-
 
 // Route::get('/bookings', function () {
 //     return view('frontend.bookings.create');
@@ -39,6 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/bookings', [BookingController::class, 'index'])->name('frontend.bookings.index');
+    Route::get('/bookings/checkout/', [BookingController::class, 'checkout'])->name('frontend.bookings.checkout');
+    Route::get('/bookings/payment/', [BookingController::class, 'payment'])->name('frontend.bookings.payment');
+
+
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');

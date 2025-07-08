@@ -10,7 +10,17 @@ class BookingController extends Controller
 {
     public function index()
     {
-        return view('frontend.bookings.create', []);
+        return view('frontend.bookings.index', []);
+    }
+
+    public function checkout()
+    {
+        return view('frontend.bookings.checkout', []);
+    }
+
+    public function payment()
+    {
+        return view('frontend.bookings.payment', []);
     }
 
     public function store(Request $request)
@@ -46,6 +56,6 @@ class BookingController extends Controller
             'surat_pengajuan' => $filePath,
         ]);
 
-        return redirect()->route('/dashboard')->with('success', 'Booking berhasil dikirim.');
+        return redirect()->route('/')->with('success', 'Booking berhasil dikirim.');
     }
 }

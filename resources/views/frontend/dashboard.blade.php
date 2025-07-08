@@ -5,19 +5,24 @@
 <x-navbar />
 
 <!-- Hero Section -->
-<section class="relative bg-gradient-to-r from-green-800 to-yellow-600 text-white">
-    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-    <div class="relative container mx-auto px-4 py-20 flex items-center">
-        <div class="w-1/2">
-            <div class="text-sm mb-2">Kelompok > Kelas B</div>
-            <h1 class="text-4xl font-bold mb-4">Unit Bisnis FMIPA Universitas Udayana</h1>
-            <div class="text-sm mb-4">April 17, 2023 • <span class="bg-green-500 px-2 py-1 rounded text-xs">OPEN</span></div>
-        </div>
-        <div class="w-1/2">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Students working" class="rounded-lg shadow-lg" />
+<section class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">We invest in the world’s potential</h1>
+        <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
+        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+            <a href="{{ route('frontend.unit_bisnis.katalog') }}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                Lihat Produk
+                <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                </svg>
+            </a>
+            <a href="#" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                Join as Seller
+            </a>
         </div>
     </div>
 </section>
+
 
 <!-- Stats Section -->
 <section class="py-12">
@@ -25,19 +30,19 @@
         <div class="grid grid-cols-4 gap-6">
             <div class="bg-purple-100 p-6 rounded-lg text-center">
                 <div class="text-2xl font-bold text-purple-600">6,452+</div>
-                <div class="text-sm text-gray-600">Total Mahasiswa</div>
+                <div class="text-sm text-gray-600">Total Pengguna Sistem</div>
             </div>
             <div class="bg-blue-100 p-6 rounded-lg text-center">
                 <div class="text-2xl font-bold text-blue-600">502+</div>
-                <div class="text-sm text-gray-600">Total Dosen</div>
+                <div class="text-sm text-gray-600">Total Unit Bisnis</div>
             </div>
             <div class="bg-green-100 p-6 rounded-lg text-center">
                 <div class="text-2xl font-bold text-green-600">56,201+</div>
-                <div class="text-sm text-gray-600">Alumni</div>
+                <div class="text-sm text-gray-600">Total Produk/Layanan</div>
             </div>
             <div class="bg-orange-100 p-6 rounded-lg text-center">
                 <div class="text-2xl font-bold text-orange-600">6,507+</div>
-                <div class="text-sm text-gray-600">Penelitian</div>
+                <div class="text-sm text-gray-600">Total Transaksi</div>
             </div>
         </div>
     </div>
@@ -46,57 +51,59 @@
 <!-- Unit Bisnis Section -->
 <section class="py-16">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Unit Bisnis</h2>
-        <div class="grid grid-cols-3 gap-8">
-            <!-- Row 1 -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=250&fit=crop" alt="Meeting Room" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">RUANGAN/GEDUNG</h3>
-                    <p class="text-gray-600 text-sm mb-4">Sewa ruangan dan gedung untuk berbagai keperluan acara dan pertemuan.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+        <h2 class="text-center mb-12 text-black text-5xl font-normal font-['DM_Sans']">Unit Bisnis</h2>
+        {{-- Row 1 --}}
+        <div class="flex justify-center">
+            <div class="grid grid-cols-3 gap-x-7">
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/ruangan.jpg')}}" alt="Meeting Room" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">RUANGAN/GEDUNG</h3>
+                        <p class="text-gray-600 text-sm mb-4">Sewa ruangan dan gedung untuk berbagai keperluan acara dan pertemuan.</p>
+                        <button class="ml-0 bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
+                </div>
+
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/inventaris.jpg')}}" alt="Computer Lab" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">INVENTARIS</h3>
+                        <p class="text-gray-600 text-sm mb-4">Penyewaan inventaris dan peralatan untuk mendukung kegiatan akademik.</p>
+                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
+                </div>
+
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/atk.jpg')}}" alt="Printer" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">ALAT TULIS & PRINTING</h3>
+                        <p class="text-gray-600 text-sm mb-4">Layanan printing dan penyediaan alat tulis untuk mahasiswa dan dosen.</p>
+                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=250&fit=crop" alt="Computer Lab" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">INVENTARIS</h3>
-                    <p class="text-gray-600 text-sm mb-4">Penyewaan inventaris dan peralatan untuk mendukung kegiatan akademik.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+        {{-- Row 2 --}}
+        <div class="mt-11 flex justify-center">
+            <div class="grid grid-cols-2 gap-x-7">
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/software.jpg')}}" alt="Software Development" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">PENGEMBANGAN SOFTWARE</h3>
+                        <p class="text-gray-600 text-sm mb-4">Jasa pengembangan software dan aplikasi untuk berbagai kebutuhan.</p>
+                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=400&h=250&fit=crop" alt="Printer" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">ALAT TULIS & PRINTING</h3>
-                    <p class="text-gray-600 text-sm mb-4">Layanan printing dan penyediaan alat tulis untuk mahasiswa dan dosen.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                <div class="w-96 h-96 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{asset('images/umkm.jpg')}}" alt="Campus Store" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">UMKM KAMPUS</h3>
+                        <p class="text-gray-600 text-sm mb-4">Mendukung UMKM kampus dengan berbagai produk dan layanan.</p>
+                        <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Row 2 -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop" alt="Software Development" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">PENGEMBANGAN SOFTWARE</h3>
-                    <p class="text-gray-600 text-sm mb-4">Jasa pengembangan software dan aplikasi untuk berbagai kebutuhan.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1567521464027-f491c70c2ffa?w=400&h=250&fit=crop" alt="Campus Store" class="w-full h-48 object-cover" />
-                <div class="p-6">
-                    <h3 class="font-bold text-lg mb-2">UMKM KAMPUS</h3>
-                    <p class="text-gray-600 text-sm mb-4">Mendukung UMKM kampus dengan berbagai produk dan layanan.</p>
-                    <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Details</button>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="w-full h-48 bg-gray-200"></div>
             </div>
         </div>
     </div>

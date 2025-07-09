@@ -11,13 +11,11 @@
             <!-- Main Image -->
             <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
                 <div class="relative">
-                    <img src="{{asset('images/produk.jpg')}}"
+                    <img src="{{ $product->gambar ? asset('storage/' . $product->gambar) : asset('images/default.jpg') }}"
                         alt="Auditorium" class="w-full h-80 object-cover">
                     <div class="absolute top-4 left-4">
                         <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-
-                            Ruangan
-                        </span>
+                            {{ $product->unit->nama_unit }} </span>
                     </div>
                 </div>
             </div>
@@ -90,8 +88,8 @@
                         <i class="fas fa-user text-blue-600"></i>
                     </div>
                     <div class="flex-1">
-                        <div class="font-medium text-gray-900">Wanda Lika</div>
-                        <div class="text-sm text-gray-500">Partner</div>
+                        <div class="font-medium text-gray-900">{{ $product->penjual->name }}</div>
+                        <div class="text-sm text-gray-500">Seller</div>
                     </div>
                     <div class="flex">
                         <button class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors">

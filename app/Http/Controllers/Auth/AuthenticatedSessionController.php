@@ -20,6 +20,17 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        } elseif ($user->role === 'penjual') {
+            return redirect()->route('penjual.dashboard');
+        } else {
+            return redirect()->route('pembeli.dashboard');
+        }
+    }
+
     /**
      * Handle an incoming authentication request.
      */
@@ -29,7 +40,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return $this->authenticated($request, Auth::user());
     }
 
     /**

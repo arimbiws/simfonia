@@ -1,13 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardFrontendController;
+use App\Http\Controllers\DashboardPenjualController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +25,17 @@ use App\Http\Controllers\TransactionController;
 
 Route::get('/', [DashboardFrontendController::class, 'dashboard'])->name('dashboard');
 
+Route::get('/register/seller', [RegisteredUserController::class, 'create_seller'])
+    ->middleware('guest')
+    ->name('register-penjual');
+
+Route::get('/logout-and-register-penjual', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect()->route('register-penjual');
+})->name('logout.and.register.seller');
+
 Route::get('/katalog/{unit_bisnis_id}', [DashboardFrontendController::class, 'katalog'])->name('frontend.unit_bisnis.katalog');
 Route::get('/all-katalog', [DashboardFrontendController::class, 'all_katalog'])->name('frontend.unit_bisnis.all-katalog');
 
@@ -35,12 +49,23 @@ Route::get('/calendar/events', [DashboardFrontendController::class, 'fetchEvents
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware(['auth', 'role:admin'])->get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard');
+
+Route::middleware(['auth', 'role:penjual'])->get('/penjual/dashboard', function () {
+    return view('penjual.dashboard');
+})->name('penjual.dashboard');
+
+Route::middleware(['auth', 'role:pembeli'])->get('/pembeli/dashboard', function () {
+    return view('frontend.dashboard');
+})->name('pembeli.dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
 
     Route::get('/bookings', [BookingController::class, 'details'])->name('frontend.bookings.details');
     Route::get('/bookings/checkout', [BookingController::class, 'checkout'])->name('frontend.bookings.checkout');
@@ -68,6 +93,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/orders/details/{transaction}', [TransactionController::class, 'order_details'])->name('transactions.order_details');
 
         Route::get('/download/file/{transaction}', [TransactionController::class, 'download_file'])->name('transactions.download');
+    });
+
+    Route::prefix('seller')->name('seller.')->group(function () {
+        Route::get('/dashboard', [DashboardPenjualController::class, 'index'])->name('dashboard');
     });
 });
 

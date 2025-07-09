@@ -16,9 +16,9 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                 </svg>
             </a>
-            <a href="{{ route('register') }}" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+            <button onclick="confirmJoinAsSeller()" href="{{ route('register-penjual') }}" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
                 Join as Seller
-            </a>
+            </button>
         </div>
     </div>
 </section>
@@ -171,6 +171,14 @@
 
 @push('after-script')
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+<script>
+    function confirmJoinAsSeller() {
+        if (confirm("Anda saat ini login sebagai pembeli. Untuk menjadi penjual, Anda harus logout dan daftar sebagai penjual. Lanjutkan?")) {
+            window.location.href = "{{ route('logout.and.register.seller') }}";
+        }
+    }
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

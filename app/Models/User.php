@@ -23,6 +23,9 @@ class User extends Authenticatable
         'nik_nim',
         'no_hp',
         'alamat',
+        'nama_bank',
+        'nama_akun_bank',
+        'nomor_rekening',
         'password',
     ];
 

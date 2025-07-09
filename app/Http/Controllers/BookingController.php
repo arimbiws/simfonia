@@ -3,29 +3,46 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
-    public function index()
+    public function details(Request $request)
     {
-        return view('frontend.bookings.index', []);
+        $product = null;
+        if ($request->has('product_id')) {
+            $product = Product::find($request->product_id);
+        }
+
+        return view('frontend.bookings.details', [
+            'product' => $product
+        ]);
     }
 
-    public function checkout()
+
+    public function checkout(Request $request)
     {
-        // Ambil hanya produk unit bisnis Ruangan (1) dan Inventaris (2)
-        $products = \App\Models\Product::whereIn('unit_bisnis_id', [1, 2])->get();
+        $selectedProductId = $request->query('product_id');
+        $products = Product::whereIn('unit_bisnis_id', [1, 2])->get();
 
         return view('frontend.bookings.checkout', [
             'products' => $products,
+            'selectedProductId' => $selectedProductId,
         ]);
     }
+
 
     public function payment()
     {
         return view('frontend.bookings.payment', []);
+    }
+
+    function processed()
+    {
+        return view('frontend.bookings.processed', []);
     }
 
     public function store(Request $request)
@@ -40,7 +57,8 @@ class BookingController extends Controller
             'email' => 'required|email',
             'no_hp' => 'required|string',
             'alamat' => 'required|string',
-            'surat_pengajuan' => 'nullable|file|mimes:pdf,doc,docx',
+            'surat_pengajuan' => 'required|file|mimes:pdf,doc,docx|max:10240', // 10MB = 10240 KB
+
         ]);
 
         $filePath = $request->hasFile('surat_pengajuan')
@@ -62,11 +80,11 @@ class BookingController extends Controller
         ]);
 
         // Ambil unit bisnis dari product
-        $product = \App\Models\Product::find($validated['product_id']);
+        $product = Product::find($validated['product_id']);
 
         if (in_array($product->unit_bisnis_id, [1, 2])) {
             // Buat transaksi otomatis untuk booking ini
-            \App\Models\Transaction::create([
+            Transaction::create([
                 'penjual_id' => $product->penjual_id,
                 'pembeli_id' => Auth::id(),
                 'product_id' => $product->id,
@@ -77,8 +95,23 @@ class BookingController extends Controller
                 'status_transaksi' => 0,
             ]);
         }
-
         return redirect()->route('frontend.bookings.payment')
             ->with('success', 'Booking berhasil dibuat, silakan lakukan pembayaran.');
+    }
+
+    public function uploadPayment(Request $request)
+    {
+        $request->validate([
+            'booking_id' => 'required|exists:bookings,id',
+            'bukti_bayar' => 'required|file|mimes:jpg,png,jpeg,pdf',
+        ]);
+
+        $filePath = $request->file('bukti_bayar')->store('bukti_bayar', 'public');
+
+        $transaction = Transaction::where('booking_id', $request->booking_id)->firstOrFail();
+        $transaction->bukti_bayar = $filePath;
+        $transaction->save();
+
+        return redirect()->route('frontend.bookings.processed')->with('success', 'Bukti pembayaran berhasil diupload, silahkan menunggu penjual menyetujui pemesanan anda!');
     }
 }

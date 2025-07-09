@@ -10,10 +10,10 @@
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
         </button>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+        <div class="hidden w-full py-3 md:block md:w-auto" id="navbar-dropdown">
             <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
                 <li>
-                    <a href="{{ route('dashboard') }}" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+                    <a href="{{ route('dashboard') }}" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0" aria-current="page">Home</a>
                 </li>
                 <li>
                     <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">Katalog <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -23,21 +23,21 @@
                     <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44">
                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownLargeButton">
                             <li>
-                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Ruangan & Gedung </a>
+                                <a href="{{ route('frontend.unit_bisnis.katalog',  ['unit_bisnis_id' => 1])}}" class="block px-4 py-2 hover:bg-gray-100">Ruangan & Gedung </a>
                             </li>
                             <li>
-                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Inventaris</a>
+                                <a href="{{ route('frontend.unit_bisnis.katalog',  ['unit_bisnis_id' => 2])}}" class="block px-4 py-2 hover:bg-gray-100">Inventaris</a>
                             </li>
                             <li>
-                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Alat Tulis & Printing
+                                <a href="{{ route('frontend.unit_bisnis.katalog',  ['unit_bisnis_id' => 3])}}" class="block px-4 py-2 hover:bg-gray-100">Alat Tulis & Printing
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Pengembangan Software
+                                <a href="{{ route('frontend.unit_bisnis.katalog',  ['unit_bisnis_id' => 4])}}" class="block px-4 py-2 hover:bg-gray-100">Pengembangan Software
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('frontend.unit_bisnis.katalog')}}" class="block px-4 py-2 hover:bg-gray-100">Kewirausahaan
+                                <a href="{{ route('frontend.unit_bisnis.katalog',  ['unit_bisnis_id' => 5])}}" class="block px-4 py-2 hover:bg-gray-100">Kewirausahaan
                                 </a>
                             </li>
                         </ul>
@@ -47,10 +47,10 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Cek Pemesanan</a>
+                    <a href="{{route('frontend.bookings.check-bookings')}}" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Cek Pemesanan</a>
                 </li>
                 <li>
-                    <a href="" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Kalender</a>
+                    <a href="{{ route('frontend.calendar') }}" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Kalender</a>
                 </li>
                 <li>
                     <a href="" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Berita & Informasi</a>

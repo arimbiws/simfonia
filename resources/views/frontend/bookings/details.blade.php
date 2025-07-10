@@ -25,7 +25,11 @@
                 <h1 class="text-3xl font-bold text-gray-900 mb-4 sm:mb-0">
                     {{ $product ? $product->nama : 'Detail Produk' }}
                 </h1>
-                <a href="{{ route('frontend.bookings.checkout', ['product_id' => $product->id]) }}"
+                @php
+                $isBookingUnit = in_array($product->unit_bisnis_id, [1, 2]);
+                $checkoutRoute = $isBookingUnit ? 'frontend.bookings.checkout-booking' : 'frontend.bookings.checkout-transaction';
+                @endphp
+                <a href="{{ route($checkoutRoute, ['product_id' => $product->id]) }}"
                     class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center">
                     Reservasi {{ $product->nama }} <i class="fas fa-arrow-right ml-2"></i>
                 </a>

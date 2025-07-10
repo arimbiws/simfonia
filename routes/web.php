@@ -10,7 +10,9 @@ use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,19 +69,30 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/bookings', [BookingController::class, 'details'])->name('frontend.bookings.details');
-    Route::get('/bookings/checkout', [BookingController::class, 'checkout'])->name('frontend.bookings.checkout');
+    // Route::get('/bookings/checkout-booking', [BookingController::class, 'checkoutBooking'])
+    //     ->middleware('check.booking.unit')
+    //     ->name('frontend.bookings.checkout-booking');
 
-    Route::get('/bookings/payment/', [BookingController::class, 'payment'])->name('frontend.bookings.payment');
-    // Route::get('/bookings/{booking}/payment', [BookingController::class, 'payment'])->name('frontend.bookings.payment');
+    Route::get('/checkout/booking', [BookingController::class, 'checkoutBooking'])->name('frontend.bookings.checkout.booking');
+    Route::get('/checkout/transaction', [BookingController::class, 'checkoutTransaction'])->name('frontend.bookings.checkout.transaction');
 
-    Route::post('/bookings/store/', [BookingController::class, 'store'])->name('frontend.bookings.store');
+    Route::get('/bookings/details', [BookingController::class, 'details'])
+        ->name('frontend.bookings.details');
+
+    Route::post('/bookings/store', [BookingController::class, 'store'])
+        ->name('frontend.bookings.store');
+
+    Route::get('/bookings/payment', [BookingController::class, 'payment'])
+        ->name('frontend.bookings.payment');
 
     Route::post('/bookings/payment/upload', [BookingController::class, 'uploadPayment'])
         ->name('frontend.bookings.payment.upload');
 
-    Route::get('/bookings/payment/processed', [BookingController::class, 'processed'])->name('frontend.bookings.processed');
+    Route::get('/bookings/processed', [BookingController::class, 'processed'])
+        ->name('frontend.bookings.processed');
 
+    Route::post('/transactions/store', [TransactionController::class, 'store'])
+        ->name('frontend.transactions.store');
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
@@ -97,6 +110,15 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('seller')->name('seller.')->group(function () {
         Route::get('/dashboard', [DashboardPenjualController::class, 'index'])->name('dashboard');
+    });
+
+    Route::get('/api/check-booking', function (Request $request) {
+        $exists = \App\Models\Booking::where('product_id', $request->product_id)
+            ->where(function ($q) use ($request) {
+                $q->whereBetween('tanggal_mulai', [$request->mulai, $request->kembali])
+                    ->orWhereBetween('tanggal_kembali', [$request->mulai, $request->kembali]);
+            })->exists();
+        return response()->json(['conflict' => $exists]);
     });
 });
 

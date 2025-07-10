@@ -122,7 +122,9 @@
                     <h3 class="font-semibold text-sm mb-1">{{ $product->nama }}</h3>
                     <p class="text-xs text-gray-600 mb-2">{{ \Illuminate\Support\Str::limit(strip_tags($product->deskripsi), 60) }}</p>
                     <div class="flex space-x-2">
-                        <a href="{{ route('frontend.bookings.checkout', ['product_id' => $product->id]) }}"
+                        <a href="{{ $product->unit_bisnis_id == 1 || $product->unit_bisnis_id == 2 
+            ? route('frontend.bookings.checkout.booking', ['product_id' => $product->id]) 
+            : route('frontend.bookings.checkout.transaction', ['product_id' => $product->id]) }}"
                             class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
                         <a href="{{ route('frontend.bookings.details', ['product_id' => $product->id]) }}"
                             class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>

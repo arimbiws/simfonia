@@ -22,6 +22,7 @@ class DashboardFrontendController extends Controller
 
     public function katalog($unit_bisnis_id, Request $request)
     {
+        $userId = Auth::id();
         $query = Product::where('unit_bisnis_id', $unit_bisnis_id);
 
         // Ambil unit bisnis spesifik
@@ -44,7 +45,9 @@ class DashboardFrontendController extends Controller
             $query->orderBy('created_at', 'desc');
         }
 
-        $products = $query->paginate(12);
+        $products =  Product::where('unit_bisnis_id', $unit_bisnis_id)
+            ->where('penjual_id', '!=', $userId)  // Hanya produk yang bukan milik user
+            ->get()->paginate(12);
 
         return view('frontend.unit_bisnis.katalog', [
             'products' => $products,
@@ -57,6 +60,7 @@ class DashboardFrontendController extends Controller
 
     public function all_katalog(Request $request)
     {
+        $userId = Auth::id();
         $query = Product::query();
 
         if ($request->has('search')) {
@@ -69,7 +73,8 @@ class DashboardFrontendController extends Controller
             $query->orderBy('created_at', 'desc');
         }
 
-        $products = $query->paginate(12);
+        $products = Product::where('penjual_id', '!=', $userId)  // Semua produk selain milik user
+            ->get();
 
         return view('frontend.unit_bisnis.all-katalog', [
             'products' => $products

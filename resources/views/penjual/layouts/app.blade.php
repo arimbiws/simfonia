@@ -24,7 +24,7 @@
 
     <div class="min-h-screen bg-gray-100 ">
         <div class="min-h-screen flex">
-            <x-sidebar-admin />
+            <x-sidebar-penjual />
 
             <!-- Main Content -->
             <div class="flex-1 overflow-hidden">
@@ -54,11 +54,9 @@
                                             {{ __('Profile') }}
                                         </x-dropdown-link>
 
-
                                         <x-dropdown-link :href="route('dashboard')">
                                             {{ __('Home Page Pembeli ') }}
                                         </x-dropdown-link>
-
 
                                         <!-- Authentication -->
                                         <form method="POST" action="{{ route('logout') }}">

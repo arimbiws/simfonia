@@ -11,13 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('unit_bisnis', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('gambar');
-            $table->string('nama_unit');
-            $table->string('slug');
-            $table->text('deskripsi');
-            $table->softDeletes();
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+            $table->string('nama_kegiatan');
+            $table->string('instansi');
+            $table->string('nama_lengkap');
+            $table->string('email');
+            $table->string('no_hp');
+            $table->text('alamat');
+            $table->string('surat_pengajuan')->nullable();
+            $table->enum('status', ['pending', 'disetujui', 'ditolak'])->default('pending');
             $table->timestamps();
         });
     }
@@ -27,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('unit_bisnis');
+        Schema::dropIfExists('bookings');
     }
 };

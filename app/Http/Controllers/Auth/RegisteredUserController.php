@@ -23,21 +23,46 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+    public function create_seller(): View
+    {
+        return view('auth.register-penjual');
+    }
     /**
      * Handle an incoming registration request.
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'nik_nim' => ['required', 'numeric', 'min:0'],
-            'no_hp' => ['required', 'numeric', 'min:0'],
-            'alamat' => ['required', 'string', 'max:65535'],
+        $isPenjual = $request->routeIs('register.penjual.store'); // gunakan ini untuk deteksi
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'nik_nim' => 'required',
+            'no_hp' => 'required',
+            'alamat' => 'required|string',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'nama_bank' => 'required',
+            'nama_akun_bank' => 'required',
+            'nomor_rekening' => 'required',
+
+            // hanya jika penjual
+            'surat_persetujuan' => $isPenjual ? 'required|file|mimes:pdf,doc,docx|max:2048' : '',
         ]);
+
+        $filePath = null;
+        if ($isPenjual && $request->hasFile('surat_persetujuan')) {
+            $filePath = $request->file('surat_persetujuan')->store('persetujuan_penjual', 'public');
+        }
+
+        $role = $isPenjual ? 'penjual' : 'pembeli';
+
+        $tipe_pembeli = null;
+        if (!$isPenjual) {
+            $tipe_pembeli = (str_contains($request->email, 'unud.ac.id') || preg_match('/^\d{10}$/', $request->nik_nim)) ? 'internal' : 'eksternal';
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -46,11 +71,16 @@ class RegisteredUserController extends Controller
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
             'password' => Hash::make($request->password),
+            'nama_bank' => $request->nama_bank,
+            'nama_akun_bank' => $request->nama_akun_bank,
+            'nomor_rekening' => $request->nomor_rekening,
+            'role' => $role,
+            'tipe_pembeli' => $tipe_pembeli,
+            'surat_persetujuan' => $filePath,
         ]);
 
         event(new Registered($user));
 
-        // Jangan login otomatis, langsung redirect ke login
-        return redirect()->route('login')->with('status', 'Registration successful. Please login.');
+        return redirect()->route('login')->with('status', 'Akun berhasil dibuat. Silakan login.');
     }
 }

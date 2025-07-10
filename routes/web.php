@@ -92,7 +92,15 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
 
-        Route::resource('products', ProductController::class);
+        // Admin Product Routes
+        Route::get('/products', [ProductController::class, 'adminIndex'])->name('products.index');
+        Route::get('/products/create', [ProductController::class, 'adminCreate'])->name('products.create');
+        Route::post('/products', [ProductController::class, 'adminStore'])->name('products.store');
+        Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+        Route::get('/products/{product}/edit', [ProductController::class, 'adminEdit'])->name('products.edit');
+        Route::put('/products/{product}', [ProductController::class, 'adminUpdate'])->name('products.update');
+        Route::delete('/products/{product}', [ProductController::class, 'adminDestroy'])->name('products.destroy');
+        
         Route::resource('transaction', controller: TransactionController::class);
 
         Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
@@ -103,8 +111,26 @@ Route::middleware('auth')->group(function () {
         Route::get('/download/file/{transaction}', [TransactionController::class, 'download_file'])->name('transactions.download');
     });
 
-    Route::prefix('seller')->name('seller.')->group(function () {
+    Route::prefix('penjual')->name('penjual.')->group(function () {
         Route::get('/dashboard', [DashboardPenjualController::class, 'index'])->name('dashboard');
+        
+        // Penjual Product Routes
+        Route::get('/products', [ProductController::class, 'sellerIndex'])->name('products.index');
+        Route::get('/products/create', [ProductController::class, 'sellerCreate'])->name('products.create');
+        Route::post('/products', [ProductController::class, 'sellerStore'])->name('products.store');
+        Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+        Route::get('/products/{product}/edit', [ProductController::class, 'sellerEdit'])->name('products.edit');
+        Route::put('/products/{product}', [ProductController::class, 'sellerUpdate'])->name('products.update');
+        Route::delete('/products/{product}', [ProductController::class, 'sellerDestroy'])->name('products.destroy');
+        
+        // Penjual Transaction Routes
+        Route::get('/transactions', [TransactionController::class, 'penjualIndex'])->name('transactions.index');
+        Route::get('/transactions/details/{transaction}', [TransactionController::class, 'penjualTransactionDetails'])->name('transactions.details');
+        Route::get('/orders', [TransactionController::class, 'penjualOrders'])->name('transactions.orders');
+        Route::get('/orders/details/{transaction}', [TransactionController::class, 'penjualOrderDetails'])->name('transactions.order_details');
+        Route::put('/transactions/{transaction}', [TransactionController::class, 'penjualUpdate'])->name('transactions.update');
+
+        Route::get('/download/file/{transaction}', [TransactionController::class, 'penjualDownloadFile'])->name('transactions.download');
     });
 
     Route::get('/api/check-booking', function (Request $request) {

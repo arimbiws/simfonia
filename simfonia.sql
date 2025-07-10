@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
+<<<<<<< HEAD
 -- Generation Time: Jul 10, 2025 at 04:38 PM
+=======
+-- Generation Time: Jul 10, 2025 at 03:36 PM
+>>>>>>> ef1fb95cd38ae2b8e6cf1822d105a6eb5eba3c7e
 -- Server version: 8.0.30
 -- PHP Version: 8.2.27
 
@@ -56,10 +60,14 @@ INSERT INTO `bookings` (`id`, `product_id`, `pembeli_id`, `tanggal_mulai`, `tang
 (6, 8, 2, '2025-07-22 00:00:00', '2025-07-23 00:00:00', 'pending', 'Webinar Nusantara', 'Universitas Terbuka', 'widya@gmail.com', 'Widyastuti', '0899876655', 'Jl. Sesetan', 'surat_pengajuan/8UaR4xyNAhMNVcZhrUaRKwkVNfcJme4Ec4xjqpTH.pdf', '2025-07-07 21:30:39', '2025-07-07 21:30:39'),
 (7, 5, 1, '2025-08-15 00:00:00', '2025-08-16 00:00:00', 'pending', 'Kuliah KWN', 'Informatika', 'arimbi@mail.com', 'arimbi', '87781537172', 'ayani utara', 'surat_pengajuan/ziSDxOgTIFgrUOTNHNWAQSiG5xhvAt1TpIsoL5lb.pdf', '2025-07-09 13:49:21', '2025-07-09 13:49:21'),
 (8, 3, 33, '2025-07-11 00:00:00', '2025-07-11 00:00:00', 'pending', 'Webinar', 'Universitas Udayana', 'arimbiws@student.unud.ac.id', 'arimbi', '23456789', 'jimbaran', 'surat_pengajuan/DJrc3eFHK0XkCo2nEiYvGDdKco0aTffZeT9O3Ycn.pdf', '2025-07-09 20:18:55', '2025-07-09 20:18:55'),
+<<<<<<< HEAD
 (10, 3, 33, '2025-07-23 00:00:00', '2025-07-24 00:00:00', 'pending', 'Kuliah', 'Informatika', 'arimbiws@student.unud.ac.id', 'arimbi', '23456789', 'jimbaran', 'surat_pengajuan/vX2LYLIx29fDXwknuAmx1OC32lXvhYNyu3YV957g.pdf', '2025-07-10 07:23:23', '2025-07-10 07:23:23'),
 (11, 5, 34, '2025-07-22 00:00:00', '2025-07-23 00:00:00', 'pending', 'Kuliahh', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/6fMEBXkRHNW52NklnUQhtWX7fEbM9tjXz7ZW9h7M.pdf', '2025-07-10 07:52:59', '2025-07-10 07:52:59'),
 (12, 5, 34, '2025-07-24 00:00:00', '2025-07-25 00:00:00', 'pending', 'Kuliahhh', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/KlrXiPjQMddsNMe2L2JeyG1zHw6HSLL8kEQLLHnG.pdf', '2025-07-10 07:55:50', '2025-07-10 07:55:50'),
 (14, 5, 34, '2025-07-26 00:00:00', '2025-07-27 00:00:00', 'pending', 'Seminar', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/SUcZS96wqanx5W5MkgdfHGJjpXYrxaff1DrIAFqG.pdf', '2025-07-10 08:00:12', '2025-07-10 08:00:12');
+=======
+(10, 3, 33, '2025-07-23 00:00:00', '2025-07-24 00:00:00', 'pending', 'Kuliah', 'Informatika', 'arimbiws@student.unud.ac.id', 'arimbi', '23456789', 'jimbaran', 'surat_pengajuan/vX2LYLIx29fDXwknuAmx1OC32lXvhYNyu3YV957g.pdf', '2025-07-10 07:23:23', '2025-07-10 07:23:23');
+>>>>>>> ef1fb95cd38ae2b8e6cf1822d105a6eb5eba3c7e
 
 --
 -- Triggers `bookings`
@@ -259,6 +267,7 @@ INSERT INTO `transactions` (`id`, `penjual_id`, `pembeli_id`, `product_id`, `boo
 (23, 6, 2, 36, NULL, 1, 350000, 0, '', '2025-07-09 12:53:27', '2025-07-09 12:53:27', NULL),
 (24, 6, 2, 36, NULL, 1, 350000, 0, '', '2025-07-09 12:53:35', '2025-07-09 12:53:35', NULL),
 (25, 2, 2, 5, NULL, 1, 320000, 0, 'bukti_bayar/efsy5zwRzA551EWG3JNV4L6Hg1kOC95rnUR9LxL9.jpg', '2025-07-09 13:00:06', '2025-07-09 13:00:25', NULL),
+<<<<<<< HEAD
 (26, 2, 1, 5, NULL, 1, 320000, 0, 'bukti_bayar/Pcis5f0X35Q5JKxzyFu9C6ZqmAjIyX3bQDi0oiQ1.jpg', '2025-07-09 13:49:21', '2025-07-09 13:50:43', NULL),
 (27, 2, 34, 5, NULL, 1, 320000, 0, '', '2025-07-10 07:52:59', '2025-07-10 07:52:59', NULL),
 (28, 2, 34, 5, NULL, 1, 320000, 0, '', '2025-07-10 07:55:50', '2025-07-10 07:55:50', NULL),
@@ -266,6 +275,9 @@ INSERT INTO `transactions` (`id`, `penjual_id`, `pembeli_id`, `product_id`, `boo
 (30, 1, 34, 34, NULL, 1, 5000000, 0, 'bukti_bayar/jaoBLW74gmouGSlybAXwbx3yXetwnw3ZvfR9y62L.jpg', '2025-07-10 08:02:14', '2025-07-10 08:03:56', NULL),
 (31, 12, 34, 33, NULL, 1, 3500000, 0, '', '2025-07-10 08:13:02', '2025-07-10 08:13:02', NULL),
 (32, 12, 34, 33, NULL, 1, 3500000, 0, '', '2025-07-10 08:14:09', '2025-07-10 08:14:09', NULL);
+=======
+(26, 2, 1, 5, NULL, 1, 320000, 0, 'bukti_bayar/Pcis5f0X35Q5JKxzyFu9C6ZqmAjIyX3bQDi0oiQ1.jpg', '2025-07-09 13:49:21', '2025-07-09 13:50:43', NULL);
+>>>>>>> ef1fb95cd38ae2b8e6cf1822d105a6eb5eba3c7e
 
 --
 -- Triggers `transactions`
@@ -334,6 +346,12 @@ CREATE TABLE `users` (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `no_hp` bigint UNSIGNED NOT NULL,
   `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+<<<<<<< HEAD
+=======
+  `nama_bank` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_akun_bank` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nomor_rekening` bigint NOT NULL,
+>>>>>>> ef1fb95cd38ae2b8e6cf1822d105a6eb5eba3c7e
   `surat_persetujuan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -345,6 +363,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
+<<<<<<< HEAD
 INSERT INTO `users` (`id`, `role`, `tipe_pembeli`, `name`, `email`, `nik_nim`, `password`, `no_hp`, `alamat`, `surat_persetujuan`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'eksternal', 'arimbi', 'arimbi@mail.com', 2308561112, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 87781537172, 'ayani utara', NULL, NULL, 'RDeSRtl9Oy7KVjyiWww2oqRW5EJ7Oc4cHRP5TcvpwICISw28NFMtBkFB4tug', '2025-06-09 13:40:07', '2025-06-09 13:40:07'),
 (2, 'penjual', 'eksternal', 'Raka Pradipta', 'raka.pradipta@student.com', 2205551010, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 81234567890, 'Jl. Mawar No. 123, Denpasar, Bali', NULL, NULL, 'u2w4xGz0kwjj3EpxOEbFQBLVYLI1aY3KLwiTEO0K9z96Q1U2GExzOCTvdK9p', '2025-06-23 15:48:43', '2025-06-23 15:48:43'),
@@ -379,6 +398,41 @@ INSERT INTO `users` (`id`, `role`, `tipe_pembeli`, `name`, `email`, `nik_nim`, `
 (32, 'pembeli', 'internal', 'Dewa Made Perantara', 'perantara@unud.ac.id', 2105551001, '$2y$10$QNfvJV4A8KkDPU2gT4Dd0.VnYxoADtre4BesQs5bY3ag/pjlhXeLO', 81234567890, 'Denpasar, Bali', NULL, NULL, NULL, '2025-07-09 10:27:02', '2025-07-09 10:27:02'),
 (33, 'pembeli', 'internal', 'arimbi', 'arimbiws@student.unud.ac.id', 23456778, '$2y$10$2CuZK4Pq555tNN6hzIT5MuwbNepYZYnT/DcMCtgqAwQZmkJrzfCsm', 23456789, 'jimbaran', NULL, NULL, NULL, '2025-07-09 20:16:09', '2025-07-09 20:16:09'),
 (34, 'pembeli', 'eksternal', 'there', 'there@yahoo.com', 234349342342, '$2y$10$3RboGDlS0nr4Cy/Lvjepceo0H1wTxmTqhZaC8LinnMG5ULOMa9Xha', 30898978754, 'jallsansasd', NULL, NULL, NULL, '2025-07-10 07:50:13', '2025-07-10 07:50:13');
+=======
+INSERT INTO `users` (`id`, `role`, `tipe_pembeli`, `name`, `email`, `nik_nim`, `password`, `no_hp`, `alamat`, `nama_bank`, `nama_akun_bank`, `nomor_rekening`, `surat_persetujuan`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'eksternal', 'arimbi', 'arimbi@mail.com', 2308561112, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 87781537172, 'ayani utara', 'BRI', 'ARIMBI', 789012345678, NULL, NULL, 'vZ2WQNOqOKQP6nBr2ebc2fp3GrE5JnbSzyvOtrS8i8x0TttoFGKNsNTrOsJk', '2025-06-09 13:40:07', '2025-06-09 13:40:07'),
+(2, 'penjual', 'internal', 'Raka Pradipta', 'raka.pradipta@student.com', 2205551010, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 81234567890, 'Jl. Mawar No. 123, Denpasar, Bali', 'BNI', 'RAKA PRADIPTA', 789012345678, NULL, NULL, 'nCMhcmpfchVjaRtrv0Ehh95PtEQZEhC4kHarlyjxdVPPR9lha5x33WrsWxDK', '2025-06-23 15:48:43', '2025-06-23 15:48:43'),
+(3, 'admin', 'internal', ' Made Sukarsa', 'made.sukarsa@unud.ac.id', 5171041208850003, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 81234567890, 'Jl. Raya Kampus Unud, Jimbaran, Bali', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(4, 'admin', 'internal', 'Ketut Gede Dharma Putra', 'ketut.dharma@student.unud.ac.id', 1980041502, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 81987654321, 'Jl. Sudirman No. 15, Denpasar, Bali', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(5, 'admin', 'internal', 'Gede Jaya', 'gede.jaya@student.unud.ac.id', 1975031201, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 87765432109, 'Jl. Teuku Umar No. 28, Denpasar, Bali', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(6, 'penjual', 'internal', 'Putu Agus Divayana', 'agus.wirawan@gmail.com', 2090071505, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 81345678901, 'Jl. Gatot Subroto No. 45, Denpasar, Bali', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(7, 'penjual', 'internal', 'Ni Luh Putu Sari', 'sari.bali@yahoo.com', 2492091707, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 82456789012, 'Jl. Raya Sesetan No. 196, Denpasar, Bali', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(8, 'penjual', 'eksternal', 'I Wayan Gunawan', 'gunawan.tech@outlook.com', 5171041208880006, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 83567890123, 'Jl. Diponegoro No. 67, Denpasar, Bali', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(9, 'penjual', 'eksternal', 'Putu Ayu Lestari', 'lestari.creative@gmail.com', 5171042208920007, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 84678901234, 'Jl. Margonda Raya, Depok, Jawa Barat', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(10, 'penjual', 'eksternal', 'Made Indra Permana', 'indra.permana@hotmail.com', 5171041208870008, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 85789012345, 'Jl. Grafika No. 2, Yogyakarta', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(11, 'penjual', 'internal', 'Komang Tri Wahyuni', 'tri.wahyuni@gmail.com', 2391111909, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 86890123456, 'Jl. Kartini No. 56, Denpasar, Bali', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(12, 'penjual', 'internal', 'Gede Yoga Pratama', 'yoga.pratama@mail.com', 2392091707, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 87901234567, 'Jl. Dharmawangsa Dalam, Surabaya, Jawa Timur', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(13, 'pembeli', 'eksternal', 'Andi Prasetyo', 'andi.prasetyo@gmail.com', 3173051208950011, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 81123456789, 'Jl. Kebon Jeruk No. 12, Jakarta Barat', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(14, 'pembeli', 'eksternal', 'Sari Dewi Maharani', 'sari.maharani@yahoo.com', 3374062208920012, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 82234567890, 'Jl. Malioboro No. 45, Yogyakarta', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(15, 'pembeli', 'eksternal', 'Bayu Satria Wibowo', 'bayu.satria@hotmail.com', 3275031208880013, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 83345678901, 'Jl. Asia Afrika No. 67, Bandung', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(16, 'pembeli', 'eksternal', 'Fitri Nur Azizah', 'fitri.azizah@gmail.com', 3578042208940014, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 84456789012, 'Jl. Tunjungan No. 89, Surabaya', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(17, 'pembeli', 'eksternal', 'Dimas Eka Putra', 'dimas.eka@outlook.com', 3326051208900015, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 85567890123, 'Jl. Sudirman No. 23, Semarang', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(18, 'pembeli', 'eksternal', 'Rina Safitri', 'rina.safitri@yahoo.com', 1371062208930016, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 86678901234, 'Jl. Jenderal Sudirman No. 34, Medan', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(19, 'pembeli', 'eksternal', 'Rudi Hermawan', 'rudi.hermawan@gmail.com', 5201071208910017, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 87789012345, 'Jl. Pattimura No. 56, Makassar', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(20, 'pembeli', 'eksternal', 'Indira Kusuma', 'indira.kusuma@mail.com', 6471082208890018, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 88890123456, 'Jl. Ahmad Yani No. 78, Samarinda', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(21, 'pembeli', 'eksternal', 'Agung Nugraha', 'agung.nugraha@gmail.com', 3471091208920019, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 89901234567, 'Jl. Diponegoro No. 90, Solo', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(22, 'pembeli', 'eksternal', 'Maya Sari Utami', 'maya.sari@hotmail.com', 3216102208940020, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 81012345678, 'Jl. Cihampelas No. 12, Bandung', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(23, 'pembeli', 'eksternal', 'Faisal Rahman', 'faisal.rahman@gmail.com', 3674111208900021, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 82123456789, 'Jl. Malang No. 34, Depok', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(24, 'pembeli', 'eksternal', 'Dewi Ratna Sari', 'dewi.ratna@yahoo.com', 3313122208930022, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 83234567890, 'Jl. Pemuda No. 56, Cilacap', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(25, 'pembeli', 'eksternal', 'Arief Budiman', 'arief.budiman@outlook.com', 3517011208880023, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 84345678901, 'Jl. Basuki Rahmat No. 78, Surabaya', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(26, 'pembeli', NULL, 'Lina Fitriani', 'lina.fitriani@gmail.com', 1472022208920024, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 85456789012, 'Jl. Gajah Mada No. 90, Pekanbaru', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(27, 'pembeli', NULL, 'Hendra Wijaya', 'hendra.wijaya@mail.com', 3603031208910025, '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 86567890123, 'Jl. Diponegoro No. 123, Banjarbaru', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(28, 'pembeli', 'internal', 'theresia', 'theresia@student.unud.ac.id', 2308561076, 'there', 8789345678, 'Jl. Kampus Unud', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(29, 'pembeli', 'internal', 'Theresia', 'there@student.unud.ac.id', 230856076, 'there', 87654321234, 'Jl. Kampus Unud', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(31, 'pembeli', 'eksternal', 'Theresia', 'there@mail.com', 230856076, 'there', 87654321234, 'Jl. Kampus Unud', '', '', 0, NULL, NULL, NULL, NULL, NULL),
+(32, 'pembeli', 'internal', 'Dewa Made Perantara', 'perantara@unud.ac.id', 2105551001, '$2y$10$QNfvJV4A8KkDPU2gT4Dd0.VnYxoADtre4BesQs5bY3ag/pjlhXeLO', 81234567890, 'Denpasar, Bali', 'BNI', 'DEWA MADE PERANTARA', 1234567890, NULL, NULL, NULL, '2025-07-09 10:27:02', '2025-07-09 10:27:02'),
+(33, 'pembeli', 'internal', 'arimbi', 'arimbiws@student.unud.ac.id', 23456778, '$2y$10$2CuZK4Pq555tNN6hzIT5MuwbNepYZYnT/DcMCtgqAwQZmkJrzfCsm', 23456789, 'jimbaran', 'BCA', 'Arimbi irasetya', 23456789, NULL, NULL, NULL, '2025-07-09 20:16:09', '2025-07-09 20:16:09');
+>>>>>>> ef1fb95cd38ae2b8e6cf1822d105a6eb5eba3c7e
 
 --
 -- Triggers `users`
@@ -473,7 +527,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
+<<<<<<< HEAD
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+=======
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+>>>>>>> ef1fb95cd38ae2b8e6cf1822d105a6eb5eba3c7e
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -503,7 +561,11 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
+<<<<<<< HEAD
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+=======
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+>>>>>>> ef1fb95cd38ae2b8e6cf1822d105a6eb5eba3c7e
 
 --
 -- AUTO_INCREMENT for table `unit_bisnis`
@@ -515,7 +577,11 @@ ALTER TABLE `unit_bisnis`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+<<<<<<< HEAD
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+=======
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+>>>>>>> ef1fb95cd38ae2b8e6cf1822d105a6eb5eba3c7e
 
 --
 -- Constraints for dumped tables

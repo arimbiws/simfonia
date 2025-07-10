@@ -93,8 +93,11 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1867562413d64599a84139e72cf063745040691a
 
     @stack('after-script')
 

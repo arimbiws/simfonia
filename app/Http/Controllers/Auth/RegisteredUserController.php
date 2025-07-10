@@ -50,8 +50,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        // Jangan login otomatis, langsung redirect ke login
+        return redirect()->route('login')->with('status', 'Registration successful. Please login.');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Product;
 use App\Models\Unit_Bisnis;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -82,8 +83,30 @@ class DashboardFrontendController extends Controller
 
     function check_bookings()
     {
-        return view('frontend.bookings.check-bookings', []);
+        $query = Transaction::with('product')
+            ->where('pembeli_id', auth()->id());
+        
+        // Jika user memilih filter status
+        if (request('status') !== null && request('status') !== ''){
+            $query->where('status_transaksi', request('status'));
+        }
+
+        if (request('start_date')){
+            $query->whereDate('created_at', '>=', request('start_date'));
+        }
+        if (request('end_date')){
+            $query->whereDate('created_at', '<=', request('end_date'));
+        }
+
+        if (request('keyword')){
+            $query->whereHas('product', function($q){
+                $q->where('nama', 'like', '%' . request('keyword') . '%');
+            });
+        }
+        $transactions = $query->latest()->get();
+        return view('frontend.bookings.check-bookings', compact('transactions'));
     }
+
 
     function calendar(Request $request)
     {

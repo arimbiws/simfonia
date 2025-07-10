@@ -193,4 +193,12 @@ class BookingController extends Controller
     {
         return view('frontend.bookings.processed');
     }
+
+    // Riwayat booking
+    public function check(){
+        $transactions = Transaction::with('product')->where('user_id', auth()->id())->get();
+
+        return view('frontend.bookings.check', compact('transactions'));
+            
+    }
 }

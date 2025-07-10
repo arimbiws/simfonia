@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Transaction;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -84,5 +85,13 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         //
+    }
+
+    // Riwayat transaksi pembeli
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
+    public function booking(){
+        return $this->belongsTo(Booking::class);
     }
 }

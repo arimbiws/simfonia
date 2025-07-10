@@ -38,23 +38,54 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="flex flex-col space-y-2">
                 <label class="block mb-1 font-medium text-gray-900">Nama Bank</label>
-                <input type="text" value="" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <input type="text" name="nama_bank" required value="" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
 
             <div class="flex flex-col space-y-2">
                 <label class="font-medium text-gray-700">Nama Akun</label>
-                <input type="text" value="" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <input type="text" name="nama_akun_bank" required value="" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
         </div>
 
         <div class="flex flex-col space-y-2">
             <label class="font-medium text-gray-700">Nomor Rekening</label>
-            <input type="text" value="" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <input type="number" name="nomor_rekening" required value="" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        </div>
+
+        <div class="flex flex-col mt-5 space-y-6 sm:mt-8 lg:mt-0 w-full">
+            <div class="flow-root">
+                <div class="-my-3 divide-y divide-gray-200">
+                    <dl class="flex items-center justify-between gap-4 py-3">
+                        <dt class="text-base font-normal text-gray-500">Harga Satuan Produk</dt>
+                        <dd class="text-base font-medium text-gray-900">Rp{{ number_format($harga) }}</dd>
+                    </dl>
+
+                    <dl class="flex items-center justify-between gap-4 py-3">
+                        <dt class="text-base font-normal text-gray-500">Jumlah Item</dt>
+                        <dd class="text-base font-medium text-gray-500">{{ $jumlahItem }}</dd>
+                    </dl>
+
+                    <dl class="flex items-center justify-between gap-4 py-3">
+                        <dt class="text-base font-normal text-gray-500">Subtotal Produk</dt>
+                        <dd class="text-base font-medium text-gray-900">Rp{{ number_format($subtotal) }}</dd>
+                    </dl>
+
+                    <dl class="flex items-center justify-between gap-4 py-3">
+                        <dt class="text-base font-normal text-gray-500">Biaya Layanan</dt>
+                        <dd class="text-base font-medium text-gray-900">Rp{{ number_format($biayaLayanan) }}</dd>
+                    </dl>
+
+                    <dl class="flex items-center justify-between gap-4 py-3">
+                        <dt class="text-lg font-bold text-gray-900">Total</dt>
+                        <dd class="text-base font-bold text-gray-900">Rp{{ number_format($total) }}</dd>
+                    </dl>
+                </div>
+            </div>
         </div>
 
         <!-- File Upload Section -->
         <div class="flex flex-col space-y-2">
-            <label class="block mb-2 font-medium text-gray-900">Upload Bukti Pembayaran</label>
+            <label class="block font-medium text-gray-900">Upload Bukti Pembayaran</label>
             <div class="flex items-center justify-center w-full">
                 <label for="bukti_bayar" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                     <div id="upload-area" class="flex flex-col items-center justify-center pt-5 pb-6">
@@ -62,7 +93,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                         </svg>
                         <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                        <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                        <p class="text-xs text-gray-500">PNG, JPG or GIF (MAX. 800x400px)</p>
                     </div>
                     <!-- Preview Area (hidden by default) -->
                     <div id="preview-area" class="hidden w-full h-full flex flex-col items-center justify-center p-4">

@@ -43,8 +43,8 @@
             </div>
             <div class="px-5 mt-6 flex justify-between">
                 <a href="{{ $product->unit_bisnis_id == 1 || $product->unit_bisnis_id == 2 
-            ? route('frontend.bookings.checkout.booking', ['product_id' => $product->id]) 
-            : route('frontend.bookings.checkout.transaction', ['product_id' => $product->id]) }}"
+            ? route('frontend.bookings.checkout-booking', ['product_id' => $product->id]) 
+            : route('frontend.bookings.checkout-transaction', ['product_id' => $product->id]) }}"
                     class="w-20 h-7 py-1.5 bg-[#6CC389] rounded-2xl text-white text-xs font-bold text-center">
                     Reservasi
                 </a>

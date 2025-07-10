@@ -18,7 +18,6 @@
 
     <h1 class="text-3xl font-bold mb-6 mx-auto">Booking Product</h1>
 
-
     @if ($errors->any())
     <div class="alert alert-danger mb-4">
         <ul>
@@ -31,7 +30,6 @@
         </ul>
     </div>
     @endif
-
 
     <form action="{{ route('frontend.bookings.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -65,12 +63,9 @@
         </div>
         @endif
 
-
         <!-- Jumlah -->
-        <div class="mb-4">
-            <label for="jumlah_item" class="block font-semibold">Jumlah</label>
-            <input type="number" name="jumlah_item" min="1" required class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
-        </div>
+        <input type="hidden" name="jumlah_item" id="jumlah_item" />
+
 
         <!-- Tanggal -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -81,6 +76,18 @@
             <div class="flex flex-col mb-3">
                 <label class="block mb-1 font-medium text-gray-900">Tanggal Pengembalian</label>
                 <input type="date" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="tanggal_kembali" required>
+            </div>
+        </div>
+
+        <!-- Jam Peminjaman -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex flex-col mb-3">
+                <label class="block mb-1 font-medium text-gray-900">Jam Mulai</label>
+                <input type="time" name="jam_mulai" required class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5">
+            </div>
+            <div class="flex flex-col mb-3">
+                <label class="block mb-1 font-medium text-gray-900">Jam Selesai</label>
+                <input type="time" name="jam_selesai" required class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5">
             </div>
         </div>
 
@@ -172,28 +179,53 @@
 <x-footer />
 @endsection
 
-
-
 @push('after-script')
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const tanggalMulai = document.querySelector('input[name="tanggal_mulai"]');
         const tanggalKembali = document.querySelector('input[name="tanggal_kembali"]');
         const productSelect = document.getElementById('productSelect');
+        const jumlahItem = document.querySelector('input[name="jumlah_item"]');
+        const jamMulai = document.querySelector('input[name="jam_mulai"]');
+        const jamSelesai = document.querySelector('input[name="jam_selesai"]');
 
         function showAlert(message) {
             alert(message);
         }
 
-        tanggalMulai.addEventListener('change', validateTanggal);
-        tanggalKembali.addEventListener('change', validateTanggal);
+        function hitungJumlahItem() {
+            const mulai = new Date(tanggalMulai.value);
+            const kembali = new Date(tanggalKembali.value);
+
+            if (mulai && kembali && !isNaN(mulai) && !isNaN(kembali)) {
+                const selisihHari = Math.floor((kembali - mulai) / (1000 * 60 * 60 * 24)) + 1;
+                jumlahItem.value = selisihHari > 0 ? selisihHari : '';
+            }
+        }
+
+        tanggalMulai.addEventListener('change', () => {
+            validateTanggal();
+            hitungJumlahItem();
+        });
+        tanggalKembali.addEventListener('change', () => {
+            validateTanggal();
+            hitungJumlahItem();
+        });
+
+        [jamMulai, jamSelesai].forEach(input => {
+            input.addEventListener('change', () => {
+                validateTanggal();
+                hitungJumlahItem();
+            });
+        });
 
         async function validateTanggal() {
             const mulai = new Date(tanggalMulai.value);
             const kembali = new Date(tanggalKembali.value);
+            const jamM = jamMulai.value;
+            const jamS = jamSelesai.value;
             const today = new Date();
-            today.setHours(0, 0, 0, 0); // reset jam
+            today.setHours(0, 0, 0, 0);
 
             if (mulai < today) {
                 showAlert("Tanggal peminjaman tidak boleh di masa lalu.");
@@ -207,21 +239,22 @@
                 return;
             }
 
-            // Cek apakah tanggal sudah dibooking (pakai AJAX)
-            const productId = productSelect.value;
-            if (productId && tanggalMulai.value && tanggalKembali.value) {
-                const response = await fetch(`/api/check-booking?product_id=${productId}&mulai=${tanggalMulai.value}&kembali=${tanggalKembali.value}`);
+            if (mulai && kembali && jamM && jamS && productSelect?.value) {
+                const response = await fetch(`/api/check-booking?product_id=${productSelect.value}&mulai=${tanggalMulai.value}&kembali=${tanggalKembali.value}&jam_mulai=${jamM}&jam_selesai=${jamS}`);
                 const data = await response.json();
+
                 if (data.conflict) {
-                    showAlert("Tanggal tersebut sudah dibooking oleh orang lain.");
+                    alert('Tanggal dan jam yang dipilih sudah dibooking.');
                     tanggalMulai.value = '';
                     tanggalKembali.value = '';
+                    jamMulai.value = '';
+                    jamSelesai.value = '';
+                    jumlahItem.value = '';
                 }
             }
         }
     });
 </script>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -233,61 +266,43 @@
         const fileSize = document.getElementById('file-size');
         const removeButton = document.getElementById('remove-file');
 
-        // Maximum file size (10MB in bytes)
         const MAX_FILE_SIZE = 10 * 1024 * 1024;
-
-        // Allowed file types
         const ALLOWED_TYPES = [
-            'application/msword', // .doc
-            'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // .docx
-            'application/pdf' // .pdf
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'application/pdf'
         ];
 
-        // Function to format file size
         function formatFileSize(bytes) {
-            if (bytes === 0) return '0 Bytes';
             const k = 1024;
             const sizes = ['Bytes', 'KB', 'MB', 'GB'];
             const i = Math.floor(Math.log(bytes) / Math.log(k));
             return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
 
-        // Function to get file icon based on file type
         function getFileIcon(fileType) {
             if (fileType === 'application/pdf') {
-                return `<svg class="w-full h-full text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M4 18h12V6l-4-4H4v16zm8-14v4h4l-4-4z"/>
-                <text x="10" y="14" text-anchor="middle" class="text-xs font-bold fill-white">PDF</text>
-            </svg>`;
+                return `<svg class="w-full h-full text-red-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 18h12V6l-4-4H4v16zm8-14v4h4l-4-4z"/></svg>`;
             } else if (fileType.includes('word') || fileType.includes('msword')) {
-                return `<svg class="w-full h-full text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M4 18h12V6l-4-4H4v16zm8-14v4h4l-4-4z"/>
-                <text x="10" y="14" text-anchor="middle" class="text-xs font-bold fill-white">DOC</text>
-            </svg>`;
+                return `<svg class="w-full h-full text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 18h12V6l-4-4H4v16zm8-14v4h4l-4-4z"/></svg>`;
             }
-            return `<svg class="w-full h-full text-gray-500" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M4 18h12V6l-4-4H4v16zm8-14v4h4l-4-4z"/>
-        </svg>`;
+            return `<svg class="w-full h-full text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 18h12V6l-4-4H4v16zm8-14v4h4l-4-4z"/></svg>`;
         }
 
-        // Function to validate file
         function validateFile(file) {
-            // Check file size
             if (file.size > MAX_FILE_SIZE) {
-                alert('File size exceeds 10MB limit. Please choose a smaller file.');
+                alert('Ukuran file melebihi 10MB.');
                 return false;
             }
 
-            // Check file type
             if (!ALLOWED_TYPES.includes(file.type)) {
-                alert('Invalid file type. Please select a DOC, DOCX, or PDF file.');
+                alert('Jenis file tidak diizinkan. Hanya PDF, DOC, dan DOCX.');
                 return false;
             }
 
             return true;
         }
 
-        // Function to show file preview
         function showPreview(file) {
             if (!validateFile(file)) {
                 resetUpload();
@@ -298,24 +313,19 @@
             fileName.textContent = file.name;
             fileSize.textContent = formatFileSize(file.size);
 
-            // Hide upload area and show preview
             uploadArea.classList.add('hidden');
             previewArea.classList.remove('hidden');
         }
 
-        // Function to reset to upload state
         function resetUpload() {
             fileInput.value = '';
             fileIcon.innerHTML = '';
             fileName.textContent = '';
             fileSize.textContent = '';
-
-            // Show upload area and hide preview
             uploadArea.classList.remove('hidden');
             previewArea.classList.add('hidden');
         }
 
-        // File input change event
         fileInput.addEventListener('change', function() {
             if (fileInput.files.length > 0) {
                 const file = fileInput.files[0];
@@ -325,14 +335,12 @@
             }
         });
 
-        // Remove file button event
         removeButton.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             resetUpload();
         });
 
-        // Drag and drop functionality
         const dropArea = document.querySelector('label[for="surat_pengajuan"]');
 
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
@@ -345,41 +353,25 @@
         }
 
         ['dragenter', 'dragover'].forEach(eventName => {
-            dropArea.addEventListener(eventName, highlight, false);
+            dropArea.addEventListener(eventName, () => dropArea.classList.add('border-blue-500', 'bg-blue-50'), false);
         });
 
         ['dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, unhighlight, false);
+            dropArea.addEventListener(eventName, () => dropArea.classList.remove('border-blue-500', 'bg-blue-50'), false);
         });
 
-        function highlight(e) {
-            dropArea.classList.add('border-blue-500', 'bg-blue-50');
-        }
-
-        function unhighlight(e) {
-            dropArea.classList.remove('border-blue-500', 'bg-blue-50');
-        }
-
-        dropArea.addEventListener('drop', handleDrop, false);
-
-        function handleDrop(e) {
+        dropArea.addEventListener('drop', function(e) {
             const dt = e.dataTransfer;
             const files = dt.files;
 
             if (files.length > 0) {
                 const file = files[0];
-
-                // Create a new FileList with the dropped file
                 const dataTransfer = new DataTransfer();
                 dataTransfer.items.add(file);
                 fileInput.files = dataTransfer.files;
-
                 showPreview(file);
             }
-        }
+        });
     });
 </script>
-
-
-
 @endpush

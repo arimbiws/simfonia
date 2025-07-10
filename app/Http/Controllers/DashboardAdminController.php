@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Transaction;
+use App\Models\Unit_Bisnis;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,7 @@ class DashboardAdminController extends Controller
         $my_products = Product::where('penjual_id', Auth::id())->get();
         $my_revenue = Transaction::where('penjual_id', Auth::id())->where('status_transaksi', 1)->sum('total_harga');
         $orders_success = Transaction::where('penjual_id', Auth::id())->where('status_transaksi', 1)->get();
+
 
         // Prepare chart data
         $labels = [];

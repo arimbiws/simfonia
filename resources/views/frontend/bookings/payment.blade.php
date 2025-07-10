@@ -11,22 +11,32 @@
         <div class="flex space-x-4 items-center">
             <div class="text-gray-400">Booking</div>
             <div class="w-8 h-1 bg-gray-300"></div>
-            <div class="text-gray-400">Validation Process</div>
-            <div class="w-8 h-1 bg-gray-300"></div>
             <div class="text-blue-600 font-semibold">Payment</div>
             <div class="w-8 h-1 bg-blue-600"></div>
             <div class="text-gray-400">Payment Status</div>
-            <div class="w-8 h-1 bg-gray-300"></div>
-            <div class="text-gray-400">Product Status</div>
         </div>
     </div>
 
     <h1 class="text-2xl font-bold mb-6">Payment</h1>
 
+    @if ($errors->any())
+    <div class="alert alert-danger mb-4">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li class="ps-5 py-5 bg-red-500 text-white font-bold">{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <form action="{{ route('frontend.bookings.payment.upload') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
 
-        <!-- Data Bank user auto -->
+
+        <input type="hidden" name="booking_id" value="{{ $booking->id }}">
+
+
+        <!-- Data Bank user -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="flex flex-col space-y-2">
                 <label class="block mb-1 font-medium text-gray-900">Nama Bank</label>

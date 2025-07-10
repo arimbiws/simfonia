@@ -51,27 +51,6 @@
                         <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
                     </div>
 
-                    <!-- Nama Bank -->
-                    <div class="mt-4">
-                        <x-input-label for="nama_bank" :value="__('Nama Bank')" />
-                        <x-text-input id="nama_bank" name="nama_bank" type="text" class="block mt-1 w-full" :value="old('nama_bank')" required />
-                        <x-input-error :messages="$errors->get('nama_bank')" class="mt-2" />
-                    </div>
-
-                    <!-- Nama Akun Bank -->
-                    <div class="mt-4">
-                        <x-input-label for="nama_akun_bank" :value="__('Nama Akun Bank')" />
-                        <x-text-input id="nama_akun_bank" name="nama_akun_bank" type="text" class="block mt-1 w-full" :value="old('nama_akun_bank')" required />
-                        <x-input-error :messages="$errors->get('nama_akun_bank')" class="mt-2" />
-                    </div>
-
-                    <!-- Nomor Rekening -->
-                    <div class="mt-4">
-                        <x-input-label for="nomor_rekening" :value="__('Nomor Rekening')" />
-                        <x-text-input id="nomor_rekening" name="nomor_rekening" type="text" class="block mt-1 w-full" :value="old('nomor_rekening')" required />
-                        <x-input-error :messages="$errors->get('nomor_rekening')" class="mt-2" />
-                    </div>
-
                     <!-- Password -->
                     <div class="mt-4">
                         <x-input-label for="password" :value="__('Password')" />

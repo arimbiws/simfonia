@@ -19,11 +19,12 @@ class DashboardFrontendController extends Controller
         ]);
     }
 
-
     public function katalog($unit_bisnis_id, Request $request)
     {
         $userId = Auth::id();
-        $query = Product::where('unit_bisnis_id', $unit_bisnis_id);
+
+        $query = Product::where('unit_bisnis_id', $unit_bisnis_id)
+            ->where('penjual_id', '!=', $userId);  // Hanya produk yang bukan milik user
 
         // Ambil unit bisnis spesifik
         $unit_bisnis = Unit_Bisnis::findOrFail($unit_bisnis_id);
@@ -31,8 +32,8 @@ class DashboardFrontendController extends Controller
         // Ambil semua unit bisnis (untuk filter dropdown)
         $unitBisnisList = Unit_Bisnis::all();
 
-        // Filter
-        if ($request->has('search')) {
+        // Filter pencarian
+        if ($request->filled('search')) {
             $query->where('nama', 'like', '%' . $request->search . '%');
         }
 
@@ -45,9 +46,7 @@ class DashboardFrontendController extends Controller
             $query->orderBy('created_at', 'desc');
         }
 
-        $products =  Product::where('unit_bisnis_id', $unit_bisnis_id)
-            ->where('penjual_id', '!=', $userId)  // Hanya produk yang bukan milik user
-            ->get()->paginate(12);
+        $products = $query->paginate(12); // 12 items per page
 
         return view('frontend.unit_bisnis.katalog', [
             'products' => $products,
@@ -56,7 +55,6 @@ class DashboardFrontendController extends Controller
             'unit_bisnis_id' => $unit_bisnis_id, // untuk reset filter
         ]);
     }
-
 
     public function all_katalog(Request $request)
     {

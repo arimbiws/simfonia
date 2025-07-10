@@ -284,6 +284,7 @@
 
 
 @push('after-script')
+
 <script>
     const options = {
         // add data series via arrays, learn more here: https://apexcharts.com/docs/series/

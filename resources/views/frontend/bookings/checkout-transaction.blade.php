@@ -7,6 +7,16 @@
 <div class="max-w-3xl mx-auto my-12 px-6">
     <h1 class="text-2xl font-bold mb-6">Form Transaksi Produk</h1>
 
+    @if ($errors->any())
+    <div class="alert alert-danger mb-4">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li class="ps-5 py-5 bg-red-500 text-white font-bold">{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <form action="{{ route('frontend.bookings.store') }}" method="POST">
         @csrf
 

@@ -10,6 +10,7 @@ use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
+use App\Models\Booking;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -24,8 +25,6 @@ use Illuminate\Support\Facades\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [DashboardFrontendController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/register/seller', [RegisteredUserController::class, 'create_seller'])
     ->middleware('guest')
@@ -46,7 +45,6 @@ Route::get('/check-bookings', [DashboardFrontendController::class, 'check_bookin
 Route::get('/calendar', [DashboardFrontendController::class, 'calendar'])->name('frontend.calendar');
 Route::get('/calendar/events', [DashboardFrontendController::class, 'fetchEvents'])->name('frontend.calendar.events');
 
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
@@ -59,10 +57,7 @@ Route::middleware(['auth', 'role:penjual'])->get('/penjual/dashboard', function 
     return view('penjual.dashboard');
 })->name('penjual.dashboard');
 
-Route::middleware(['auth', 'role:pembeli'])->get('/pembeli/dashboard', function () {
-    return view('frontend.dashboard');
-})->name('pembeli.dashboard');
-
+Route::middleware(['auth', 'role:pembeli'])->get('/', [DashboardFrontendController::class, 'dashboard'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -113,7 +108,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/api/check-booking', function (Request $request) {
-        $exists = \App\Models\Booking::where('product_id', $request->product_id)
+        $exists = Booking::where('product_id', $request->product_id)
             ->where(function ($q) use ($request) {
                 $q->whereBetween('tanggal_mulai', [$request->mulai, $request->kembali])
                     ->orWhereBetween('tanggal_kembali', [$request->mulai, $request->kembali]);

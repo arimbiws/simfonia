@@ -29,9 +29,9 @@
         <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="success" class="w-24 mb-6">
         <h1 class="text-3xl font-extrabold text-purple-600">Success <span class="text-pink-500">Checkout</span></h1>
         <p class="mt-2 text-gray-500">Thank you for supporting our great creators</p>
-        <button class="mt-6 px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition">
+        <a href="{{ route('frontend.bookings.check-bookings') }}" class="mt-6 px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition">
             Check My Purchase
-        </button>
+        </a>
     </div>
 
 </main>

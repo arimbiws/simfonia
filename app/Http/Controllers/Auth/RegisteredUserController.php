@@ -80,6 +80,7 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
         return redirect()->route('login')->with('status', 'Akun berhasil dibuat. Silakan login.');
     }
 }

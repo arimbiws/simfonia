@@ -33,25 +33,23 @@
         @csrf
 
 
-        <input type="hidden" name="booking_id" value="{{ $booking->id }}">
-
 
         <!-- Data Bank user -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="flex flex-col space-y-2">
                 <label class="block mb-1 font-medium text-gray-900">Nama Bank</label>
-                <input type="text" readonly value="{{ Auth::user()->nama_bank }}" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <input type="text" value="" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
 
             <div class="flex flex-col space-y-2">
                 <label class="font-medium text-gray-700">Nama Akun</label>
-                <input type="text" readonly value="{{ Auth::user()->nama_akun_bank }}" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <input type="text" value="" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
             </div>
         </div>
 
         <div class="flex flex-col space-y-2">
             <label class="font-medium text-gray-700">Nomor Rekening</label>
-            <input type="text" readonly value="{{ Auth::user()->nomor_rekening }}" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <input type="text" value="" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         </div>
 
         <!-- File Upload Section -->

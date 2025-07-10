@@ -44,9 +44,6 @@ class RegisteredUserController extends Controller
             'no_hp' => 'required',
             'alamat' => 'required|string',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'nama_bank' => 'required',
-            'nama_akun_bank' => 'required',
-            'nomor_rekening' => 'required',
 
             // hanya jika penjual
             'surat_persetujuan' => $isPenjual ? 'required|file|mimes:pdf,doc,docx|max:2048' : '',
@@ -71,9 +68,6 @@ class RegisteredUserController extends Controller
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
             'password' => Hash::make($request->password),
-            'nama_bank' => $request->nama_bank,
-            'nama_akun_bank' => $request->nama_akun_bank,
-            'nomor_rekening' => $request->nomor_rekening,
             'role' => $role,
             'tipe_pembeli' => $tipe_pembeli,
             'surat_persetujuan' => $filePath,

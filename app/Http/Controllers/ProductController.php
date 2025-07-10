@@ -15,7 +15,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource for admin.
      */
-    public function adminIndex()
+    public function index()
     {
         $products = Product::where('penjual_id', Auth::id())->get();
         return view('admin.products.index', [
@@ -38,7 +38,7 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource for admin.
      */
-    public function adminCreate()
+    public function create()
     {
         $unit_bisnis = Unit_Bisnis::all();
 
@@ -62,7 +62,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage for admin.
      */
-    public function adminStore(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'nama' => ['required', 'string', 'max:255'],
@@ -76,7 +76,7 @@ class ProductController extends Controller
 
         try {
             if ($request->hasFile('gambar')) {
-                $gambarPath = $request->file('gambar')->store('product_gambar', 'public');
+                $gambarPath = $request->file('gambar')->store('products', 'public');
                 $validated['gambar'] = $gambarPath;
             }
             $validated['slug'] = Str::slug($request->nama);
@@ -113,7 +113,7 @@ class ProductController extends Controller
 
         try {
             if ($request->hasFile('gambar')) {
-                $gambarPath = $request->file('gambar')->store('product_gambar', 'public');
+                $gambarPath = $request->file('gambar')->store('products', 'public');
                 $validated['gambar'] = $gambarPath;
             }
             $validated['slug'] = Str::slug($request->nama);
@@ -144,7 +144,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource for admin.
      */
-    public function adminEdit(Product $product)
+    public function edit(Product $product)
     {
         $unit_bisnis = Unit_Bisnis::all();
 
@@ -170,7 +170,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage for admin.
      */
-    public function adminUpdate(Request $request, Product $product)
+    public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
             'nama' => ['required', 'string', 'max:255'],
@@ -185,9 +185,6 @@ class ProductController extends Controller
         try {
             if ($request->hasFile('gambar')) {
                 $gambarPath = $request->file('gambar')->store('products', 'public');
-                $validated['gambar'] = $gambarPath;
-            if ($request->hasFile('gambar')) {
-                $gambarPath = $request->file('gambar')->store('product_gambar', 'public');
                 $validated['gambar'] = $gambarPath;
             }
             $validated['slug'] = Str::slug($request->nama);
@@ -227,7 +224,7 @@ class ProductController extends Controller
 
         try {
             if ($request->hasFile('gambar')) {
-                $gambarPath = $request->file('gambar')->store('product_gambar', 'public');
+                $gambarPath = $request->file('gambar')->store('products', 'public');
                 $validated['gambar'] = $gambarPath;
             }
             $validated['slug'] = Str::slug($request->nama);
@@ -252,7 +249,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage for admin.
      */
-    public function adminDestroy(Product $product)
+    public function destroy(Product $product)
     {
         try {
             $product->delete();

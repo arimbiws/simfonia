@@ -61,7 +61,7 @@
         <button class="py-3 px-5 bg-green-600 text-white rounded-full">Payment Approved</button>
 
         @else
-        <form action="{{ route('penjual.transaction.update', $order) }}" method="post">
+        <form action="{{ route('penjual.transactions.update', $order) }}" method="post">
             @csrf
             @method('PUT')
             <button type="submit" class="py-3 px-5 bg-red-600 text-white rounded-full">Approve Payment</button>

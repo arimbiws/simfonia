@@ -99,7 +99,10 @@ class TransactionController extends Controller
 
     public function penjualIndex()
     {
-        $transactions = Transaction::where('pembeli_id', Auth::id())->get();  // untuk mengambil data produk yg kita beli dari creator lain (kita sbg buyer)
+        $transactions = Transaction::where('penjual_id', Auth::id())
+            ->with(['product.unit', 'buyer'])
+            ->orderBy('created_at', 'desc')
+            ->get();  // untuk mengambil data transaksi produk yang kita jual
         return view('penjual.transactions.index', [
             'transactions' => $transactions
         ]);

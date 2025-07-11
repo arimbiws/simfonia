@@ -116,7 +116,7 @@
         <div class="grid grid-cols-4 gap-6 mb-8">
             @foreach ($products as $product)
             <div class="bg-white border rounded-lg overflow-hidden shadow-sm">
-                <img src="{{ $product->gambar ? asset('storage/' . $product->gambar) : asset('images/default.jpg') }}" alt="{{ $product->nama }}"
+                <img src="{{ $product->gambar ? asset('storage/' . $product->gambar) : asset('images/atk.jpg') }}" alt="{{ $product->nama }}"
                     class="w-full h-40 object-cover" />
                 <div class="p-4">
                     <h3 class="font-semibold text-sm mb-1">{{ $product->nama }}</h3>

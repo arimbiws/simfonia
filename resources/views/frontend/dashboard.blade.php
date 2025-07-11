@@ -23,25 +23,24 @@
     </div>
 </section>
 
-
 <!-- Stats Section -->
 <section class="py-12">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-4 gap-6">
             <div class="bg-purple-100 p-6 rounded-lg text-center">
-                <div class="text-2xl font-bold text-purple-600">6,452+</div>
+                <div class="text-2xl font-bold text-purple-600">{{ $totalUsers }}</div>
                 <div class="text-sm text-gray-600">Total Pengguna Sistem</div>
             </div>
             <div class="bg-blue-100 p-6 rounded-lg text-center">
-                <div class="text-2xl font-bold text-blue-600">502+</div>
+                <div class="text-2xl font-bold text-blue-600">{{ $totalUnits }}</div>
                 <div class="text-sm text-gray-600">Total Unit Bisnis</div>
             </div>
             <div class="bg-green-100 p-6 rounded-lg text-center">
-                <div class="text-2xl font-bold text-green-600">56,201+</div>
+                <div class="text-2xl font-bold text-green-600">{{ $totalProducts }}</div>
                 <div class="text-sm text-gray-600">Total Produk/Layanan</div>
             </div>
             <div class="bg-orange-100 p-6 rounded-lg text-center">
-                <div class="text-2xl font-bold text-orange-600">6,507+</div>
+                <div class="text-2xl font-bold text-orange-600">{{ $totalTransactions }}</div>
                 <div class="text-sm text-gray-600">Total Transaksi</div>
             </div>
         </div>
@@ -104,6 +103,7 @@
     </div>
 </section>
 
+
 <!-- Rekomendasi Section -->
 <section class="py-16 bg-white">
     <div class="container mx-auto px-4">
@@ -152,7 +152,9 @@
         <div class="w-1/2 text-white">
             <h2 class="text-3xl font-bold mb-4">Want to join us?</h2>
             <p class="mb-6">Bergabunglah dengan Unit Bisnis FMIPA Universitas Udayana dan nikmati berbagai layanan terbaik untuk mendukung kegiatan akademik Anda.</p>
-            <button class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">Contact us</button>
+            <button onclick="confirmJoinAsSeller()" href="{{ route('register-penjual') }}" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                Daftar Sekarang
+            </button>
         </div>
         <div class="w-1/2">
             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=400&fit=crop" alt="Student" class="rounded-lg" />
@@ -160,12 +162,7 @@
     </div>
 </section>
 
-
 <x-footer />
-
-@endsection
-
-
 
 @push('after-style')
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />

@@ -90,12 +90,13 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
+                            <x-dropdown-link :href="route('logout.and.register.seller')"
                                 onclick="event.preventDefault();
                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+
                     </x-slot>
                 </x-dropdown>
             </div>

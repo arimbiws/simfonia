@@ -152,7 +152,7 @@
         <div class="w-1/2 text-white">
             <h2 class="text-3xl font-bold mb-4">Want to join us?</h2>
             <p class="mb-6">Bergabunglah dengan Unit Bisnis FMIPA Universitas Udayana dan nikmati berbagai layanan terbaik untuk mendukung kegiatan akademik Anda.</p>
-            <button onclick="confirmJoinAsSeller()" href="{{ route('register-penjual') }}" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+            <button onclick="confirmJoinAsSeller()" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
                 Daftar Sekarang
             </button>
         </div>

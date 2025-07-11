@@ -26,32 +26,10 @@
                 <input type="date" name="start_date" class="border px-2 py-1 rounded">
                 <input type="date" name="end_date" class="border px-2 py-1 rounded">
 
-
-
-
-
-
-
-
-
                 <input type="text" name="keyword" placeholder="Cari Produk" class="border px-2 py-1 rounded">
 
                 <button type="submit" class="bg-blue-600 text-white px-4 py-1 rounded">Filter</button>
             </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
 
 
@@ -63,12 +41,6 @@
                 <div>Price</div>
                 <div>Payment</div>
                 <div>Status</div>
-
-
-
-
-
-
             </div>
         </div>
 
@@ -78,9 +50,11 @@
             <div class="px-6 py-4 hover:bg-gray-50 transition-colors">
                 <div class="grid grid-cols-5 gap-4 items-center">
                     <div class="text-gray-900 font-medium">{{ $trx->product->nama ?? 'N/A' }}</div>
-                    <div class="text-gray-600 text-sm">{{ $trx->created_at->format('d/m/Y') }}</div>
+                    <div class="text-gray-600 text-sm">
+                        {{ optional($trx->created_at)->format('d/m/Y') ?? 'N/A' }}
+                    </div>
                     <div class="text-gray-900 font-medium">
-                        Rp {{ number_format($trx->product->harga * $trx->jumlah_item, 2) }}
+                        Rp{{ number_format($trx->product->harga * $trx->jumlah_item, 2) }}
                     </div>
                     <div class="flex items-center text-sm">
                         @if ($trx->bukti_bayar)

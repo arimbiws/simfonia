@@ -131,7 +131,6 @@ class BookingController extends Controller
                 return back()->withErrors(['Tanggal & jam sudah dibooking. Mohon memilih waktu lain.'])->withInput();
             }
 
-
             $filePath = $request->file('surat_pengajuan')->store('surat_pengajuan', 'public');
 
             $booking = Booking::create([
@@ -150,7 +149,7 @@ class BookingController extends Controller
             ]);
 
             // Simpan transaksi kosong (bukti bayar nanti)
-            Transaction::create([
+            $transaction = Transaction::create([
                 'penjual_id' => $product->penjual_id,
                 'pembeli_id' => $user->id,
                 'product_id' => $product->id,
@@ -163,7 +162,7 @@ class BookingController extends Controller
                 'nomor_rekening' => '',
             ]);
 
-            return redirect()->route('frontend.bookings.payment');
+            return redirect()->route('frontend.bookings.payment', ['transaction_id' => $transaction->id]);
         }
 
         // Jika unit bisnis = ruangan/inventaris DAN pembeli internal, tidak butuh transaksi/bukti bayar
@@ -202,7 +201,7 @@ class BookingController extends Controller
         }
 
         // Jika bukan ruangan/inventaris, buat langsung transaksi saja
-        Transaction::create([
+        $transaction = Transaction::create([
             'penjual_id' => $product->penjual_id,
             'pembeli_id' => $user->id,
             'product_id' => $product->id,
@@ -211,7 +210,10 @@ class BookingController extends Controller
             'status_transaksi' => 0,
         ]);
 
-        return redirect()->route('frontend.bookings.payment');
+        session(['current_transaction_id' => $transaction->id]);
+
+
+        return redirect()->route('frontend.bookings.payment', ['transaction_id' => $transaction->id]);
     }
 
     public function uploadPayment(Request $request)
@@ -244,11 +246,15 @@ class BookingController extends Controller
             ->with('success', 'Bukti bayar berhasil diupload. Menunggu validasi.');
     }
 
-    public function payment()
+    public function payment(Request $request)
     {
+        $transactionId = $request->query('transaction_id') ?? session('current_transaction_id');
 
         $transaction = Transaction::where('pembeli_id', Auth::id())
-            ->latest()->first();
+            ->when($transactionId, fn($q) => $q
+                ->where('id', $transactionId))
+            ->latest()
+            ->first();
 
         if (!$transaction) {
             return redirect()->back()->withErrors('Transaksi tidak ditemukan.');

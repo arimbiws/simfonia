@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 10, 2025 at 11:09 PM
+-- Generation Time: Jul 11, 2025 at 03:50 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.27
 
@@ -258,9 +258,9 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `penjual_id`, `pembeli_id`, `product_id`, `booking_id`, `jumlah_item`, `status_transaksi`, `nama_bank`, `nama_akun_bank`, `nomor_rekening`, `total_harga`, `bukti_bayar`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 2, 3, NULL, 1, 1, '', '', 0, 150000, 'proofs/transaction1.jpg', NULL, '2025-07-10 07:31:40', NULL),
-(3, 1, 2, 6, NULL, 2, 1, '', '', 0, 312400, 'proofs/transaction2.jpg', NULL, '2025-07-10 07:29:17', NULL),
-(4, 2, 1, 4, NULL, 1, 1, '', '', 0, 250000, 'proofs/transaction3.jpg', NULL, '2025-07-06 10:56:53', NULL),
+(1, 1, 2, 3, NULL, 1, 1, '', '', 0, 150000, 'proofs/transaction1.jpg', '2025-07-10 03:24:58', '2025-07-10 07:31:40', NULL),
+(3, 1, 2, 6, NULL, 2, 1, '', '', 0, 312400, 'proofs/transaction2.jpg', '2025-01-10 03:25:52', '2025-07-10 07:29:17', NULL),
+(4, 2, 1, 4, NULL, 1, 1, '', '', 0, 125000, 'proofs/transaction3.jpg', '2025-01-06 16:00:00', '2025-07-06 10:56:53', NULL),
 (20, 1, 2, 3, NULL, 1, 1, '', '', 0, 150000, '', '2025-07-07 21:00:03', '2025-07-09 20:21:54', NULL),
 (21, 2, 2, 4, NULL, 1, 0, '', '', 0, 125000, '', '2025-07-07 21:05:20', '2025-07-07 21:05:20', NULL),
 (22, 2, 2, 8, NULL, 1, 0, '', '', 0, 500000, '', '2025-07-07 21:30:39', '2025-07-07 21:30:39', NULL),
@@ -276,7 +276,11 @@ INSERT INTO `transactions` (`id`, `penjual_id`, `pembeli_id`, `product_id`, `boo
 (32, 12, 34, 33, NULL, 1, 0, '', '', 0, 3500000, '', '2025-07-10 08:14:09', '2025-07-10 08:14:09', NULL),
 (33, 1, 34, 3, NULL, 1, 0, '', '', 0, 150000, '', '2025-07-10 10:56:08', '2025-07-10 10:56:08', NULL),
 (34, 1, 34, 3, NULL, 1, 0, '', '', 0, 150000, 'bukti_bayar/PTmMrHdMsVCwD4oiPbsavyWyu3yiS3V7fG31PWxi.jpg', '2025-07-10 11:43:23', '2025-07-10 12:49:38', NULL),
-(35, 2, 34, 4, NULL, 1, 0, NULL, NULL, NULL, 125000, 'bukti_bayar/A5RnkH4DnEdybqp0Uo6mwpyXA6qYyBCCaVZhV4Yw.jpg', '2025-07-10 13:22:36', '2025-07-10 13:23:13', NULL);
+(35, 2, 34, 4, NULL, 1, 0, NULL, NULL, NULL, 125000, 'bukti_bayar/A5RnkH4DnEdybqp0Uo6mwpyXA6qYyBCCaVZhV4Yw.jpg', '2025-07-10 13:22:36', '2025-07-10 13:23:13', NULL),
+(36, 7, 2, 28, NULL, 1, 0, NULL, NULL, NULL, 200000, '', '2025-07-10 16:35:02', '2025-07-10 16:35:02', NULL),
+(37, 7, 2, 28, NULL, 1, 0, NULL, NULL, NULL, 200000, '', '2025-07-10 17:02:30', '2025-07-10 17:02:30', NULL),
+(38, 7, 2, 28, NULL, 1, 0, NULL, NULL, NULL, 200000, '', '2025-07-10 17:10:39', '2025-07-10 17:10:39', NULL),
+(39, 7, 2, 28, NULL, 1, 0, NULL, NULL, NULL, 200000, 'bukti_bayar/seTtXDEbCukFQmhTmeBOOg3HXW60d8ifVhlrNgup.jpg', '2025-07-10 19:10:29', '2025-07-10 19:18:58', NULL);
 
 --
 -- Triggers `transactions`
@@ -357,7 +361,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `tipe_pembeli`, `name`, `email`, `nik_nim`, `password`, `no_hp`, `alamat`, `surat_persetujuan`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'eksternal', 'arimbi', 'arimbi@mail.com', 2308561112, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 87781537172, 'ayani utara', NULL, NULL, 'RDeSRtl9Oy7KVjyiWww2oqRW5EJ7Oc4cHRP5TcvpwICISw28NFMtBkFB4tug', '2025-06-09 13:40:07', '2025-06-09 13:40:07'),
+(1, 'admin', 'eksternal', 'arimbi', 'arimbi@mail.com', 2308561112, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 87781537172, 'ayani utara', NULL, NULL, 'Rd6tSDwrdOansIQcDa09g9C6PpvBYXZxDENHYIOqolDKE4Vuxbo6pd6Wmffr', '2025-06-09 13:40:07', '2025-06-09 13:40:07'),
 (2, 'penjual', 'eksternal', 'Raka Pradipta', 'raka.pradipta@student.com', 2205551010, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 81234567890, 'Jl. Mawar No. 123, Denpasar, Bali', NULL, NULL, 'Oj1uUXVaeFAwLevPJGDYsXSmgVXkzUisVeViCzEeVlxn2toyEYxxVZiiEHy4', '2025-06-23 15:48:43', '2025-06-23 15:48:43'),
 (3, 'admin', 'internal', ' Made Sukarsa', 'made.sukarsa@unud.ac.id', 5171041208850003, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 81234567890, 'Jl. Raya Kampus Unud, Jimbaran, Bali', NULL, NULL, NULL, NULL, NULL),
 (4, 'admin', 'internal', 'Ketut Gede Dharma Putra', 'ketut.dharma@student.unud.ac.id', 1980041502, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 81987654321, 'Jl. Sudirman No. 15, Denpasar, Bali', NULL, NULL, NULL, NULL, NULL),
@@ -514,7 +518,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `unit_bisnis`

@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\Unit_Bisnis;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,11 @@ class DashboardFrontendController extends Controller
     {
         $products = Product::orderBy('created_at', 'desc')->take(8)->get(); // Ambil 8 produk terbaru
         return view('frontend.dashboard', [
-            'products' => $products
+            'totalUsers' => User::count(),
+            'totalUnits' => Unit_Bisnis::count(),
+            'totalProducts' => Product::count(),
+            'totalTransactions' => Transaction::count(),
+            'products' => Product::latest()->take(8)->get(),
         ]);
     }
 

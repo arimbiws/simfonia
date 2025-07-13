@@ -12,4 +12,6 @@ class Unit_Bisnis extends Model
     protected $guarded = ['id'];
 
     protected $table = 'unit_bisnis';
+
+    protected $fillable = ['gambar', 'nama_unit', 'slug', 'deskripsi'];
 }

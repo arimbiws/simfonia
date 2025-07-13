@@ -147,7 +147,7 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-16 bg-gradient-to-r from-gray-700 to-orange-500">
+<section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4 flex items-center">
         <div class="w-1/2 text-white">
             <h2 class="text-3xl font-bold mb-4">Want to join us?</h2>
@@ -169,6 +169,7 @@
 
 @push('after-style')
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet" />
+
 @endpush
 
 @push('after-script')

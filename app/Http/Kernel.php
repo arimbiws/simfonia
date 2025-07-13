@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,4 +68,12 @@ class Kernel extends HttpKernel
         'check.booking.unit' => \App\Http\Middleware\CheckBookingUnit::class,
 
     ];
+
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->call(function () {
+            \App\Models\Booking::where('status', 'disetujui')->get()
+                ->each(fn($booking) => $booking->updateStatusBasedOnTime());
+        })->everyMinute(); // atau hourly untuk efisiensi
+    }
 }

@@ -23,50 +23,57 @@
     </ol>
 </nav>
 
-
 @if ($errors->any())
-<div class="alert alert-danger mb-4">
-    <ul>
+<div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+    <strong class="font-bold">Error!</strong>
+    <ul class="list-disc list-inside">
         @foreach ($errors->all() as $error)
-        <li class="ps-5 py-5 bg-red-500 text-white font-bold">
-            {{ $error }}
-        </li>
+        <li>{{ $error }}</li>
         @endforeach
-
     </ul>
 </div>
 @endif
 
-<div class="item-product flex flex-col gap-y-10 justify-between mt-10">
-    <img src="{{ Storage::url($order->product->gambar) }}" class="w-auto h-[200px] object-cover" alt="">
-    <div>
-        <h3 class="text-indigo-950 text-xl font-bold">{{ $order->product->nama }}</h3>
-        <p class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-indigo-700/10 ring-inset">{{ $order->product->unit->nama_unit }}</p>
-    </div>
+<div class="mt-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <img src="{{ Storage::url($order->product->gambar) }}" class="w-full h-auto object-cover rounded-lg shadow-md transition duration-500 ease-in-out transform hover:scale-105" alt="">
+        </div>
+        <div>
+            <h3 class="text-indigo-950 text-2xl font-bold mb-2">{{ $order->product->nama }}</h3>
+            <p class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-indigo-700/10 ring-inset mb-4">{{ $order->product->unit->nama_unit }}</p>
+            <div class="flex items-center mb-4">
+                <p class="text-2xl font-bold text-indigo-950">Rp {{ number_format($order->total_harga) }}</p>
+                @if($order->status_transaksi)
+                <span class="ml-4 py-1 px-3 rounded-full bg-green-500 text-white font-bold text-sm">SUCCESS</span>
+                @else
+                <span class="ml-4 py-1 px-3 rounded-full bg-orange-500 text-white font-bold text-sm">PENDING</span>
+                @endif
+            </div>
+            <div class="flex flex-row gap-x-3">
+                @if($order->status_transaksi)
+                <button class="py-3 px-5 bg-green-600 text-white rounded-full">Payment Approved</button>
+                @else
+                <form action="{{ route('admin.transaction.update', $order) }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="py-3 px-5 bg-red-600 text-white rounded-full hover:bg-red-700 transition duration-300">Approve Payment</button>
+                </form>
+                @endif
+            </div>
+            <div class="flex flex-row gap-x-3">
+                @if($order->booking && $order->booking->status === 'pengembalian')
+                <form action="{{ route('admin.bookings.markReturned', $order->booking->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                        Tandai Sudah Kembali
+                    </button>
+                </form>
+                @endif
+            </div>
 
-    <div class="flex flex-row gap-x-5 items-center">
-        <p class="mb-2 text-2xl pt-2">Rp{{ number_format($order->total_harga) }}</p>
-        @if($order->status_transaksi)
-        <span class="py-1 px-3 rounded-full bg-green-500 text-white font-bold text-sm">
-            SUCCESS
-        </span>
-        @else
-        <span class="py-1 px-3 rounded-full bg-orange-500 text-white font-bold text-sm ">
-            PENDING
-        </span>
-        @endif
-    </div>
-    <div class="flex flex-row gap-x-3">
-        @if($order->status_transaksi)
-        <button class="py-3 px-5 bg-green-600 text-white rounded-full">Payment Approved</button>
-
-        @else
-        <form action="{{ route('admin.transaction.update', $order) }}" method="post">
-            @csrf
-            @method('PUT')
-            <button type="submit" class="py-3 px-5 bg-red-600 text-white rounded-full">Approve Payment</button>
-        </form>
-        @endif
+        </div>
     </div>
 </div>
 

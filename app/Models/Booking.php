@@ -21,7 +21,8 @@ class Booking extends Model
         'no_hp',
         'alamat',
         'surat_pengajuan',
-        'status'
+        'status',
+        'nik_nim',
     ];
 
 
@@ -38,5 +39,19 @@ class Booking extends Model
     public function transactions()
     {
         return $this->hasMany(Transaction::class, 'booking_id');
+    }
+
+    public function updateStatusBasedOnTime()
+    {
+        $now = \Carbon\Carbon::now();
+
+        if ($this->status === 'disetujui') {
+            if ($now->between($this->tanggal_mulai, $this->tanggal_kembali)) {
+                $this->status = 'sedang digunakan';
+            } elseif ($now->greaterThan($this->tanggal_kembali)) {
+                $this->status = 'pengembalian';
+            }
+            $this->save();
+        }
     }
 }

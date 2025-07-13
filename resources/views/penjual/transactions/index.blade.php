@@ -15,6 +15,7 @@
 </div>
 @endif
 
+
 <div class="item-product flex flex-row justify-between items-center relative overflow-x-auto">
     <table class="w-full text-left rtl:text-right">
         <thead class=" bg-gray-100  text-sm text-gray-700 uppercase">
@@ -70,7 +71,7 @@
                 <td class="px-6 py-4">
                     @if($transaction->status_transaksi)
                     <span class="py-1 px-3 rounded-full bg-green-500 text-white font-bold text-sm">
-                        SUCCESS
+                        SELESAI
                     </span>
                     @else
                     <span class="py-1 px-3 rounded-full bg-orange-500 text-white font-bold text-sm">

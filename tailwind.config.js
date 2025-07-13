@@ -16,6 +16,13 @@ export default {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
+
+            placeholderColor: {
+                gray: "#9ca3af", // tailwind default gray-400
+            },
+            fontWeight: {
+                normal: 400,
+            },
         },
     },
 

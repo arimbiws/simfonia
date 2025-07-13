@@ -1,228 +1,118 @@
 @extends('admin.layouts.app')
-@section('title', 'Dashboard Admin ')
+@section('title', 'Dashboard Admin')
 @section('content')
 
 <!-- Stats Cards -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-    <div class="bg-white rounded-lg shadow p-6">
+    <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
         <h3 class="text-sm font-medium text-gray-500 mb-2">Total Produk</h3>
-        <div class="flex items-end justify-between">
-            <div>
-                <p class="text-3xl font-bold text-gray-900">{{count($my_products)}}</p>
-            </div>
-        </div>
+        <p class="text-3xl font-bold text-gray-900">{{ count($my_products) }}</p>
     </div>
-
-    <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-sm font-medium text-gray-500 mb-2">Total Order</h3>
-        <div class="flex items-end justify-between">
-            <div>
-                <p class="text-3xl font-bold text-gray-900">{{count($orders_success)}}</p>
-                <p class="text-sm text-red-600 flex items-center mt-1">
-                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    2%
-                </p>
-            </div>
-        </div>
+    <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
+        <h3 class="text-sm font-medium text-gray-500 mb-2">Total Order Berhasil</h3>
+        <p class="text-3xl font-bold text-gray-900">{{ count($orders_success) }}</p>
+        <p class="text-sm text-green-600 flex items-center mt-1">
+            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            2.5%
+        </p>
     </div>
-
-    <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-sm font-medium text-gray-500 mb-2">Total Transaksi</h3>
-        <div class="flex items-end justify-between">
-            <div>
-                <p class="text-3xl font-bold text-gray-900">Rp{{number_format($my_revenue)}}</p>
-                <p class="text-sm text-green-600 flex items-center mt-1">
-                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    2.29%
-                </p>
-            </div>
-        </div>
+    <div class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow">
+        <h3 class="text-sm font-medium text-gray-500 mb-2">Total Pendapatan</h3>
+        <p class="text-3xl font-bold text-gray-900">Rp {{ number_format($my_revenue, 0, ',', '.') }}</p>
+        <p class="text-sm text-green-600 flex items-center mt-1">
+            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            3.1%
+        </p>
     </div>
 </div>
 
 <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
     <!-- Chart Section -->
-    <!-- <div class="xl:col-span-2">
-            <div class="bg-white rounded-lg shadow p-6">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-lg font-semibold text-gray-800">Statistik Total Akun</h3>
-                    <select class="border border-gray-300 rounded-md px-3 py-1 text-sm">
-                        <option>2022</option>
-                        <option>2023</option>
-                    </select>
-                </div>
-
-                <div class="flex items-center space-x-6 mb-4">
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-                        <span class="text-sm text-gray-600">Penjual</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-pink-500 rounded-full mr-2"></div>
-                        <span class="text-sm text-gray-600">Pembeli</span>
-                    </div>
-                </div>
-                <canvas id="accountChart" width="400" height="200"></canvas>
-            </div> -->
-
-    <!--Chart Section -->
     <div class="xl:col-span-2">
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
             <div class="flex items-center justify-between mb-6">
-                <h3 class="text-lg font-semibold text-gray-800">Statistik Total Akun</h3>
-                <select class="border border-gray-300 rounded-md px-3 py-1 text-sm">
-                    <option>2022</option>
-                    <option>2023</option>
+                <h3 class="text-lg font-semibold text-gray-800">Statistik Pengguna & Penjual</h3>
+                <select id="timePeriod" class="border border-gray-300 rounded-md px-3 py-1 text-sm focus:ring-2 focus:ring-blue-500">
+                    <option value="lastMonth">Bulan Lalu</option>
+                    <option value="currentMonth">Bulan Ini</option>
+                    <option value="lastYear">Tahun Lalu</option>
                 </select>
             </div>
-
-            <div class="flex items-center space-x-6 mb-4">
+            <div id="users-sellers-chart" class="h-80"></div>
+            <!-- Legend Description -->
+            <div class="mt-4 flex flex-wrap gap-4">
                 <div class="flex items-center">
-                    <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-600">Penjual</span>
+                    <div class="w-4 h-4 bg-blue-600 rounded-sm mr-2"></div>
+                    <span class="text-sm font-medium text-gray-600">Jumlah Pengguna: Jumlah pengguna baru yang terdaftar</span>
                 </div>
                 <div class="flex items-center">
-                    <div class="w-3 h-3 bg-pink-500 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-600">Pembeli</span>
-                </div>
-            </div>
-
-            <div class="max-w-sm w-full bg-white rounded-lg shadow-sm dark:bg-gray-800 p-4 md:p-6">
-                <div class="flex justify-between mb-5">
-                    <div>
-                        <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">$12,423</h5>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Sales this week</p>
-                    </div>
-                    <div
-                        class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
-                        23%
-                        <svg class="w-3 h-3 ms-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4" />
-                        </svg>
-                    </div>
-                </div>
-                <div id="legend-chart"></div>
-                <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between mt-5">
-                    <div class="flex justify-between items-center pt-5">
-                        <!-- Button -->
-                        <button
-                            id="dropdownDefaultButton"
-                            data-dropdown-toggle="lastDaysdropdown"
-                            data-dropdown-placement="bottom"
-                            class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
-                            type="button">
-                            Last 7 days
-                            <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <!-- Dropdown menu -->
-                        <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 7 days</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 30 days</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 90 days</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <a
-                            href="#"
-                            class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
-                            Sales Report
-                            <svg class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                            </svg>
-                        </a>
-                    </div>
+                    <div class="w-4 h-4 bg-yellow-400 rounded-sm mr-2"></div>
+                    <span class="text-sm font-medium text-gray-600">Jumlah Penjual: Jumlah penjual baru yang terdaftar</span>
                 </div>
             </div>
         </div>
 
-        <!--Transactions Table -->
-        <div class="bg-white rounded-lg shadow mt-6">
+        <div class="bg-white rounded-xl shadow-sm p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-semibold text-gray-800">Statistik Penjualan & Pendapatan</h3>
+            </div>
+            <div id="transactions-revenue-chart" class="h-80"></div>
+            <!-- Legend Description -->
+            <div class="mt-4 flex flex-wrap gap-4">
+                <div class="flex items-center">
+                    <div class="w-4 h-4 bg-green-600 rounded-sm mr-2"></div>
+                    <span class="text-sm font-medium text-gray-600">Jumlah Transaksi: Total transaksi yang dilakukan</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-4 h-4 bg-red-600 rounded-sm mr-2"></div>
+                    <span class="text-sm font-medium text-gray-600">Pendapatan: Total pendapatan dari transaksi berhasil (Rp)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transactions Table -->
+        <div class="bg-white rounded-xl shadow-sm mt-6">
             <div class="p-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">Transaksi</h3>
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold text-gray-800">Transaksi Terbaru</h3>
+                    <a href="{{ route('admin.transactions.orders') }}" class="text-sm font-medium text-blue-600 hover:text-blue-800">Lihat Lebih Banyak</a>
+                </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full">
+                    <table class="w-full text-left">
                         <thead>
                             <tr class="border-b border-gray-200">
-                                <th class="text-left py-3 px-4 font-medium text-gray-500">Barang</th>
-                                <th class="text-left py-3 px-4 font-medium text-gray-500">Tanggal</th>
-                                <th class="text-left py-3 px-4 font-medium text-gray-500">Harga</th>
-                                <th class="text-left py-3 px-4 font-medium text-gray-500">Pembayaran</th>
-                                <th class="text-left py-3 px-4 font-medium text-gray-500">Status</th>
+                                <th class="py-3 px-4 font-medium text-gray-500">Barang</th>
+                                <th class="py-3 px-4 font-medium text-gray-500">Tanggal</th>
+                                <th class="py-3 px-4 font-medium text-gray-500">Harga</th>
+                                <th class="py-3 px-4 font-medium text-gray-500">Pembayaran</th>
+                                <th class="py-3 px-4 font-medium text-gray-500">Status</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900">Pensil</td>
-                                <td class="py-4 px-4 text-gray-600">02/08/2023</td>
-                                <td class="py-4 px-4 text-gray-900">$473.18</td>
-                                <td class="py-4 px-4">
-                                    <span class="flex items-center text-green-600">
-                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                        </svg>
-                                        Transfered
-                                    </span>
-                                </td>
-                                <td class="py-4 px-4">
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
-                                        Completed
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900">Penggaris</td>
-                                <td class="py-4 px-4 text-gray-600">01/09/2023</td>
-                                <td class="py-4 px-4 text-gray-900">$665.86</td>
-                                <td class="py-4 px-4">
-                                    <span class="flex items-center text-green-600">
-                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                        </svg>
-                                        Transfered
-                                    </span>
-                                </td>
-                                <td class="py-4 px-4">
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
-                                        Completed
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-4 px-4 font-medium text-gray-900">Penghapus</td>
-                                <td class="py-4 px-4 text-gray-600">15/12/2023</td>
-                                <td class="py-4 px-4 text-gray-900">$322.23</td>
-                                <td class="py-4 px-4">
-                                    <span class="flex items-center text-green-600">
-                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                        </svg>
-                                        Transfered
-                                    </span>
-                                </td>
-                                <td class="py-4 px-4">
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
-                                        Completed
-                                    </span>
-                                </td>
-                            </tr>
+                            @foreach ($latest_transactions as $transaction)
+                                <tr class="hover:bg-gray-50">
+                                    <td class="py-4 px-4 font-medium text-gray-900">{{ $transaction->product->nama }}</td>
+                                    <td class="py-4 px-4 text-gray-600">{{ \Carbon\Carbon::parse($transaction->created_at)->format('d/m/Y') }}</td>
+                                    <td class="py-4 px-4 text-gray-900">Rp {{ number_format($transaction->total_harga, 0, ',', '.') }}</td>
+                                    <td class="py-4 px-4">
+                                        <span class="flex items-center text-green-600">
+                                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            {{ $transaction->bukti_bayar ? 'Transfered' : 'Pending' }}
+                                        </span>
+                                    </td>
+                                    <td class="py-4 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
+                                            {{ $transaction->status_transaksi ? 'Completed' : 'Pending' }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -232,47 +122,17 @@
 
     <!-- Right Sidebar -->
     <div class="space-y-6">
-        <div class="bg-white rounded-lg shadow p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-semibold text-gray-800">Kategori UBIS</h3>
-                <button class="text-blue-600 text-sm font-medium">+ Tambah Kategori</button>
-            </div>
-
-            <div class="space-y-4">
-                <div class="p-3 bg-gray-50 rounded-lg">
-                    <h4 class="font-medium text-gray-900">Ruangan & Gedung</h4>
-                    <p class="text-sm text-gray-600 mt-1">In eu do do culpa lorem exercitation ea dolor.</p>
-                </div>
-
-                <div class="p-3 bg-gray-50 rounded-lg">
-                    <h4 class="font-medium text-gray-900">Inventaris</h4>
-                    <p class="text-sm text-gray-600 mt-1">Deserunt minim incididunt culpa nostrud voluptate excepteur.</p>
-                </div>
-
-                <div class="p-3 bg-gray-50 rounded-lg">
-                    <h4 class="font-medium text-gray-900">Alat Tulis & Printing</h4>
-                    <p class="text-sm text-gray-600 mt-1">Mollit consectetur occaecat et ad adipisicing ex deserunt fugiat.</p>
-                </div>
-
-                <div class="p-3 bg-gray-50 rounded-lg">
-                    <h4 class="font-medium text-gray-900">Pengembangan Software</h4>
-                    <p class="text-sm text-gray-600 mt-1">Cupidatat eiusmod tempor labore amet amet proident duis.</p>
-                </div>
-
-                <div class="p-3 bg-gray-50 rounded-lg">
-                    <h4 class="font-medium text-gray-900">UMKM</h4>
-                    <p class="text-sm text-gray-600 mt-1">Duis excepteur enim enim dolore aliqua officia nisl labore ipsum.</p>
-                </div>
-            </div>
-        </div>
+        
 
         <!-- Profile Section -->
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-xl shadow-sm p-6">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-gray-300 rounded-full"></div>
+                <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+                    <span class="text-gray-600 font-medium">{{ Auth::user()->name[0] }}</span>
+                </div>
                 <div>
-                    <h4 class="font-medium text-gray-900">Sergey Goldberg</h4>
-                    <p class="text-sm text-gray-500">company@example.com</p>
+                    <h4 class="font-medium text-gray-900">{{ Auth::user()->name }}</h4>
+                    <p class="text-sm text-gray-500">{{ Auth::user()->email }}</p>
                 </div>
             </div>
         </div>
@@ -282,115 +142,189 @@
 
 @endsection
 
-
 @push('after-script')
-
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.35.3/dist/apexcharts.min.js"></script>
 <script>
-    const options = {
-        // add data series via arrays, learn more here: https://apexcharts.com/docs/series/
-        series: [{
-                name: "Orders",
-                data: @json($chartData['orders']),
-                color: "#1A56DB",
+    // Chart data from PHP
+    const chartData = @json($chartData);
+
+    // Base chart options
+    const baseOptions = {
+        chart: {
+            type: 'bar',
+            height: 320,
+            fontFamily: 'Inter, sans-serif',
+            toolbar: { show: false }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '20%',
+                barHeight: '100%',
+                distributed: false,
+                endingShape: 'rounded',
+                borderRadius: 6
+            }
+        },
+        dataLabels: { enabled: false },
+        stroke: {
+            show: true,
+            width: 4,
+            colors: ['#ffffff']
+        },
+        xaxis: {
+            labels: {
+                style: {
+                    fontSize: '12px',
+                    fontWeight: 500,
+                    colors: '#374151'
+                }
+            },
+            group: {
+                style: {
+                    fontSize: '14px',
+                    fontWeight: 700
+                }
+            }
+        },
+        yaxis: {
+            title: { text: 'Jumlah' },
+            labels: {
+                formatter: function (val) {
+                    return val.toLocaleString('id-ID');
+                }
+            }
+        },
+        fill: { opacity: 1 },
+        tooltip: {
+            y: {
+                formatter: function (val, { seriesIndex }) {
+                    if (seriesIndex === 1 && chartIndex === 1) { // Revenue in second chart
+                        return 'Rp ' + val.toLocaleString('id-ID');
+                    }
+                    return val.toLocaleString('id-ID');
+                },
+                title: {
+                    formatter: (seriesName) => seriesName + ':'
+                }
+            }
+        },
+        legend: {
+            show: true,
+            position: 'top',
+            horizontalAlign: 'left',
+            fontSize: '12px',
+            fontWeight: 500,
+            markers: {
+                width: 12,
+                height: 12,
+                radius: 2
+            }
+        },
+        grid: {
+            borderColor: '#E5E7EB',
+            strokeDashArray: 4
+        }
+    };
+
+    // Chart 1: Users and Sellers
+    let usersSellersChart;
+    const usersSellersOptions = {
+        ...baseOptions,
+        series: [
+            {
+                name: 'Jumlah Pengguna',
+                data: chartData.users,
+                color: '#2563EB' // Blue
             },
             {
-                name: "Revenue",
-                data: @json($chartData['revenue']),
-                color: "#7E3BF2",
+                name: 'Jumlah Penjual',
+                data: chartData.sellers,
+                color: '#F59E0B' // Yellow
             }
         ],
         xaxis: {
-            categories: @json($chartData['labels']),
-            labels: {
-                show: true,
-            },
-            axisBorder: {
-                show: false,
-            },
-            axisTicks: {
-                show: false,
-            },
-        },
+            ...baseOptions.xaxis,
+            categories: ['Bulan Lalu', 'Bulan Ini', 'Tahun Lalu']
+        }
+    };
 
-        yaxis: {
-            labels: {
-                formatter: function(value) {
-                    return 'Rp ' + value.toLocaleString();
-                }
+    // Chart 2: Transactions and Revenue
+    let transactionsRevenueChart;
+    const transactionsRevenueOptions = {
+        ...baseOptions,
+        series: [
+            {
+                name: 'Jumlah Transaksi',
+                data: chartData.transactions,
+                color: '#16A34A' // Green
+            },
+            {
+                name: 'Pendapatan (Rp)',
+                data: chartData.revenue,
+                color: '#DC2626' // Red
             }
-        },
-
-        chart: {
-            height: "100%",
-            maxWidth: "100%",
-            type: "area",
-            fontFamily: "Inter, sans-serif",
-            dropShadow: {
-                enabled: false,
-            },
-            toolbar: {
-                show: false,
-            },
-        },
-        tooltip: {
-            enabled: true,
-            x: {
-                show: false,
-            },
-        },
-        legend: {
-            show: true
-        },
-        fill: {
-            type: "gradient",
-            gradient: {
-                opacityFrom: 0.55,
-                opacityTo: 0,
-                shade: "#1C64F2",
-                gradientToColors: ["#1C64F2"],
-            },
-        },
-        dataLabels: {
-            enabled: false,
-        },
-        stroke: {
-            width: 6,
-        },
-        grid: {
-            show: false,
-            strokeDashArray: 4,
-            padding: {
-                left: 2,
-                right: 2,
-                top: -26
-            },
-        },
+        ],
         xaxis: {
-            categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
-            labels: {
-                show: false,
-            },
-            axisBorder: {
-                show: false,
-            },
-            axisTicks: {
-                show: false,
-            },
-        },
-        yaxis: {
-            show: false,
-            labels: {
-                formatter: function(value) {
-                    return '$' + value;
-                }
-            }
-        },
+            ...baseOptions.xaxis,
+            categories: ['Bulan Lalu', 'Bulan Ini', 'Tahun Lalu']
+        }
+    };
+
+    // Initialize charts
+    if (document.getElementById('users-sellers-chart') && typeof ApexCharts !== 'undefined') {
+        usersSellersChart = new ApexCharts(document.getElementById('users-sellers-chart'), usersSellersOptions);
+        usersSellersChart.render();
+    }
+    if (document.getElementById('transactions-revenue-chart') && typeof ApexCharts !== 'undefined') {
+        transactionsRevenueChart = new ApexCharts(document.getElementById('transactions-revenue-chart'), transactionsRevenueOptions);
+        transactionsRevenueChart.render();
     }
 
-    if (document.getElementById("legend-chart") && typeof ApexCharts !== 'undefined') {
-        const chart = new ApexCharts(document.getElementById("legend-chart"), options);
-        chart.render();
-    }
+    // Dynamic filtering based on time period
+    document.getElementById('timePeriod').addEventListener('change', function () {
+        const period = this.value;
+        let categories = ['Bulan Lalu', 'Bulan Ini', 'Tahun Lalu'];
+        let usersData = chartData.users;
+        let sellersData = chartData.sellers;
+        let transactionsData = chartData.transactions;
+        let revenueData = chartData.revenue;
+
+        if (period === 'lastYear') {
+            categories = chartData.last_year_monthly.months;
+            usersData = chartData.last_year_monthly.users;
+            sellersData = chartData.last_year_monthly.sellers;
+            transactionsData = chartData.last_year_monthly.transactions;
+            revenueData = chartData.last_year_monthly.revenue;
+        } else if (period === 'lastMonth') {
+            usersData = [chartData.users[0]];
+            sellersData = [chartData.sellers[0]];
+            transactionsData = [chartData.transactions[0]];
+            revenueData = [chartData.revenue[0]];
+            categories = ['Bulan Lalu'];
+        } else if (period === 'currentMonth') {
+            usersData = [chartData.users[1]];
+            sellersData = [chartData.sellers[1]];
+            transactionsData = [chartData.transactions[1]];
+            revenueData = [chartData.revenue[1]];
+            categories = ['Bulan Ini'];
+        }
+
+        usersSellersChart.updateOptions({
+            series: [
+                { name: 'Jumlah Pengguna', data: usersData },
+                { name: 'Jumlah Penjual', data: sellersData }
+            ],
+            xaxis: { categories: categories }
+        });
+
+        transactionsRevenueChart.updateOptions({
+            series: [
+                { name: 'Jumlah Transaksi', data: transactionsData },
+                { name: 'Pendapatan (Rp)', data: revenueData }
+            ],
+            xaxis: { categories: categories }
+        });
+    });
 </script>
-
 @endpush

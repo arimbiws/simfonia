@@ -17,6 +17,7 @@ class Transaction extends Model
         'total_harga',
         'status_transaksi',
         'bukti_bayar',
+        'booking_id'  // ← Tambahkan ini
     ];
 
     public function product()

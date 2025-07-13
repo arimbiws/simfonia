@@ -15,6 +15,15 @@
 </div>
 @endif
 
+
+<div class="flex justify-between items-center mb-8">
+    <h2 class="text-3xl font-semibold">Daftar Transaksi</h2>
+    <a href="{{ route('penjual.transactions.orders.download') }}" target="_blank"
+        class="inline-block px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">
+        Download PDF
+    </a>
+</div>
+
 <div class="item-product flex flex-row justify-between items-center relative overflow-x-auto">
     <table class="w-full text-left rtl:text-right">
         <thead class=" bg-gray-100  text-sm text-gray-700 uppercase">

@@ -1,73 +1,92 @@
 @extends('admin.layouts.app')
 @section('title', 'Add New Product')
 @section('content')
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">Add New Product</h1>
 
+    @if ($errors->any())
+        <div class="mb-6 p-4 bg-red-100 text-red-700 rounded-lg shadow-sm">
+            <ul class="list-disc pl-5">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-@if ($errors->any())
-<div class="alert alert-danger mb-4">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li class="ps-5 py-5 bg-red-500 text-white font-bold">
-            {{ $error }}
-        </li>
-        @endforeach
+    <form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data" class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        @csrf
 
-    </ul>
+        <!-- Cover Image -->
+        <div class="mb-6">
+            <label for="gambar" class="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
+            <input id="gambar" type="file" name="gambar" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+            <p class="mt-1 text-sm text-gray-500">Only .JPG, .PNG, or .JPEG</p>
+            @error('gambar')
+                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <!-- Product Name -->
+        <div class="mb-6">
+            <label for="nama" class="block text-sm font-medium text-gray-700 mb-2">Product Name</label>
+            <input id="nama" type="text" name="nama" value="{{ old('nama') }}" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required autofocus>
+            @error('nama')
+                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <!-- Price -->
+        <div class="mb-6">
+            <label for="harga" class="block text-sm font-medium text-gray-700 mb-2">Price</label>
+            <input id="harga" type="number" name="harga" value="{{ old('harga') }}" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+            @error('harga')
+                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <!-- Unit Bisnis -->
+        <div class="mb-6">
+            <label for="unit_bisnis" class="block text-sm font-medium text-gray-700 mb-2">Category</label>
+            <select name="unit_bisnis_id" id="unit_bisnis" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                <option value="" disabled selected>Select Category</option>
+                @foreach ($unit_bisnis as $unit)
+                    <option value="{{ $unit->id }}">{{ $unit->nama_unit }}</option>
+                @endforeach
+            </select>
+            @error('unit_bisnis_id')
+                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <!-- Status -->
+        <div class="mb-6">
+            <label for="status" class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+            <select name="status" id="status" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                <option value="tersedia">Tersedia</option>
+                <option value="disewa">Disewa</option>
+                <option value="tutup">Tutup</option>
+            </select>
+            @error('status')
+                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <!-- Description -->
+        <div class="mb-6">
+            <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+            <textarea name="deskripsi" id="deskripsi" class="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 h-32" required>{{ old('deskripsi') }}</textarea>
+            @error('deskripsi')
+                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-end">
+            <button type="submit" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                Add Product
+            </button>
+        </div>
+    </form>
 </div>
-@endif
-
-
-<form method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
-    @csrf
-
-    <!-- Cover -->
-    <div class="mt-3">
-        <x-input-label for="gambar" :value="__('Cover')" />
-        <x-text-input id="gambar" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 " type="file" name="gambar" aria-describedby="user_avatar_help" required />
-</form>
-
-<x-input-error :messages="$errors->get('gambar')" class="mt-2" />
-</div>
-
-<!-- Product Name -->
-<div class="mt-4">
-    <x-input-label for="nama" :value="__('Product Name')" />
-    <x-text-input id="nama" class="block mt-1 w-full" type="text" name="nama" :value="old('nama')" required autofocus autocomplete="nama" />
-    <x-input-error :messages="$errors->get('nama')" class="mt-2" />
-</div>
-
-<!-- Price -->
-<div class="mt-4">
-    <x-input-label for="harga" :value="__('Price')" />
-    <x-text-input id="harga" class="block mt-1 w-full" type="number" name="harga" :value="old('harga')" required />
-    <x-input-error :messages="$errors->get('harga')" class="mt-2" />
-</div>
-
-<!-- Unit Bisnis -->
-<div class="mt-4">
-    <x-input-label for="unit_bisnis" :value="__('Unit Bisnis')" />
-    <select name="unit_bisnis_id" id="unit_bisnis" class="w-full py-2 ps-5 border-gray-300 border-2 rounded-md">
-        <option value="" class="text-gray-200">Select Category Unit Bisnis</option>
-        @forelse ($unit_bisnis as $unit)
-        <option value="{{ $unit->id }}">{{ $unit->nama_unit }}</option>
-        @empty
-        @endforelse
-    </select>
-    <x-input-error :messages="$errors->get('unit_bisnis')" class="mt-2" />
-</div>
-
-<!-- Deskripsi   -->
-<div class="mt-4">
-    <x-input-label for="deskripsi" :value="__('Deskripsi')" />
-    <textarea name="deskripsi" id="deskripsi" class=" h-[100px] w-full py-2 ps-2 border-gray-300 border-2 rounded-md">
-        </textarea>
-    <x-input-error :messages="$errors->get('deskripsi')" class="mt-2" />
-</div>
-
-<div class="flex items-center justify-end mt-10">
-    <x-primary-button class="ms-4 ">
-        {{ __('Add Product') }}
-    </x-primary-button>
-</div>
-</form>
 @endsection

@@ -160,17 +160,17 @@
                                 </td>
                                 <td class="py-4 px-4">
                                     @if($transaction->status_transaksi == 1)
-                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
-                                            Berhasil
-                                        </span>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
+                                        Berhasil
+                                    </span>
                                     @elseif($transaction->status_transaksi == 0)
-                                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">
-                                            Pending
-                                        </span>
+                                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">
+                                        Pending
+                                    </span>
                                     @else
-                                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium">
-                                            Ditolak
-                                        </span>
+                                    <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium">
+                                        Ditolak
+                                    </span>
                                     @endif
                                 </td>
                             </tr>
@@ -220,7 +220,7 @@
                     <span class="font-medium text-green-600">Rp{{ number_format($my_revenue) }}</span>
                 </div>
             </div>
-            
+
             <div class="mt-4 pt-4 border-t border-gray-200">
                 <a href="#" class="text-blue-600 text-sm font-medium hover:text-blue-700">
                     Kelola Produk →

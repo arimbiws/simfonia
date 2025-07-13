@@ -3,87 +3,139 @@
 @section('content')
 
 @if ($errors->any())
-<div class="alert alert-danger mb-4">
-    <ul>
+<div class="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded-lg">
+    <strong class="font-semibold">Error!</strong>
+    <ul class="list-disc list-inside mt-2">
         @foreach ($errors->all() as $error)
-        <li class="ps-5 py-5 bg-red-500 text-white font-bold">
-            {{ $error }}
-        </li>
+        <li>{{ $error }}</li>
         @endforeach
-
     </ul>
 </div>
 @endif
 
-<div class="item-product flex flex-row justify-between items-center relative overflow-x-auto">
-    <table class="w-full text-left rtl:text-right">
-        <thead class=" bg-gray-100  text-sm text-gray-700 uppercase">
+<div class="relative overflow-x-auto mt-8 bg-white shadow-md rounded-lg">
+    <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-semibold">Daftar Transaksi</h2>
+        <a href="{{ route('admin.transactions.download') }}" target="_blank"
+            class="inline-block px-4 py-2 bg-gray-600 text-white rounded hover:bg-red-700 transition">
+            Download PDF
+        </a>
+    </div>
+    <table class="w-full text-sm text-left text-gray-700">
+        <thead class="bg-gray-100 text-xs uppercase text-gray-600">
             <tr>
-                <th scope="col" class="px-6 py-3">
-                    Gambar
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Nama Produk
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Pembeli
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Harga
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Status
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Action
-                </th>
+                <th scope="col" class="px-6 py-4">Gambar</th>
+                <th scope="col" class="px-6 py-4">Nama Produk</th>
+                <th scope="col" class="px-6 py-4">Pembeli</th>
+                <th scope="col" class="px-6 py-4">Harga</th>
+                <th scope="col" class="px-6 py-4">Tanggal Pembelian</th>
+                <th scope="col" class="px-6 py-4">Tanggal Pengembalian</th>
+                <th scope="col" class="px-6 py-4">Status</th>
+                <!-- <th scope="col" class="px-6 py-4">Status Pengembalian</th> -->
+                <th scope="col" class="px-6 py-4">Aksi</th>
+                <!-- <th scope="col" class="px-6 py-4">Konfirmasi</th> -->
             </tr>
         </thead>
         <tbody>
             @forelse($orders as $order)
-            <tr class="bg-white border-b border-gray-200">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <img src=" {{ Storage::url($order->product->gambar) }}" class="h-[100px] w-[100px] rounded-2xl" alt="">
-                </th>
+            <tr class="border-b border-gray-200 hover:bg-gray-50 transition duration-200">
                 <td class="px-6 py-4">
-                    <div>
-                        <h3 class="text-indigo-950 text-xl font-bold mb-2">{{ $order->product->nama }}</h3>
-                        <p class="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-indigo-700/10 ring-inset">
-                            {{ $order->product->unit->nama_unit }}
-                        </p>
-                    </div>
-                </td>
-                <td class="px-6 py-4">
-                    <p class="text-gray-500">{{ $order->buyer->name }}</p>
-                </td>
-                <td class="px-6 py-4">
-                    <p class="text-indigo-950 text-lg font-bold">Rp{{ number_format($order->total_harga) }}</p>
-                </td>
-                <td class="px-6 py-4">
-                    @if($order->status_transaksi)
-                    <span class="py-1 px-3 rounded-full bg-green-500 text-white font-bold text-sm">
-                        SUCCESS
-                    </span>
+                    @if($order->product && $order->product->gambar && file_exists(storage_path('app/public/' . $order->product->gambar)))
+                    <img src="{{ Storage::url($order->product->gambar) }}" class="h-24 w-24 rounded-xl object-cover" alt="{{ $order->product->nama ?? 'No Name' }}">
                     @else
-                    <span class="py-1 px-3 rounded-full bg-orange-500 text-white font-bold text-sm">
-                        PENDING
-                    </span>
+                    <p class="text-gray-500">Gambar tidak tersedia</p>
                     @endif
                 </td>
                 <td class="px-6 py-4">
-                    <div class="flex flex-row gap-x-3">
-                        <a href="{{ route('admin.transactions.order_details', $order) }}" class="py-3 px-5 bg-gray-500 text-white rounded-full">
-                            Details
-                        </a>
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800">{{ $order->product ? $order->product->nama : 'Produk Tidak Ditemukan' }}</h3>
+                        <span class="inline-flex items-center mt-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+                            {{ $order->product && $order->product->unit ? $order->product->unit->nama_unit : 'Unit Tidak Ditemukan' }}
+                        </span>
                     </div>
                 </td>
+                <td class="px-6 py-4">
+                    <p class="text-gray-600">
+                        {{ $order->buyer ? $order->buyer->name : 'Pembeli Tidak Ditemukan' }}
+                        <span class="text-xs font-medium text-gray-500">
+                            ({{ $order->buyer ? ($order->buyer->tipe_pembeli ?? 'eksternal') : 'eksternal' }})
+                        </span>
+                    </p>
+                </td>
+                <td class="px-6 py-4">
+                    <p class="text-lg font-semibold text-gray-800">Rp{{ number_format($order->total_harga, 0, ',', '.') }}</p>
+                </td>
+                <td class="px-6 py-4">
+                    <p class="text-gray-600">
+                        {{ $order->booking ? \Carbon\Carbon::parse($order->booking->tanggal_mulai)->format('d M Y') : \Carbon\Carbon::parse($order->created_at)->format('d M Y') }}
+                    </p>
+                </td>
+                <td class="px-6 py-4">
+                    <p class="text-gray-600">
+                        {{ optional($order->booking)->tanggal_kembali ? \Carbon\Carbon::parse($order->booking->tanggal_kembali)->format('d M Y') : '-' }}
+                    </p>
+                </td>
+                <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium {{ $order->status_transaksi ? 'bg-green-500 text-white' : 'bg-orange-500 text-white' }}">
+                        {{ $order->status_transaksi ? 'SELESAI' : 'PENDING' }}
+                    </span>
+                </td>
+                <!-- <td class="px-6 py-4">
+                    @if($order->booking)
+                    @php $status = $order->booking->status; @endphp
+                    <span class="inline-flex px-3 py-1 rounded-full text-xs font-medium
+                        @switch($status)
+                            @case('pending') bg-gray-300 text-gray-800 @break
+                            @case('disetujui') bg-blue-300 text-blue-800 @break
+                            @case('ditolak') bg-red-300 text-red-800 @break
+                            @case('sedang digunakan') bg-yellow-300 text-yellow-800 @break
+                            @case('pengembalian') bg-purple-300 text-purple-800 @break
+                            @case('selesai') bg-green-300 text-green-800 @break
+                            @default bg-gray-100 text-gray-800
+                        @endswitch
+                        ">
+                        {{ ucfirst($status) }}
+                    </span>
+                    @else
+                    <span class="inline-flex px-3 py-1 rounded-full text-xs font-medium bg-gray-200 text-gray-600">
+                        Non-booking
+                    </span>
+                    @endif
+                </td> -->
+                <td class="px-6 py-4">
+                    <a href="{{ route('admin.transactions.order_details', $order) }}" class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
+                        Details
+                    </a>
+                </td>
+                <!-- <td class="px-6 py-4">
+                    @if($order->booking && $order->status_transaksi)
+                    @php
+                    $returnDate = \Carbon\Carbon::parse($order->booking->tanggal_kembali);
+                    $today = \Carbon\Carbon::today();
+                    @endphp
+                    @if($order->booking->status == 'selesai')
+                    <span class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg">
+                        Done
+                    </span>
+                    @elseif($today->gt($returnDate) && $order->booking->status != 'selesai')
+                    <span class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg cursor-not-allowed">
+                        Report (No Login)
+                    </span>
+                    @elseif($order->booking->status != 'selesai')
+                    <span class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg cursor-not-allowed">
+                        Confirm Done (No Login)
+                    </span>
+                    @endif
+                    @else
+                    <span class="inline-flex items-center px-4 py-2 bg-gray-300 text-gray-600 rounded-lg cursor-not-allowed">
+                        Non-Penyewaan
+                    </span>
+                    @endif
+                </td> -->
             </tr>
-
             @empty
             <tr>
-                <td colspan="5">
-                    <p class="mt-7 text-gray-500 text-center">Belum ada pembelian produk yang dilakukan</p>
-                </td>
+                <td colspan="10" class="py-10 text-center text-gray-500">Belum ada pembelian atau penyewaan produk yang dilakukan.</td>
             </tr>
             @endforelse
         </tbody>

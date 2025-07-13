@@ -8,6 +8,8 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF;
 
 class TransactionController extends Controller
 {
@@ -24,11 +26,33 @@ class TransactionController extends Controller
 
     public function orders()
     {
-        $orders = Transaction::where('penjual_id', Auth::id())->get();  // untuk mengambil data orang yg beli produk kita
+        $orders = Transaction::with(['product.unit', 'buyer', 'booking'])
+            ->where('penjual_id', Auth::id())
+            ->get();
+
+        foreach ($orders as $order) {
+            if ($order->booking) {
+                $now = now();
+                $mulai = \Carbon\Carbon::parse($order->booking->tanggal_mulai);
+                $kembali = \Carbon\Carbon::parse($order->booking->tanggal_kembali);
+
+                if ($order->booking->status === 'disetujui') {
+                    if ($now->between($mulai, $kembali)) {
+                        $order->booking->status = 'sedang digunakan';
+                        $order->booking->save();
+                    } elseif ($now->gt($kembali)) {
+                        $order->booking->status = 'pengembalian';
+                        $order->booking->save();
+                    }
+                }
+            }
+        }
+
         return view('admin.transactions.orders', [
             'orders' => $orders
         ]);
     }
+
 
     // Riwayat transaksi pembeli
     public function product()
@@ -86,8 +110,69 @@ class TransactionController extends Controller
     public function update(Request $request, Transaction $transaction)
     {
         $transaction->update(['status_transaksi' => true]);
+
+        // Jika transaksi memiliki booking → tolak booking lain yang bentrok
+        if ($transaction->booking) {
+            $booking = $transaction->booking;
+
+            Booking::where('product_id', $booking->product_id)
+                ->where('id', '!=', $booking->id)
+                ->where('status', 'pending')
+                ->where(function ($q) use ($booking) {
+                    $q->whereBetween('tanggal_mulai', [$booking->tanggal_mulai, $booking->tanggal_kembali])
+                        ->orWhereBetween('tanggal_kembali', [$booking->tanggal_mulai, $booking->tanggal_kembali])
+                        ->orWhere(function ($q2) use ($booking) {
+                            $q2->where('tanggal_mulai', '<=', $booking->tanggal_mulai)
+                                ->where('tanggal_kembali', '>=', $booking->tanggal_kembali);
+                        });
+                })
+                ->update(['status' => 'ditolak']);
+        }
+
         return redirect()->route('admin.transactions.orders')->with('message', 'Payment is successfully approved!');
     }
+
+
+
+    // Method baru untuk konfirmasi pengembalian
+    public function confirmReturn(Transaction $transaction)
+    {
+        // Pastikan transaksi memiliki booking
+        if (!$transaction->booking) {
+            return redirect()->back()->with('error', 'Transaksi ini bukan penyewaan!');
+        }
+
+        // Update status booking menjadi selesai
+        $transaction->booking->update([
+            'status' => 'selesai',
+            'tanggal_pengembalian_aktual' => now()
+        ]);
+
+        return redirect()->back()->with('success', 'Pengembalian berhasil dikonfirmasi!');
+    }
+
+    // Method baru untuk report keterlambatan
+    public function reportLate(Transaction $transaction)
+    {
+        // Pastikan transaksi memiliki booking
+        if (!$transaction->booking) {
+            return redirect()->back()->with('error', 'Transaksi ini bukan penyewaan!');
+        }
+
+        // Update status booking dengan report
+        $transaction->booking->update([
+            'status' => 'terlambat',
+            'reported_at' => now()
+        ]);
+
+        // Anda bisa menambahkan logic lain seperti:
+        // - Mengirim notifikasi ke pembeli
+        // - Menghitung denda keterlambatan
+        // - Log ke sistem
+
+        return redirect()->back()->with('success', 'Keterlambatan berhasil dilaporkan!');
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -150,6 +235,52 @@ class TransactionController extends Controller
         return redirect()->route('penjual.transactions.orders')->with('message', 'Payment is successfully approved!');
     }
 
+
+    // Method untuk penjual konfirmasi pengembalian
+    public function penjualConfirmReturn(Transaction $transaction)
+    {
+        // Pastikan transaksi milik penjual yang login
+        if ($transaction->penjual_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses ke transaksi ini!');
+        }
+
+        // Pastikan transaksi memiliki booking
+        if (!$transaction->booking) {
+            return redirect()->back()->with('error', 'Transaksi ini bukan penyewaan!');
+        }
+
+        // Update status booking menjadi selesai
+        $transaction->booking->update([
+            'status' => 'selesai',
+            'tanggal_pengembalian_aktual' => now()
+        ]);
+
+        return redirect()->back()->with('success', 'Pengembalian berhasil dikonfirmasi!');
+    }
+
+    // Method untuk penjual report keterlambatan
+    public function penjualReportLate(Transaction $transaction)
+    {
+        // Pastikan transaksi milik penjual yang login
+        if ($transaction->penjual_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses ke transaksi ini!');
+        }
+
+        // Pastikan transaksi memiliki booking
+        if (!$transaction->booking) {
+            return redirect()->back()->with('error', 'Transaksi ini bukan penyewaan!');
+        }
+
+        // Update status booking dengan report
+        $transaction->booking->update([
+            'status' => 'terlambat',
+            'reported_at' => now()
+        ]);
+
+        return redirect()->back()->with('success', 'Keterlambatan berhasil dilaporkan!');
+    }
+
+
     /**
      * Download file for penjual.
      */
@@ -174,5 +305,30 @@ class TransactionController extends Controller
     public function download_file(Transaction $transaction)
     {
         return Storage::download($transaction->bukti_transfer);
+    }
+
+
+    public function download(Request $request)
+    {
+        $transactions = Transaction::with(['product.unit', 'buyer', 'booking'])
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $pdf = FacadePdf::loadView('admin.transactions.pdf', compact('transactions'));
+
+        return $pdf->download('laporan_transaksi.pdf');
+    }
+
+    public function penjualDownload()
+    {
+        $orders = Transaction::with(['product.unit', 'buyer', 'booking'])
+            ->where('penjual_id', Auth::id())
+            ->orderByDesc('created_at')
+            ->get();
+
+        $pdf = FacadePdf::loadView('penjual.transactions.pdf', compact('orders'))
+            ->setPaper('a4', 'landscape');
+
+        return $pdf->download('laporan_transaksi_penjual.pdf');
     }
 }

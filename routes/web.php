@@ -10,6 +10,7 @@ use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UnitBisnisController;
 use App\Models\Booking;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +59,23 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/orders', [TransactionController::class, 'orders'])->name('transactions.orders');
         Route::get('/orders/details/{transaction}', [TransactionController::class, 'order_details'])->name('transactions.order_details');
         Route::get('/download/file/{transaction}', [TransactionController::class, 'download_file'])->name('transactions.download');
+
+
+        Route::get('/unit-bisnis', [UnitBisnisController::class, 'index'])->name('unit_bisnis.index');
+        Route::get('/unit-bisnis/{slug}', [UnitBisnisController::class, 'show'])->name('unit_bisnis.show');
+        Route::get('/unit-bisnis/{slug}/edit', [UnitBisnisController::class, 'edit'])->name('unit_bisnis.edit');
+        Route::put('/unit-bisnis/{slug}', [UnitBisnisController::class, 'update'])->name('unit_bisnis.update');
+
+        Route::get('/pengguna', [DashboardAdminController::class, 'pengguna'])->name('pengguna.index');
+        Route::get('/pengguna/detail/{id}', [DashboardAdminController::class, 'penggunaDetail'])->name('pengguna.detail');
+        Route::get('/pengguna/edit/{id}', [DashboardAdminController::class, 'edit'])->name('pengguna.edit');
+        Route::delete('/pengguna/{id}', [DashboardAdminController::class, 'destroy'])->name('pengguna.delete');
+
+        Route::get('/pengguna/download', [DashboardAdminController::class, 'download'])->name('pengguna.download');
+        Route::get('/transactions/download', [TransactionController::class, 'download'])->name('transactions.download');
+
+
+        Route::put('/bookings/mark-returned/{id}', [TransactionController::class, 'markReturned'])->name('bookings.markReturned');
     });
 });
 
@@ -79,6 +97,8 @@ Route::middleware(['auth', 'role:penjual'])->group(function () {
         Route::get('/orders/details/{transaction}', [TransactionController::class, 'penjualOrderDetails'])->name('transactions.order_details');
         Route::put('/transactions/{transaction}', [TransactionController::class, 'penjualUpdate'])->name('transactions.update');
         Route::get('/download/file/{transaction}', [TransactionController::class, 'penjualDownloadFile'])->name('transactions.download');
+
+        Route::get('/orders/download', [TransactionController::class, 'penjualDownload'])->name('transactions.orders.download');
     });
 });
 

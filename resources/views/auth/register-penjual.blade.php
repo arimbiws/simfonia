@@ -122,3 +122,128 @@
         </div>
     </div>
 </x-guest-layout>
+
+
+@push('after-script')
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fileInput = document.getElementById('surat_persetujuan');
+        const uploadArea = document.getElementById('upload-area');
+        const previewArea = document.getElementById('preview-area');
+        const fileIcon = document.getElementById('file-icon');
+        const fileName = document.getElementById('file-name');
+        const fileSize = document.getElementById('file-size');
+        const removeButton = document.getElementById('remove-file');
+
+        const MAX_FILE_SIZE = 10 * 1024 * 1024;
+        const ALLOWED_TYPES = [
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'application/pdf'
+        ];
+
+        function formatFileSize(bytes) {
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function getFileIcon(fileType) {
+            if (fileType === 'application/pdf') {
+                return `<svg class="w-full h-full text-red-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 18h12V6l-4-4H4v16zm8-14v4h4l-4-4z"/></svg>`;
+            } else if (fileType.includes('word') || fileType.includes('msword')) {
+                return `<svg class="w-full h-full text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 18h12V6l-4-4H4v16zm8-14v4h4l-4-4z"/></svg>`;
+            }
+            return `<svg class="w-full h-full text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path d="M4 18h12V6l-4-4H4v16zm8-14v4h4l-4-4z"/></svg>`;
+        }
+
+        function validateFile(file) {
+            if (file.size > MAX_FILE_SIZE) {
+                alert('Ukuran file melebihi 10MB.');
+                return false;
+            }
+
+            if (!ALLOWED_TYPES.includes(file.type)) {
+                alert('Jenis file tidak diizinkan. Hanya PDF, DOC, dan DOCX.');
+                return false;
+            }
+
+            return true;
+        }
+
+        function showPreview(file) {
+            if (!validateFile(file)) {
+                resetUpload();
+                return;
+            }
+
+            fileIcon.innerHTML = getFileIcon(file.type);
+            fileName.textContent = file.name;
+            fileSize.textContent = formatFileSize(file.size);
+
+            uploadArea.classList.add('hidden');
+            previewArea.classList.remove('hidden');
+        }
+
+        function resetUpload() {
+            fileInput.value = '';
+            fileIcon.innerHTML = '';
+            fileName.textContent = '';
+            fileSize.textContent = '';
+            uploadArea.classList.remove('hidden');
+            previewArea.classList.add('hidden');
+        }
+
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                showPreview(file);
+            } else {
+                resetUpload();
+            }
+        });
+
+        removeButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            resetUpload();
+        });
+
+        const dropArea = document.querySelector('label[for="surat_persetujuan"]');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.add('border-blue-500', 'bg-blue-50'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.remove('border-blue-500', 'bg-blue-50'), false);
+        });
+
+        dropArea.addEventListener('drop', function(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+
+            if (files.length > 0) {
+                const file = files[0];
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                fileInput.files = dataTransfer.files;
+                showPreview(file);
+            }
+        });
+    });
+</script>
+@endpush

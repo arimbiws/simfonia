@@ -52,7 +52,7 @@
                         <td class="px-6 py-4">
                             <div class="text-lg font-semibold text-gray-800">{{ $product->nama }}</div>
                         </td>
-                        <td class="px-6 py-4">Rp {{ number_format($product->harga, 0, ',', '.') }}</td>
+                        <td class="px-6 py-4">Rp{{ number_format($product->harga, 0, ',', '.') }}</td>
                         <td class="px-6 py-4">
                             <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-indigo-700 bg-indigo-100 rounded-md">
                                 {{ $product->unit->nama_unit }}

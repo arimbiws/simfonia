@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 13, 2025 at 07:53 AM
+-- Generation Time: Jul 14, 2025 at 09:23 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.27
 
@@ -65,7 +65,13 @@ INSERT INTO `bookings` (`id`, `product_id`, `pembeli_id`, `tanggal_mulai`, `tang
 (18, 4, 34, '2025-07-17 00:00:00', '2025-07-18 00:00:00', 'disetujui', 'Latihan Futsal', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/J8NrWhe7waU9klRRw17xuWjTAF3bFLgxAipAUGlx.pdf', '2025-07-10 12:52:08', '2025-07-10 12:52:08'),
 (19, 4, 34, '2025-07-21 10:30:00', '2025-07-22 22:00:00', 'ditolak', 'PIMNAS 2025', 'Universitas Udayana', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/ocQ0CQHYVgVYoxPEUWlmHu9qmISZqvPFmupThCu6.pdf', '2025-07-10 13:19:11', '2025-07-10 13:19:11'),
 (20, 4, 34, '2025-07-26 10:00:00', '2025-07-27 22:00:00', 'pending', 'Gladi Bersih Supremasi', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/ToAo4VnhAVCtvsVqYEbc090KSltDJrNnUFFpGj4c.pdf', '2025-07-10 13:22:36', '2025-07-10 13:22:36'),
-(21, 3, 2, '2025-08-25 10:00:00', '2025-08-26 18:00:00', 'pending', 'Kuliah', 'Udayana', 'raka.pradipta@student.com', 'Raka Pradipta', '81234567890', 'Jl. Mawar No. 123, Denpasar, Bali', 'surat_pengajuan/JzV9rtKOZNmTLWzMDs6WQAq9BQF96ntLQqc5Ri8e.pdf', '2025-07-10 21:38:20', '2025-07-10 21:38:20');
+(21, 3, 2, '2025-08-25 10:00:00', '2025-08-26 18:00:00', 'pending', 'Kuliah', 'Udayana', 'raka.pradipta@student.com', 'Raka Pradipta', '81234567890', 'Jl. Mawar No. 123, Denpasar, Bali', 'surat_pengajuan/JzV9rtKOZNmTLWzMDs6WQAq9BQF96ntLQqc5Ri8e.pdf', '2025-07-10 21:38:20', '2025-07-10 21:38:20'),
+(22, 7, 34, '2025-07-17 08:00:00', '2025-07-18 10:00:00', 'pending', 'Kuliah KWN', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/Hqm03M3Pxb0t7wEYIdlvQvTBSMUNZ5VbVEpQEuri.pdf', '2025-07-13 06:50:21', '2025-07-13 06:50:21'),
+(23, 7, 34, '2025-07-14 10:00:00', '2025-07-15 12:00:00', 'pending', 'Kuliah Agama', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/wVZN3v9wukQxRpgLn8EFDOOtrMeLFgpZnqhMkWjE.pdf', '2025-07-13 06:53:02', '2025-07-13 06:53:02'),
+(24, 7, 34, '2025-07-19 10:00:00', '2025-07-20 20:00:00', 'pending', 'Kuliah PBO', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/JQgMth9CdTsgPAvgcm5aGfbQxBqNktualwg1R0Zm.pdf', '2025-07-13 06:54:29', '2025-07-13 06:54:29'),
+(25, 7, 34, '2025-07-21 04:54:00', '2025-07-22 23:55:00', 'pending', 'Kuliah TTKI', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/9546eW10hLdLyKA0gnnlFCPIAhcEhokLtdhgcV9y.pdf', '2025-07-13 06:55:21', '2025-07-13 06:55:21'),
+(26, 7, 34, '2025-09-19 08:00:00', '2025-09-19 10:00:00', 'pending', 'Sosialisasi', 'Udayana', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/PAHUBFTe3EQjiZYJaCOnWREuMbQ0ncpNe3AWbmOg.pdf', '2025-07-13 07:00:25', '2025-07-13 07:00:25'),
+(27, 7, 34, '2025-07-27 08:00:00', '2025-07-28 10:00:00', 'pending', 'Kuliah Sistem Informasi', 'Informatika', 'there@yahoo.com', 'there', '30898978754', 'jallsansasd', 'surat_pengajuan/XC4skmt0jYsJGLrPcxwYS0WuvcCeTQzhFWRSHviT.pdf', '2025-07-13 07:02:58', '2025-07-13 07:02:58');
 
 --
 -- Triggers `bookings`
@@ -137,7 +143,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (8, '2025_06_09_192938_create_products_table', 3),
-(10, '2025_06_09_193735_create_transactions_table', 4),
 (11, '2025_06_09_184204_create_unit_bisnis_table', 5);
 
 -- --------------------------------------------------------
@@ -197,7 +202,7 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `penjual_id`, `unit_bisnis_id`, `nama`, `slug`, `gambar`, `harga`, `deskripsi`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (3, 1, 1, 'Ruang Lobby Dekanat FMIPA', 'ruang-lobby-dekanat-fmipa', 'images/products/OQNchw8eDmGW7rKiLgjU1Nl1zXkZsWWHtojLvaAJ.jpg', 150000, '\"Ruangan\" dalam bahasa Indonesia merujuk pada sebuah tempat atau area yang dibatasi oleh dinding dan memiliki fungsi tertentu. Bisa berupa kamar di dalam rumah, kelas di sekolah, atau area yang lebih luas seperti auditorium.', NULL, '2025-07-05 23:49:56', '2025-07-05 23:49:56'),
-(4, 2, 1, 'Gedung Lama Informatika', 'gedung-lama-informatika', 'images/products/CjuLoGWFzhKaD3g5BqC6TZNiGFLJE1KILrcUjQVW.jpg', 125000, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', NULL, '2025-07-06 08:23:26', '2025-07-06 08:23:26'),
+(4, 2, 1, 'Gedung Baru Informatika', 'gedung-baru-informatika', 'images/products/CjuLoGWFzhKaD3g5BqC6TZNiGFLJE1KILrcUjQVW.jpg', 125500, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', NULL, '2025-07-06 08:23:26', '2025-07-13 07:12:55'),
 (5, 2, 2, 'Proyektor Infocus In124-3200', 'proyektor-infocus', 'images/products/ECmzUWkFONL8F39L6VHylK9YoQc81RwrY4a3LeKh.jpg', 320000, 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', NULL, '2025-07-06 10:39:07', '2025-07-06 10:39:07'),
 (6, 1, 2, 'TIK - Alat Ketik Tradisional', 'tik', 'images/products/L7fdJbgjGfvUuvrWI2joEnD2ft0JjxGOOBxAAr4b.jpg', 156200, 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', NULL, '2025-07-06 10:40:30', '2025-07-06 10:40:30'),
 (7, 1, 1, 'Ruang Kuliah A101', 'ruang-kuliah-a101', 'images/products/ruang_a101.jpg', 200000, 'Ruang kuliah berkapasitas 50 orang dengan fasilitas AC, proyektor, dan sound system. Cocok untuk seminar, workshop, dan perkuliahan.', NULL, '2025-07-01 00:00:00', '2025-07-01 00:00:00'),
@@ -264,7 +269,7 @@ INSERT INTO `transactions` (`id`, `penjual_id`, `pembeli_id`, `product_id`, `boo
 (4, 2, 1, 4, NULL, 1, 1, '', '', 0, 125000, 'proofs/transaction3.jpg', '2025-01-06 16:00:00', '2025-07-06 10:56:53', NULL),
 (20, 1, 2, 3, 4, 1, 1, '', '', 0, 150000, '', '2025-07-07 21:00:03', '2025-07-09 20:21:54', NULL),
 (21, 2, 2, 4, 5, 1, 1, '', '', 0, 125000, '', '2025-07-07 21:05:20', '2025-07-10 21:52:00', NULL),
-(22, 2, 2, 8, 6, 1, 0, '', '', 0, 500000, '', '2025-07-07 21:30:39', '2025-07-07 21:30:39', NULL),
+(22, 2, 2, 8, 6, 1, 1, '', '', 0, 500000, '', '2025-07-07 21:30:39', '2025-07-13 07:15:11', NULL),
 (23, 6, 2, 36, NULL, 1, 0, '', '', 0, 350000, '', '2025-07-09 12:53:27', '2025-07-09 12:53:27', NULL),
 (24, 6, 2, 36, NULL, 1, 0, '', '', 0, 350000, '', '2025-07-09 12:53:35', '2025-07-09 12:53:35', NULL),
 (25, 2, 2, 5, NULL, 1, 0, '', '', 0, 320000, 'bukti_bayar/efsy5zwRzA551EWG3JNV4L6Hg1kOC95rnUR9LxL9.jpg', '2025-07-09 13:00:06', '2025-07-09 13:00:25', NULL),
@@ -272,7 +277,7 @@ INSERT INTO `transactions` (`id`, `penjual_id`, `pembeli_id`, `product_id`, `boo
 (27, 2, 34, 5, 11, 1, 0, '', '', 0, 320000, '', '2025-07-10 07:52:59', '2025-07-10 07:52:59', NULL),
 (28, 2, 34, 5, 12, 1, 0, '', '', 0, 320000, '', '2025-07-10 07:55:50', '2025-07-10 07:55:50', NULL),
 (29, 2, 34, 5, 14, 1, 0, '', '', 0, 320000, '', '2025-07-10 08:00:13', '2025-07-10 08:00:13', NULL),
-(30, 1, 34, 34, NULL, 1, 0, '', '', 0, 5000000, 'bukti_bayar/jaoBLW74gmouGSlybAXwbx3yXetwnw3ZvfR9y62L.jpg', '2025-07-10 08:02:14', '2025-07-10 08:03:56', NULL),
+(30, 1, 34, 34, NULL, 1, 1, '', '', 0, 5000000, 'bukti_bayar/jaoBLW74gmouGSlybAXwbx3yXetwnw3ZvfR9y62L.jpg', '2025-07-10 08:02:14', '2025-07-13 07:22:19', NULL),
 (31, 12, 34, 33, NULL, 1, 0, '', '', 0, 3500000, '', '2025-07-10 08:13:02', '2025-07-10 08:13:02', NULL),
 (32, 12, 34, 33, NULL, 1, 0, '', '', 0, 3500000, '', '2025-07-10 08:14:09', '2025-07-10 08:14:09', NULL),
 (33, 1, 34, 3, 15, 1, 0, '', '', 0, 150000, '', '2025-07-10 10:56:08', '2025-07-10 10:56:08', NULL),
@@ -282,7 +287,9 @@ INSERT INTO `transactions` (`id`, `penjual_id`, `pembeli_id`, `product_id`, `boo
 (37, 7, 2, 28, NULL, 1, 0, NULL, NULL, NULL, 200000, '', '2025-07-10 17:02:30', '2025-07-10 17:02:30', NULL),
 (38, 7, 2, 28, NULL, 1, 0, NULL, NULL, NULL, 200000, '', '2025-07-10 17:10:39', '2025-07-10 17:10:39', NULL),
 (39, 7, 2, 28, NULL, 1, 0, NULL, NULL, NULL, 200000, 'bukti_bayar/seTtXDEbCukFQmhTmeBOOg3HXW60d8ifVhlrNgup.jpg', '2025-07-10 19:10:29', '2025-07-10 19:18:58', NULL),
-(40, 1, 2, 3, 21, 1, 0, NULL, NULL, NULL, 150000, 'bukti_bayar/qs08sL7JQu0lPbGjMydYfui6diSMhGnvDhbpjcd3.jpg', '2025-07-10 21:38:20', '2025-07-10 21:39:05', NULL);
+(40, 1, 2, 3, 21, 1, 0, NULL, NULL, NULL, 150000, 'bukti_bayar/qs08sL7JQu0lPbGjMydYfui6diSMhGnvDhbpjcd3.jpg', '2025-07-10 21:38:20', '2025-07-10 21:39:05', NULL),
+(41, 1, 34, 7, 26, 1, 0, NULL, NULL, NULL, 200000, '', '2025-07-13 07:00:25', '2025-07-13 07:00:25', NULL),
+(42, 1, 34, 7, 27, 1, 0, NULL, NULL, NULL, 200000, 'bukti_bayar/U7MJfBZqoLgrzofxaiCtSusCN5TzreSWUIjRLX6y.jpg', '2025-07-13 07:02:58', '2025-07-13 07:03:34', NULL);
 
 --
 -- Triggers `transactions`
@@ -363,8 +370,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `tipe_pembeli`, `name`, `email`, `nik_nim`, `password`, `no_hp`, `alamat`, `surat_persetujuan`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'eksternal', 'arimbi', 'arimbi@mail.com', 2308561112, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 87781537172, 'ayani utara', NULL, NULL, 'LomHGqzTPaX2ynO41WZtkdvB3ePzXGeoJTgy6cb4QQrVEpTdkQk420Fka7yp', '2025-06-09 13:40:07', '2025-06-09 13:40:07'),
-(2, 'penjual', 'eksternal', 'Raka Pradipta', 'raka.pradipta@student.com', 2205551010, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 81234567890, 'Jl. Mawar No. 123, Denpasar, Bali', NULL, NULL, '8yeiey6Lvo3HnvgWfvf5resu1egCUWUQ5GXEdlFRESoMpzzCc94S5Ucmbhsk', '2025-06-23 15:48:43', '2025-06-23 15:48:43'),
+(1, 'admin', 'eksternal', 'arimbi', 'arimbi@mail.com', 2308561112, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 87781537172, 'ayani utara', NULL, NULL, '1H3wbsmfphR2VFvrnJl3EX78QOSPndzmon57ig0tUlzsg2tL8U8eUWKmHpbK', '2025-06-09 13:40:07', '2025-06-09 13:40:07'),
+(2, 'penjual', 'eksternal', 'Raka Pradipta', 'raka.pradipta@student.com', 2205551010, '$2y$10$fGsB3u4CzRY1evMghrsrYO8HrL4H/wk3T8c8UuwYUO9/G.L57dgvK', 81234567890, 'Jl. Mawar No. 123, Denpasar, Bali', NULL, NULL, '8gJYvfXMXlJqIo6ow0Yz30uhO3BiID9GljnE2si81VV1We0W4G8c97MjvotB', '2025-06-23 15:48:43', '2025-06-23 15:48:43'),
 (3, 'admin', 'internal', ' Made Sukarsa', 'made.sukarsa@unud.ac.id', 5171041208850003, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 81234567890, 'Jl. Raya Kampus Unud, Jimbaran, Bali', NULL, NULL, NULL, NULL, NULL),
 (4, 'admin', 'internal', 'Ketut Gede Dharma Putra', 'ketut.dharma@student.unud.ac.id', 1980041502, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 81987654321, 'Jl. Sudirman No. 15, Denpasar, Bali', NULL, NULL, NULL, NULL, NULL),
 (5, 'admin', 'internal', 'Gede Jaya', 'gede.jaya@student.unud.ac.id', 1975031201, '$2y$10$pn/guB49fWywAstAA9qGKugvhf45ir1jkhPHUgJWZDpUOTGp1nIB2', 87765432109, 'Jl. Teuku Umar No. 28, Denpasar, Bali', NULL, NULL, NULL, NULL, NULL),
@@ -491,7 +498,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -521,7 +528,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `unit_bisnis`

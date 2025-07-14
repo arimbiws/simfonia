@@ -125,7 +125,7 @@
                         <a href="{{ $product->unit_bisnis_id == 1 || $product->unit_bisnis_id == 2 
             ? route('frontend.bookings.checkout-booking', ['product_id' => $product->id]) 
             : route('frontend.bookings.checkout-transaction', ['product_id' => $product->id]) }}"
-                            class="bg-green-500 text-white px-3 py-1 rounded-full text-xs">Reservasi</a>
+                            class="bg-blue-500 text-white px-3 py-1 rounded-full text-xs">Checkout</a>
                         <a href="{{ route('frontend.bookings.details', ['product_id' => $product->id]) }}"
                             class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs">Detail</a>
                     </div>
@@ -139,7 +139,7 @@
 <!-- Calendar Section -->
 <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
-        <h2 class="text-2xl font-bold mb-8">Kalender Reservasi Produk</h2>
+        <h2 class="text-2xl font-bold mb-8">Kalender Ketersediaan Produk</h2>
         <div class="bg-white rounded-lg shadow-lg p-6">
             <div id="calendar" class="min-h-[500px]"></div>
         </div>
@@ -148,13 +148,13 @@
 
 <!-- CTA Section -->
 <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4 flex items-center">
-        <div class="w-1/2 text-white">
+    <div class="container mx-auto px-6  flex items-center bg-gray-500 p-7 rounded-lg flex justify-between">
+        <div class="w-1/2 text-white ps-7 ">
             <h2 class="text-3xl font-bold mb-4">Want to join us?</h2>
             <p class="mb-6">Bergabunglah dengan Unit Bisnis FMIPA Universitas Udayana dan nikmati berbagai layanan terbaik untuk mendukung kegiatan akademik Anda.</p>
             <button onclick="confirmJoinAsSeller()" href="{{ route('register-penjual') }}" class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">Contact us</button>
         </div>
-        <div class=" w-1/2">
+        <div class="pe-6">
             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=400&fit=crop" alt="Student" class="rounded-lg" />
         </div>
     </div>

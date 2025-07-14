@@ -8,6 +8,7 @@
     <h1 class="text-center justify-start text-zinc-900 text-6xl font-medium font-['DM_Sans']">Explore all the products and services!</h1>
     <form method="GET" class="flex space-x-4 justify-center mt-6 mb-8">
         <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}" class="p-2 border rounded">
+
         <!-- Sort -->
         <select name="sort" class="border border-gray-300 rounded px-3 py-2">
             <option value="">Sort By</option>
@@ -21,7 +22,7 @@
 
         <!--  Tombol Reset Filter -->
         @if(request()->has('unit_bisnis_id') || request()->has('sort') || request()->has('search'))
-        <a href="{{ url()->current() }}" class="flex items-center text-red-600 hover:underline text-sm px-3 py-2">
+        <a href="{{ route('frontend.unit_bisnis.all-katalog') }}">
             ❌ Reset Filter
         </a>
         @endif

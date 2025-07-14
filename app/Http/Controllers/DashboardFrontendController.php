@@ -65,20 +65,28 @@ class DashboardFrontendController extends Controller
     public function all_katalog(Request $request)
     {
         $userId = Auth::id();
-        $query = Product::query();
 
-        if ($request->has('search')) {
-            $query->where('nama', 'like', '%' . $request->search . '%');
+        $query = Product::query()->where('penjual_id', '!=', $userId);
+
+        // Filter pencarian
+        if ($request->filled('search')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('nama', 'like', '%' . $request->search . '%')
+                    ->orWhere('deskripsi', 'like', '%' . $request->search . '%'); // bisa tambahkan kolom lain juga
+            });
         }
 
-        if ($request->sort === 'harga') {
-            $query->orderBy('harga');
+        // Sort
+        if ($request->sort === 'harga_asc') {
+            $query->orderBy('harga', 'asc');
+        } elseif ($request->sort === 'harga_desc') {
+            $query->orderBy('harga', 'desc');
         } elseif ($request->sort === 'terbaru') {
             $query->orderBy('created_at', 'desc');
         }
 
-        $products = Product::where('penjual_id', '!=', $userId)  // Semua produk selain milik user
-            ->get();
+        // Ambil data
+        $products = $query->paginate(12); // pagination biar rapi
 
         return view('frontend.unit_bisnis.all-katalog', [
             'products' => $products
